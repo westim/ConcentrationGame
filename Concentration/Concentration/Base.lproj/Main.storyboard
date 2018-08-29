@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Concentration" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85B-aL-Hen">
+                                <rect key="frame" x="116.5" y="543" width="142.5" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="UV8-dz-aRN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Jf-fp-kJK">
+                                <rect key="frame" x="16" y="30" width="343" height="468"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vxz-Nw-EvN">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="109.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6h-xD-dg1" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="N6h-xD-dg1" secondAttribute="height" multiplier="2.5:3.5" id="VnC-Mj-zGq"/>
+                                                    <constraint firstAttribute="width" secondItem="N6h-xD-dg1" secondAttribute="height" multiplier="3.5:2.5" id="kln-rF-XRk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="kln-rF-XRk"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="VnC-Mj-zGq"/>
+                                                        <include reference="kln-rF-XRk"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ej-fZ-8Xh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMF-T3-S4u" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="88.5" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="yMF-T3-S4u" secondAttribute="height" multiplier="3.5:2.5" id="7RT-MF-dpn"/>
+                                                    <constraint firstAttribute="width" secondItem="yMF-T3-S4u" secondAttribute="height" multiplier="2.5:3.5" id="HZJ-vZ-G90"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="7RT-MF-dpn"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="HZJ-vZ-G90"/>
+                                                        <include reference="7RT-MF-dpn"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3sT-Qk-LCF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbU-Tb-wUj" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="176.5" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="cbU-Tb-wUj" secondAttribute="height" multiplier="2.5:3.5" id="mmn-0u-VXP"/>
+                                                    <constraint firstAttribute="width" secondItem="cbU-Tb-wUj" secondAttribute="height" multiplier="3.5:2.5" id="veF-YV-yMp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="veF-YV-yMp"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="mmn-0u-VXP"/>
+                                                        <include reference="veF-YV-yMp"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j9C-Uo-mRV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vL-7r-BeS" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="265" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="1vL-7r-BeS" secondAttribute="height" multiplier="2.5:3.5" id="AIO-Xw-nV7"/>
+                                                    <constraint firstAttribute="width" secondItem="1vL-7r-BeS" secondAttribute="height" multiplier="3.5:2.5" id="cJY-uw-kdm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="cJY-uw-kdm"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="AIO-Xw-nV7"/>
+                                                        <include reference="cJY-uw-kdm"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Kr-ee-spt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dmn-5C-esh">
+                                        <rect key="frame" x="0.0" y="119.5" width="343" height="109.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqs-RH-JUQ" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="cqs-RH-JUQ" secondAttribute="height" multiplier="3.5:2.5" id="sO9-yJ-k5d"/>
+                                                    <constraint firstAttribute="width" secondItem="cqs-RH-JUQ" secondAttribute="height" multiplier="2.5:3.5" id="vbv-oo-BPr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="sO9-yJ-k5d"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="vbv-oo-BPr"/>
+                                                        <include reference="sO9-yJ-k5d"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2yN-Ft-0oS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09m-l7-nJS" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="88.5" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="09m-l7-nJS" secondAttribute="height" multiplier="2.5:3.5" id="hqL-sA-lct"/>
+                                                    <constraint firstAttribute="width" secondItem="09m-l7-nJS" secondAttribute="height" multiplier="3.5:2.5" id="y8Y-z7-DTa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="y8Y-z7-DTa"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="hqL-sA-lct"/>
+                                                        <include reference="y8Y-z7-DTa"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QUo-hv-zke"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecI-oK-Mfz" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="176.5" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ecI-oK-Mfz" secondAttribute="height" multiplier="3.5:2.5" id="7es-tB-RsL"/>
+                                                    <constraint firstAttribute="width" secondItem="ecI-oK-Mfz" secondAttribute="height" multiplier="2.5:3.5" id="y8L-bn-cVp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="7es-tB-RsL"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="y8L-bn-cVp"/>
+                                                        <include reference="7es-tB-RsL"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXR-cZ-0Ie"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7em-nL-cqq" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="265" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="7em-nL-cqq" secondAttribute="height" multiplier="3.5:2.5" id="4rh-o2-Tlb"/>
+                                                    <constraint firstAttribute="width" secondItem="7em-nL-cqq" secondAttribute="height" multiplier="2.5:3.5" id="rnT-xA-dAp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="4rh-o2-Tlb"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="rnT-xA-dAp"/>
+                                                        <include reference="4rh-o2-Tlb"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="21x-7g-tCh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uh8-kg-whP">
+                                        <rect key="frame" x="0.0" y="239" width="343" height="109.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4w-Vz-EGk" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="w4w-Vz-EGk" secondAttribute="height" multiplier="3.5:2.5" id="uYU-bi-YJY"/>
+                                                    <constraint firstAttribute="width" secondItem="w4w-Vz-EGk" secondAttribute="height" multiplier="2.5:3.5" id="y1I-zA-p3M"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="uYU-bi-YJY"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="y1I-zA-p3M"/>
+                                                        <include reference="uYU-bi-YJY"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="enj-gq-blE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZz-Nu-2vx" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="88.5" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="aZz-Nu-2vx" secondAttribute="height" multiplier="2.5:3.5" id="8W3-Dh-gBp"/>
+                                                    <constraint firstAttribute="width" secondItem="aZz-Nu-2vx" secondAttribute="height" multiplier="3.5:2.5" id="qM4-si-5No"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="qM4-si-5No"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="8W3-Dh-gBp"/>
+                                                        <include reference="qM4-si-5No"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yVk-aE-c26"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mr4-BR-guN" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="176.5" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Mr4-BR-guN" secondAttribute="height" multiplier="2.5:3.5" id="Nce-Ag-q3l"/>
+                                                    <constraint firstAttribute="width" secondItem="Mr4-BR-guN" secondAttribute="height" multiplier="3.5:2.5" id="uDA-g6-VtP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="uDA-g6-VtP"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Nce-Ag-q3l"/>
+                                                        <include reference="uDA-g6-VtP"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tyq-cA-P8h"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pD-Nn-fO2" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="265" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8pD-Nn-fO2" secondAttribute="height" multiplier="2.5:3.5" id="IQl-8c-eio"/>
+                                                    <constraint firstAttribute="width" secondItem="8pD-Nn-fO2" secondAttribute="height" multiplier="3.5:2.5" id="K2T-Y4-F4B"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="K2T-Y4-F4B"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="IQl-8c-eio"/>
+                                                        <include reference="K2T-Y4-F4B"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9V2-Ai-q7e"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hH8-Zg-yib">
+                                        <rect key="frame" x="0.0" y="358.5" width="343" height="109.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCi-wq-h4m" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="DCi-wq-h4m" secondAttribute="height" multiplier="2.5:3.5" id="a2q-i3-WMY"/>
+                                                    <constraint firstAttribute="width" secondItem="DCi-wq-h4m" secondAttribute="height" multiplier="3.5:2.5" id="gqG-Tc-yf5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="gqG-Tc-yf5"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="a2q-i3-WMY"/>
+                                                        <include reference="gqG-Tc-yf5"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8yi-k5-bcd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3u-PN-Yy1" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="88.5" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Q3u-PN-Yy1" secondAttribute="height" multiplier="3.5:2.5" id="6C9-v8-CCN"/>
+                                                    <constraint firstAttribute="width" secondItem="Q3u-PN-Yy1" secondAttribute="height" multiplier="2.5:3.5" id="oMk-XX-eAa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="6C9-v8-CCN"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="oMk-XX-eAa"/>
+                                                        <include reference="6C9-v8-CCN"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PYy-nX-MOh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlR-fb-bRp" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="176.5" y="0.0" width="78.5" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="QlR-fb-bRp" secondAttribute="height" multiplier="3.5:2.5" id="gUq-j9-OkR"/>
+                                                    <constraint firstAttribute="width" secondItem="QlR-fb-bRp" secondAttribute="height" multiplier="2.5:3.5" id="sNa-Ob-o23"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="gUq-j9-OkR"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="sNa-Ob-o23"/>
+                                                        <include reference="gUq-j9-OkR"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Vr-tE-e0X"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPS-w0-zsv" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                                                <rect key="frame" x="265" y="0.0" width="78" height="109.5"/>
+                                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="XPS-w0-zsv" secondAttribute="height" multiplier="2.5:3.5" id="TZh-Um-PYy"/>
+                                                    <constraint firstAttribute="width" secondItem="XPS-w0-zsv" secondAttribute="height" multiplier="3.5:2.5" id="haw-Xe-wXb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="haw-Xe-wXb"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <exclude reference="TZh-Um-PYy"/>
+                                                        <include reference="haw-Xe-wXb"/>
+                                                    </mask>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Rw-IQ-cRO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kx4-TH-OzF">
+                                <rect key="frame" x="127.5" y="513" width="120" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YSs-fo-vS0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zxf-3k-H3T"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="85B-aL-Hen" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="4rk-hg-XOL"/>
+                            <constraint firstItem="kx4-TH-OzF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SEM-HI-Fv9"/>
+                            <constraint firstItem="6Jf-fp-kJK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UjT-SL-Xlu"/>
+                            <constraint firstItem="85B-aL-Hen" firstAttribute="top" secondItem="kx4-TH-OzF" secondAttribute="bottom" id="VaV-3g-RQw"/>
+                            <constraint firstItem="kx4-TH-OzF" firstAttribute="top" secondItem="6Jf-fp-kJK" secondAttribute="bottom" constant="15" id="XLW-50-TUG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="6Jf-fp-kJK" secondAttribute="top" constant="-10" id="YZf-NV-iKa"/>
+                            <constraint firstItem="85B-aL-Hen" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aqH-wa-L5T"/>
+                            <constraint firstItem="6Jf-fp-kJK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="jSM-ek-AXe"/>
+                            <constraint firstItem="kx4-TH-OzF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Jf-fp-kJK" secondAttribute="bottom" constant="15" id="nmJ-lr-D8v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Jf-fp-kJK" secondAttribute="trailing" constant="16" id="qwN-xc-7Lm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YZf-NV-iKa"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="YZf-NV-iKa"/>
+                                <exclude reference="jSM-ek-AXe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="newGameButton" destination="kx4-TH-OzF" id="icj-P0-Iqm"/>
+                        <outlet property="scoreLabel" destination="85B-aL-Hen" id="iBO-eF-XaB"/>
+                        <outletCollection property="cardButtons" destination="N6h-xD-dg1" collectionClass="NSMutableArray" id="nWB-Rr-2zW"/>
+                        <outletCollection property="cardButtons" destination="yMF-T3-S4u" collectionClass="NSMutableArray" id="pEf-0c-IY1"/>
+                        <outletCollection property="cardButtons" destination="7em-nL-cqq" collectionClass="NSMutableArray" id="Clc-70-gid"/>
+                        <outletCollection property="cardButtons" destination="w4w-Vz-EGk" collectionClass="NSMutableArray" id="Iqp-wV-nvE"/>
+                        <outletCollection property="cardButtons" destination="XPS-w0-zsv" collectionClass="NSMutableArray" id="Ram-Vh-gj2"/>
+                        <outletCollection property="cardButtons" destination="cbU-Tb-wUj" collectionClass="NSMutableArray" id="Lcg-MI-jq0"/>
+                        <outletCollection property="cardButtons" destination="1vL-7r-BeS" collectionClass="NSMutableArray" id="6dA-rA-csS"/>
+                        <outletCollection property="cardButtons" destination="cqs-RH-JUQ" collectionClass="NSMutableArray" id="kfL-Pn-Xtx"/>
+                        <outletCollection property="cardButtons" destination="09m-l7-nJS" collectionClass="NSMutableArray" id="ZOA-zx-6ec"/>
+                        <outletCollection property="cardButtons" destination="ecI-oK-Mfz" collectionClass="NSMutableArray" id="WhU-cV-GZL"/>
+                        <outletCollection property="cardButtons" destination="8pD-Nn-fO2" collectionClass="NSMutableArray" id="BIE-FX-zUY"/>
+                        <outletCollection property="cardButtons" destination="Mr4-BR-guN" collectionClass="NSMutableArray" id="EOq-Zh-vDV"/>
+                        <outletCollection property="cardButtons" destination="aZz-Nu-2vx" collectionClass="NSMutableArray" id="kUQ-8c-vhN"/>
+                        <outletCollection property="cardButtons" destination="QlR-fb-bRp" collectionClass="NSMutableArray" id="UyH-mg-4uc"/>
+                        <outletCollection property="cardButtons" destination="Q3u-PN-Yy1" collectionClass="NSMutableArray" id="dvE-e3-31C"/>
+                        <outletCollection property="cardButtons" destination="DCi-wq-h4m" collectionClass="NSMutableArray" id="gZ0-x4-2fJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bid-xm-o6h" customClass="UICard" customModule="Concentration" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="87.5" height="62.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ADG-vk-gLO"/>
+                    </connections>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="66.11694152923539" y="210.40000000000001"/>
+        </scene>
+    </scenes>
+</document>
