@@ -21,16 +21,15 @@ Built using Swift 4.1 and XCode 9, targeting iOS 11.4.
 
 ## Set Game
 
-
 ### TODO
 
 - [x] Create the *New Game* and *Deal 3 Cards* buttons
-- [ ] Create the *New Game* logic
-- [ ] Create the *Deal 3 Cards* logic
+- [x] Create the *New Game* logic
+- [x] Create the *Deal 3 Cards* logic
 - [x] Create the *Score* label
-- [ ] Create the `Card` struct
+- [x] Create the `Card` struct
 - [ ] Create the `Set` struct
 - [ ] Create the `NSAttributedString` for displaying symbols on cards
-- [ ] Use a closure
+- [x] Use a closure
 - [ ] Use an enum
-- [ ] Use an extension
+- [x] Use an extension

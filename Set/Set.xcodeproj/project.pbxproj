@@ -10,6 +10,7 @@
 		2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */; };
 		2288BCC82136488900153FB7 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCC72136488900153FB7 /* Set.swift */; };
 		2288BCCE213648EA00153FB7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCD213648EA00153FB7 /* Card.swift */; };
+		2288BCD021379EDD00153FB7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */; };
 		22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C6213388C300151A24 /* AppDelegate.swift */; };
 		22C7F1C9213388C300151A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C8213388C300151A24 /* ViewController.swift */; };
 		22C7F1CC213388C300151A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CA213388C300151A24 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		2288BCC72136488900153FB7 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		2288BCCD213648EA00153FB7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		22C7F1C3213388C300151A24 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C7F1C6213388C300151A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C7F1C8213388C300151A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 				2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		2288BCD121379EF000153FB7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		22A93ABC21338A95003B69BE /* Supporting File */ = {
@@ -85,6 +95,7 @@
 				22C7F1D2213388C600151A24 /* Info.plist */,
 				2288BCC72136488900153FB7 /* Set.swift */,
 				2288BCCD213648EA00153FB7 /* Card.swift */,
+				2288BCD121379EF000153FB7 /* Extensions */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -161,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2288BCD021379EDD00153FB7 /* ArrayExtension.swift in Sources */,
 				22C7F1C9213388C300151A24 /* ViewController.swift in Sources */,
 				22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */,
 				2288BCC82136488900153FB7 /* Set.swift in Sources */,
