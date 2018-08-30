@@ -30,7 +30,7 @@ MVC architecture. Fix that.
 9. All new UI you add should be nicely laid out and look good in portrait mode on an
 iPhone X.
 
-#### :heavy_plus_sign: Additional Features
+### :heavy_plus_sign: Additional Features
 
 - 6 available themes: halloween, christmas, people, animals, countries, and tech
 - Time-based bonus scoring, which awards anywhere from 0 points (10+ seconds after last match) to 10 points (<1 after last match)
@@ -43,8 +43,8 @@ iPhone X.
 - Getting accustomed to argument & parameter labels is odd, but not an unwelcome language feature.
 - The `Collection` protocol makes working with `Array`, `Dictionary`, and other data structures easier than other object-oriented languages.
 - Surprisingly, the `--` and `++` operators were [removed in Swift 3](https://github.com/apple/swift-evolution/blob/master/proposals/0004-remove-pre-post-inc-decrement.md). Weird, but I don't disagree with the thorough justification.
-- Markdown documentation comments are awesome.
-- `extension` is awesome!
+- Markdown documentation comments are great for both readability and knowledge transfer.
+- `extension` is a very useful tool for organizing code and isolating scary algorithms.
 
 ## Set Game
 
