@@ -2,7 +2,7 @@
 
 [Assignment PDFs](https://drive.google.com/drive/folders/1-TWZDChwwzkiGzt78QlPZDzN-j82JfR6)
 
-All projects built using Swift 4.1 and XCode 9, targeting iOS 11.4.
+All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 
 ## Concentration Game
 
@@ -78,3 +78,8 @@ solution.
 15. Your UI should be nicely laid out and look good (at least in portrait mode, preferably
 in landscape as well, though not required) on any iPhone 7 or later device.
 16. You must have a **New Game** button and show the **Score** in the UI.
+
+### :bulb: Challenges & Key Takeaways
+
+- I actually wanted to use a feature only available in Swift 4.2: [`CaseIterable`](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md). However, this feature wasn't officially released at the time of this assignment :(
+
