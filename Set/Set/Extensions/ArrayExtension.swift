@@ -21,8 +21,13 @@ extension Array where Element == Bool {
     }
 }
 
+// For Swift 4.2, we can use the `Sequence.shuffle()` method instead.
+#if swift(>=4.2)
+#else
 extension Array {
-    /** Implementation of Fischer-Yates shuffle. */
+    /**
+     Implementation of Fischer-Yates shuffle.
+     */
     mutating func shuffle() {
         if self.count >= 2 {
             for index in 0..<self.count - 1 {
@@ -32,3 +37,4 @@ extension Array {
         }
     }
 }
+#endif
