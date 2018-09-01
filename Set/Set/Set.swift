@@ -10,66 +10,83 @@ import Foundation
 
 struct Set {
     
-    /// `Array` of indices for selected cards
-    private(set) var selectedCards: [Int]
-    private(set) var score = 0
     private var deck: [Card]
+    private(set) var selectedCards: [Card]
+    private(set) var score = 0
+    
+    /// Determines if the current selected set is a match.
+    /// If current selection isn't a complete set, return `nil`.
+    private var selectedSetMatches: Bool? {
+        if selectedCards.count != 3 {
+            return nil
+        } else {
+            return Card.makesSet(selectedCards)
+        }
+    }
     
     /// Array of indices for dealt cards where true = dealt
-    private(set) var dealtCards: [Bool]
+    private(set) var dealtCards: [Card]
     
     /**
      Populates the deck with all possible card variations, shuffled.
+     
+     - Returns: Shuffled deck of `Card`
      */
-    mutating private func createDeck() {
+    private func createDeck() -> [Card] {
+        var newDeck = [Card]()
         for attribute1 in Card.Variant.all {
             for attribute2 in Card.Variant.all {
                 for attribute3 in Card.Variant.all {
                     for attribute4 in Card.Variant.all {
-                        deck.append(Card(Att1: attribute1, Att2: attribute2, Att3: attribute3, Att4: attribute4))
+                        newDeck.append(Card(Att1: attribute1, Att2: attribute2, Att3: attribute3, Att4: attribute4))
                     }
                 }
             }
         }
-        deck.shuffle()
+        newDeck.shuffle()
+        return newDeck
     }
     
     /**
-     Starts the game by randomly dealing cards.
+     Deals the first 12 cards from the deck & resets the score.
      */
-    mutating func startGame(int numberOfCards: Int) {
-        dealtCards = [Bool](repeating: false, count: numberOfCards)
+    mutating func startGame() {
+        deck = createDeck()
+        dealtCards = Array(deck[0..<12])
+        deck.removeSubArray(subarray: dealtCards)
         score = 0
-        createDeck()
-        
-        dealtCards.setRandomHalfTrue()
     }
     
     /**
-     Deals 3 cards based on the first 3 undealt cards found.
+     Deals 3 cards from the deck. If the selected set
+     matches, replace the selected set. Otherwise, add the
+     cards to the collection of dealt cards.
      */
     mutating private func dealThreeCards() {
-        var dealCount = 0
-        for index in 0..<dealtCards.count {
-            if dealCount < 3 && !dealtCards[index] {
-                dealtCards[index] = true
-                dealCount += 1
-            }
-        }
-    }
-    
-    mutating func selectCard(selectedCardIndex: Int) {
-        if let indexInSelectedCardsArray = selectedCards.index(of: selectedCardIndex) {
-            selectedCards.remove(at: indexInSelectedCardsArray)
+        let dealCards = Array(deck[0..<3])
+        
+        if let isMatch = selectedSetMatches, isMatch {
+            selectedCards = dealCards
+        } else {
+            dealtCards.append(contentsOf: dealCards)
         }
         
-        if selectedCards.count >= 3 {
-            selectedCards.removeAll(keepingCapacity: false)
-        }
-        
-        selectedCards.append(selectedCardIndex)
+        deck.removeSubArray(subarray: dealCards)
     }
     
-
+    mutating func selectCard(clickedCard: Card) {
+        if selectedCards.count < 3 {
+        } else if let index = selectedCards.index(of: clickedCard), selectedCards.count != 3 { // Deselect a card
+            selectedCards.remove(at: index)
+        } else if let isMatched = selectedSetMatches, !isMatched {                             // Deselect unmatched set
+            selectedCards.removeAll()
+            selectedCards.append(clickedCard)
+        } else if let isMatched = selectedSetMatches, isMatched {                              // Replace matched set
+            score += 3
+            dealThreeCards()
+        } else {                                                                               // Select a card
+            selectedCards.append(clickedCard)
+        }
+    }
 }
 

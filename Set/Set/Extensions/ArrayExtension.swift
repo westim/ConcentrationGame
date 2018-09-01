@@ -21,10 +21,9 @@ extension Array where Element == Bool {
     }
 }
 
-// For Swift 4.2, we can use the `Sequence.shuffle()` method instead.
-#if swift(>=4.2)
-#else
-extension Array {
+// For Swift 4.2, we can use the `Sequence.shuffle()` method instead
+extension Array where Element: Equatable {
+#if !swift(>=4.2)
     /**
      Implementation of Fischer-Yates shuffle.
      */
@@ -36,5 +35,17 @@ extension Array {
             }
         }
     }
-}
 #endif
+    /**
+     Removes all elements of the subarray from the array.
+     
+     - Parameter: subarray the subarray to remove
+     */
+    mutating func removeSubArray(subarray: [Element]) {
+        for element in subarray {
+            if let index = self.index(of: element) {
+                self.remove(at: index)
+            }
+        }
+    }
+}

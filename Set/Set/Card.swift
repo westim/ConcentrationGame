@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Card {
+struct Card: Equatable {
+
     let Attribute1: Variant
     let Attribute2: Variant
     let Attribute3: Variant
@@ -21,55 +22,71 @@ struct Card {
         Attribute4 = Att4
     }
     
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        return lhs.Attribute1 == rhs.Attribute1 &&
+               lhs.Attribute2 == rhs.Attribute2 &&
+               lhs.Attribute3 == rhs.Attribute3 &&
+               lhs.Attribute4 == rhs.Attribute4
+    }
+    
     /**
      Determines whether the three given `Card` form a set.
      
-     - Parameter card0: First card.
-     - Parameter card1: Second card.
-     - Parameter card2: Third card.
+     In summary, the following criteria must be met:
+     
+     - At least two attributes are unique (different for every card in the set)
+     - All non-unique attributes are the same for all cards in the set
+     
+     - Parameter cards: Array of cards to check
      
      - Returns: true if the cards form a set, else false.
      */
-    static func makesSet(of card0: Card, with card1: Card, and card2: Card) -> Bool {
-        return getNumberOfUniqueAttributes(card0: card0, card1: card1, card2: card2) +
-               getNumberOfSharedAttributes(card0: card0, card1: card1, card2: card2) == 4
+    static func makesSet(_ cards: [Card]) -> Bool {
+        // TODO: Add proper error-handling here
+        if cards.count != 3 {
+            print("Set has \(cards.count); can't check a set that doesn't have exactly 3 cards")
+            return false
+        }
+        return getNumberOfUniqueAttributes(cards: cards) >= 2 &&
+               (getNumberOfUniqueAttributes(cards: cards) +
+               getNumberOfSharedAttributes(cards: cards) == 4)
     }
     
-    static private func getNumberOfUniqueAttributes(card0: Card, card1: Card, card2: Card) -> Int {
+    static private func getNumberOfUniqueAttributes(cards: [Card]) -> Int {
         var numOfUniqueAttributes = 0
-        if card0.Attribute1 != card1.Attribute1 && card1.Attribute1 != card2.Attribute1 && card0.Attribute1 != card2.Attribute1 {
+        if cards[0].Attribute1 != cards[1].Attribute1 && cards[1].Attribute1 != cards[2].Attribute1 && cards[0].Attribute1 != cards[2].Attribute1 {
             numOfUniqueAttributes += 1
         }
-        if card0.Attribute2 != card1.Attribute2 && card1.Attribute2 != card2.Attribute2 && card0.Attribute2 != card2.Attribute2 {
+        if cards[0].Attribute2 != cards[1].Attribute2 && cards[1].Attribute2 != cards[2].Attribute2 && cards[0].Attribute2 != cards[2].Attribute2 {
             numOfUniqueAttributes += 1
         }
-        if card0.Attribute3 != card1.Attribute3 && card1.Attribute3 != card2.Attribute3 && card0.Attribute3 != card2.Attribute3 {
+        if cards[0].Attribute3 != cards[1].Attribute3 && cards[1].Attribute3 != cards[2].Attribute3 && cards[0].Attribute3 != cards[2].Attribute3 {
             numOfUniqueAttributes += 1
         }
-        if card0.Attribute4 != card1.Attribute4 && card1.Attribute4 != card2.Attribute4 && card0.Attribute4 != card2.Attribute4 {
+        if cards[0].Attribute4 != cards[1].Attribute4 && cards[1].Attribute4 != cards[2].Attribute4 && cards[0].Attribute4 != cards[2].Attribute4 {
             numOfUniqueAttributes += 1
         }
         return numOfUniqueAttributes
     }
     
-    static private func getNumberOfSharedAttributes(card0: Card, card1: Card, card2: Card) -> Int {
+    static private func getNumberOfSharedAttributes(cards: [Card]) -> Int {
         var numOfSharedAttributes = 0
-        if card0.Attribute1 == card1.Attribute1 && card1.Attribute1 == card2.Attribute1 {
+        if cards[0].Attribute1 == cards[1].Attribute1 && cards[1].Attribute1 == cards[2].Attribute1 {
             numOfSharedAttributes += 1
         }
-        if card0.Attribute2 == card1.Attribute2 && card1.Attribute2 == card2.Attribute2 {
+        if cards[0].Attribute2 == cards[1].Attribute2 && cards[1].Attribute2 == cards[2].Attribute2 {
             numOfSharedAttributes += 1
         }
-        if card0.Attribute3 == card1.Attribute3 && card1.Attribute3 == card2.Attribute3 {
+        if cards[0].Attribute3 == cards[1].Attribute3 && cards[1].Attribute3 == cards[2].Attribute3 {
             numOfSharedAttributes += 1
         }
-        if card0.Attribute4 == card1.Attribute4 && card1.Attribute4 == card2.Attribute4 {
+        if cards[0].Attribute4 == cards[1].Attribute4 && cards[1].Attribute4 == cards[2].Attribute4 {
             numOfSharedAttributes += 1
         }
         return numOfSharedAttributes
     }
     
-    // TODO: use CaseIterable Protocol in Swift 4.2
+    // MARK: use CaseIterable Protocol in Swift 4.2
     enum Variant: Int {
         case one = 1
         case two
