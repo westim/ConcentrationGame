@@ -74,18 +74,27 @@ struct Set {
         deck.removeSubArray(subarray: dealCards)
     }
     
+    /**
+     Acts on the clicked `Card` according to the game rules.
+     
+     - Parameter clickedCard: The card that was selected by the player.
+     */
     mutating func selectCard(clickedCard: Card) {
-        if selectedCards.count < 3 {
-        } else if let index = selectedCards.index(of: clickedCard), selectedCards.count != 3 { // Deselect a card
+        if let index = selectedCards.index(of: clickedCard), selectedCards.count != 3 { // Deselect clicked card
             selectedCards.remove(at: index)
-        } else if let isMatched = selectedSetMatches, !isMatched {                             // Deselect unmatched set
-            selectedCards.removeAll()
-            selectedCards.append(clickedCard)
-        } else if let isMatched = selectedSetMatches, isMatched {                              // Replace matched set
-            score += 3
-            dealThreeCards()
-        } else {                                                                               // Select a card
-            selectedCards.append(clickedCard)
+        } else {
+             if let isMatched = selectedSetMatches, !isMatched {                        // Deselect unmatched set & select clicked card
+                selectedCards.removeAll()
+                selectedCards.append(clickedCard)
+            } else if let isMatched = selectedSetMatches, isMatched {                   // Replace matched set
+                score += 3
+                dealThreeCards()
+                if dealtCards.contains(clickedCard) {                                   // Don't try to select a card that was just removed
+                    selectedCards.append(clickedCard)
+                }
+            } else {                                                                    // Select clicked card
+                selectedCards.append(clickedCard)
+            }
         }
     }
 }
