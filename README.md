@@ -40,6 +40,12 @@ While these solutions generally seek to fufill the assignments as efficiently an
 
 ## Set Game
 
+### Demo
+
+<p align="center">
+	<img src="Demos/set.gif">
+</p>
+
 ### :heavy_plus_sign: Additional Features
 
 - Uses a [Swift language version build configuration](https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md) statement to swap the `shuffle()` implementation for the Swift 4.2 implementation, depending on the Swift version
