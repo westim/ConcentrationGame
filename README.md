@@ -4,6 +4,15 @@
 
 All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 
+## Foreword
+
+This repository exists for several purposes:
+
+1. Track my personal progression
+1. Provide a decent reference solution to the assignments
+
+While these solutions generally seek to fufill the assignments as efficiently and clearly as possible, some additional langage features were leveraged where appropriate for the sake of additional learning and cleanliness. Also, since these assignments are not officially graded, I cannot guarantee that these solutions fulfill all requirements & bonuses prescribed by the assignment documents.
+
 ## Concentration Game
 
 ### Demo
@@ -18,6 +27,7 @@ All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 - Time-based bonus scoring, which awards anywhere from 0 points (10+ seconds after last match) to 10 points (<1 after last match)
 - True-to-life 3.5:2.5 aspect ratio for cards
 - Support for landscape orientation (cards will rotate to fit on screen)
+- Several `extension` are implemented for ease-of-use
 
 ### :bulb: Challenges & Key Takeaways
 
@@ -33,9 +43,11 @@ All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 ### :heavy_plus_sign: Additional Features
 
 - Uses a [Swift language version build configuration](https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md) statement to swap the `shuffle()` implementation for the Swift 4.2 implementation, depending on the Swift version
+- Minor implementations of error-handling
 
 ### :bulb: Challenges & Key Takeaways
 
 - I actually wanted to use several features only available in Swift 4.2: [`CaseIterable`](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md) and [`Sequence.shuffle()`](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md).
 - Building the `NSAttributedString` text was difficult to do cleanly since it had dependencies on the other attributes of `Card`.
+
 

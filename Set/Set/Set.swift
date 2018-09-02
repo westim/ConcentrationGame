@@ -20,12 +20,9 @@ struct Set {
     
     /// Determines if the current selected set is a match.
     /// If current selection isn't a complete set, return `nil`.
-    var selectedSetMatches: Bool? {
-        if selectedCards.count != 3 {
-            return nil
-        } else {
-            return Card.makesSet(selectedCards)
-        }
+    private var selectedSetMatches: Bool? {
+        let success = try? Card.makesSet(selectedCards)
+        return success
     }
     
     init() {

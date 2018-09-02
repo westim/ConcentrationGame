@@ -41,11 +41,10 @@ struct Card: Equatable {
      
      - Returns: true if the cards form a set, else false.
      */
-    static func makesSet(_ cards: [Card]) -> Bool {
+    static func makesSet(_ cards: [Card]) throws -> Bool {
         // TODO: Add proper error-handling here
         if cards.count != 3 {
-            print("Set has \(cards.count); can't check a set that doesn't have exactly 3 cards")
-            return false
+            throw ArgumentError.invalidArraySize("Set has \(cards.count); can't check a set that doesn't have exactly 3 cards")
         }
         return getNumberOfUniqueAttributes(cards: cards) >= 2 &&
                (getNumberOfUniqueAttributes(cards: cards) +
@@ -95,4 +94,8 @@ struct Card: Equatable {
         
         static var all: [Variant]{ return [.one, .two, three] }
     }
+}
+
+enum ArgumentError: Error {
+    case invalidArraySize(String)
 }
