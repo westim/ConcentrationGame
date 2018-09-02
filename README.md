@@ -50,7 +50,7 @@ While these solutions generally seek to fufill the assignments as efficiently an
 
 - Uses a [Swift language version build configuration](https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md) statement to swap the `shuffle()` implementation for the Swift 4.2 implementation, depending on the Swift version
 - Minor implementations of error-handling
-- Use `NSAttributedString` to change the text color of the **Deal 3 Cards** button when no more cards can be dealt
+- Use `NSAttributedString` with `UIControlState.disabled` to change the text color of the **Deal 3 Cards** button when no more cards can be dealt
 
 ### :bulb: Challenges & Key Takeaways
 
