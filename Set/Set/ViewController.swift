@@ -38,6 +38,19 @@ class ViewController: UIViewController {
     @IBOutlet private weak var deal3CardsButton: UIButton!
     
     @IBAction func startNewGame(_ sender: UIButton) {
+        game.startGame()
+        newGameButton.isEnabled = false
+        newGameButton.isHidden = true
+        deal3CardsButton.isEnabled = true
+        deal3CardsButton.isHidden = false
+        updateViewFromModel()
+    }
+    
+    private func endGame() {
+        newGameButton.isEnabled = true
+        newGameButton.isHidden = false
+        deal3CardsButton.isEnabled = false
+        deal3CardsButton.isHidden = true
     }
     
     @IBAction func deal3Cards(_ sender: UIButton) {
@@ -75,12 +88,20 @@ class ViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
-        deal3CardsButton.isEnabled = !isBoardFull
+        if game.dealtCards.isEmpty && game.deck.isEmpty {
+            endGame()
+        } else {
+            // Can't deal cards when the board is full or deck is empty
+            deal3CardsButton.isEnabled = !isBoardFull || !game.deck.isEmpty
+        }
+
         for index in cardButtons.indices {
             let button = cardButtons[index]
             if game.dealtCards.indices.contains(index) {
                 let card = game.dealtCards[index]
                 button.isHidden = false
+                
+                // TODO: Move this logic for card selection graphic to another function
                 if game.selectedCards.contains(card) {
                     button.layer.borderWidth = 3.0
                     button.layer.borderColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
