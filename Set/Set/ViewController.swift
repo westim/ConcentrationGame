@@ -17,9 +17,9 @@ class ViewController: UIViewController {
          .two: "■",
          .three: "●"]
     private let colors: [Card.Variant: UIColor] =
-        [.one: #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1),
+        [.one: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1),
          .two: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1),
-         .three: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)]
+         .three: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
     private let counts: [Card.Variant: Int] =
         [.one: 1,
          .two: 2,
@@ -28,12 +28,25 @@ class ViewController: UIViewController {
     private var isBoardFull: Bool {
         return game.dealtCards.count == cardButtons.count
     }
+    
+    private var isDealCardButtonEnabled: Bool {
+        return !isBoardFull && !game.deck.isEmpty
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        for button in cardButtons {
+            button.layer.cornerRadius = 8.0
+        }
+        updateViewFromModel()
     }
+    
     @IBOutlet var cardButtons: [UIButton]!
-    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel! {
+        didSet {
+            updateScoreLabel()
+        }
+    }
     @IBOutlet private weak var newGameButton: UIButton!
     @IBOutlet private weak var deal3CardsButton: UIButton!
     
@@ -54,6 +67,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deal3Cards(_ sender: UIButton) {
+        game.dealThreeCards()
+        updateViewFromModel()
     }
     
     /**
@@ -87,19 +102,27 @@ class ViewController: UIViewController {
         return attributedText
     }
     
+    private func updateScoreLabel() {
+        scoreLabel.text = "Score: \(game.score)"
+    }
+    
     private func updateViewFromModel() {
+        updateScoreLabel()
+        
         if game.gameOver {
             endGame()
         } else {
             // Can't deal cards when the board is full or deck is empty
-            deal3CardsButton.isEnabled = !isBoardFull || !game.deck.isEmpty
+            deal3CardsButton.isEnabled = isDealCardButtonEnabled
         }
 
         for index in cardButtons.indices {
             let button = cardButtons[index]
             if game.dealtCards.indices.contains(index) {
                 let card = game.dealtCards[index]
-                button.isHidden = false
+                button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                button.isEnabled = true
+                button.setAttributedTitle(getAttributedText(forCard: card), for: .normal)
                 
                 // TODO: Move this logic for card selection graphic to another function
                 if game.selectedCards.contains(card) {
@@ -110,7 +133,9 @@ class ViewController: UIViewController {
                     button.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
                 }
             } else {
-                button.isHidden = true
+                button.backgroundColor = super.view.backgroundColor
+                button.isEnabled = false
+                button.setAttributedTitle(nil, for: .normal)
             }
         }
     }

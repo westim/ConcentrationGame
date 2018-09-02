@@ -14,6 +14,8 @@ struct Set {
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
     private(set) var score = 0
+    
+    // End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
         return dealtCards.isEmpty && deck.isEmpty
     }
@@ -64,7 +66,7 @@ struct Set {
      matches, replace the selected set. Otherwise, add the
      cards to the collection of dealt cards.
      */
-    mutating private func dealThreeCards() {
+    mutating func dealThreeCards() {
         // Don't deal if there's nothing to deal!
         if deck.count == 0 {
             return
