@@ -11,6 +11,7 @@
 		2288BCC82136488900153FB7 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCC72136488900153FB7 /* Set.swift */; };
 		2288BCCE213648EA00153FB7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCD213648EA00153FB7 /* Card.swift */; };
 		2288BCD021379EDD00153FB7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */; };
+		2288BCD3213B286700153FB7 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCD2213B286700153FB7 /* UIButtonExtension.swift */; };
 		22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C6213388C300151A24 /* AppDelegate.swift */; };
 		22C7F1C9213388C300151A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C8213388C300151A24 /* ViewController.swift */; };
 		22C7F1CC213388C300151A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CA213388C300151A24 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		2288BCC72136488900153FB7 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		2288BCCD213648EA00153FB7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		2288BCD2213B286700153FB7 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		22C7F1C3213388C300151A24 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C7F1C6213388C300151A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C7F1C8213388C300151A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		2288BCD121379EF000153FB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2288BCD2213B286700153FB7 /* UIButtonExtension.swift */,
 				2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
@@ -177,6 +180,7 @@
 				22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */,
 				2288BCC82136488900153FB7 /* Set.swift in Sources */,
 				2288BCCE213648EA00153FB7 /* Card.swift in Sources */,
+				2288BCD3213B286700153FB7 /* UIButtonExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

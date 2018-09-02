@@ -10,13 +10,14 @@ import Foundation
 
 struct Set {
     
-    private var deck: [Card]
-    private(set) var selectedCards: [Card]
+    var deck = [Card]()
+    private(set) var selectedCards = [Card]()
+    private(set) var dealtCards = [Card]()
     private(set) var score = 0
     
     /// Determines if the current selected set is a match.
     /// If current selection isn't a complete set, return `nil`.
-    private var selectedSetMatches: Bool? {
+    var selectedSetMatches: Bool? {
         if selectedCards.count != 3 {
             return nil
         } else {
@@ -24,11 +25,14 @@ struct Set {
         }
     }
     
-    /// Array of indices for dealt cards where true = dealt
-    private(set) var dealtCards: [Card]
+
+    
+    init() {
+        startGame()
+    }
     
     /**
-     Populates the deck with all possible card variations, shuffled.
+     Populates the deck with all possible card variations, shuffled randomly.
      
      - Returns: Shuffled deck of `Card`
      */
@@ -63,11 +67,17 @@ struct Set {
      cards to the collection of dealt cards.
      */
     mutating private func dealThreeCards() {
-        let dealCards = Array(deck[0..<3])
+        // Don't deal if there's nothing to deal!
+        if deck.count == 0 {
+            return
+        }
         
-        if let isMatch = selectedSetMatches, isMatch {
+        let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
+        let dealCards = Array(deck[0..<numberOfCardsToDeal])
+        
+        if let isMatch = selectedSetMatches, isMatch { // Replace selected, matching cards
             selectedCards = dealCards
-        } else {
+        } else {                                       // Add cards to the game
             dealtCards.append(contentsOf: dealCards)
         }
         
@@ -81,9 +91,11 @@ struct Set {
      */
     mutating func selectCard(clickedCard: Card) {
         if let index = selectedCards.index(of: clickedCard), selectedCards.count != 3 { // Deselect clicked card
+            score -= 1
             selectedCards.remove(at: index)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {                        // Deselect unmatched set & select clicked card
+                score -= 5
                 selectedCards.removeAll()
                 selectedCards.append(clickedCard)
             } else if let isMatched = selectedSetMatches, isMatched {                   // Replace matched set

@@ -37,4 +37,5 @@ All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 ### :bulb: Challenges & Key Takeaways
 
 - I actually wanted to use several features only available in Swift 4.2: [`CaseIterable`](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md) and [`Sequence.shuffle()`](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md).
+- Building the `NSAttributedString` text was difficult to do cleanly since it had dependencies on the other attributes of `Card`.
 

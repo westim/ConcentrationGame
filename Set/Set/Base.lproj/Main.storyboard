@@ -203,6 +203,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="deal3CardsButton" destination="n0v-cd-ttt" id="1ix-0i-cs2"/>
+                        <outlet property="newGameButton" destination="xES-7o-BPG" id="Q4B-OS-pog"/>
                         <outlet property="scoreLabel" destination="50M-gg-ZYS" id="NeN-zm-bef"/>
                         <outletCollection property="cardButtons" destination="ayB-Mj-ijf" collectionClass="NSMutableArray" id="CWv-rv-y4J"/>
                         <outletCollection property="cardButtons" destination="U7k-s1-Dj5" collectionClass="NSMutableArray" id="ALL-qW-KYp"/>

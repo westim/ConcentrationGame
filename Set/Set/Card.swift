@@ -87,8 +87,8 @@ struct Card: Equatable {
     }
     
     // MARK: use CaseIterable Protocol in Swift 4.2
-    enum Variant: Int {
-        case one = 1
+    enum Variant {
+        case one
         case two
         case three
         
