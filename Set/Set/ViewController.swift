@@ -39,6 +39,7 @@ class ViewController: UIViewController {
             button.layer.cornerRadius = 8.0
             button.titleLabel?.font.withSize(12.0)
         }
+        createDeal3CardsDisabledText()
         updateViewFromModel()
     }
     
@@ -64,6 +65,17 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var newGameButton: UIButton!
     @IBOutlet private weak var deal3CardsButton: UIButton!
+    
+    /**
+     Changes the Deal 3 Cards button text color to indicate
+     that no more cards can be dealt.
+     */
+    private func createDeal3CardsDisabledText() {
+        let disabledAttributes: [NSAttributedStringKey: Any] = [
+            NSAttributedStringKey.foregroundColor: UIColor(cgColor: #colorLiteral(red: 0.748572335, green: 0.1119795426, blue: 0.006467502925, alpha: 1))
+        ]
+        deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
+    }
     
     @IBAction func startNewGame(_ sender: UIButton) {
         game.startGame()
