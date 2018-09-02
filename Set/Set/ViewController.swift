@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
-        if game.dealtCards.isEmpty && game.deck.isEmpty {
+        if game.gameOver {
             endGame()
         } else {
             // Can't deal cards when the board is full or deck is empty

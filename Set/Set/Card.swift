@@ -52,6 +52,7 @@ struct Card: Equatable {
                getNumberOfSharedAttributes(cards: cards) == 4)
     }
     
+    // TODO: Make these attribute comparisons less ugly
     static private func getNumberOfUniqueAttributes(cards: [Card]) -> Int {
         var numOfUniqueAttributes = 0
         if cards[0].Attribute1 != cards[1].Attribute1 && cards[1].Attribute1 != cards[2].Attribute1 && cards[0].Attribute1 != cards[2].Attribute1 {
@@ -92,7 +93,6 @@ struct Card: Equatable {
         case two
         case three
         
-        /// Returns an array with all possible cases
         static var all: [Variant]{ return [.one, .two, three] }
     }
 }

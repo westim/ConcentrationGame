@@ -14,6 +14,9 @@ struct Set {
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
     private(set) var score = 0
+    var gameOver: Bool {
+        return dealtCards.isEmpty && deck.isEmpty
+    }
     
     /// Determines if the current selected set is a match.
     /// If current selection isn't a complete set, return `nil`.
@@ -24,8 +27,6 @@ struct Set {
             return Card.makesSet(selectedCards)
         }
     }
-    
-
     
     init() {
         startGame()
