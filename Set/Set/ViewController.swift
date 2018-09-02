@@ -17,9 +17,9 @@ class ViewController: UIViewController {
          .two: "■",
          .three: "●"]
     private let colors: [Card.Variant: UIColor] =
-        [.one: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1),
+        [.one: #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1),
          .two: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1),
-         .three: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
+         .three: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)]
     private let counts: [Card.Variant: Int] =
         [.one: 1,
          .two: 2,
@@ -37,16 +37,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         for button in cardButtons {
             button.layer.cornerRadius = 8.0
+            button.titleLabel?.font.withSize(12.0)
         }
         updateViewFromModel()
     }
     
     @IBOutlet var cardButtons: [UIButton]!
+    
+    @IBAction func touchCard(_ sender: UIButton) {
+        let index = cardButtons.index(of: sender)
+        game.selectCard(clickedCard: game.dealtCards[index!])
+        updateViewFromModel()
+    }
+    
     @IBOutlet private weak var scoreLabel: UILabel! {
         didSet {
             updateScoreLabel()
         }
     }
+    
+    @IBOutlet weak var cardsLeftLabel: UILabel! {
+        didSet {
+            updateCardsLeftLabel()
+        }
+    }
+    
     @IBOutlet private weak var newGameButton: UIButton!
     @IBOutlet private weak var deal3CardsButton: UIButton!
     
@@ -106,8 +121,13 @@ class ViewController: UIViewController {
         scoreLabel.text = "Score: \(game.score)"
     }
     
+    private func updateCardsLeftLabel() {
+        cardsLeftLabel.text = "Cards Left: \(game.deck.count)"
+    }
+    
     private func updateViewFromModel() {
         updateScoreLabel()
+        updateCardsLeftLabel()
         
         if game.gameOver {
             endGame()

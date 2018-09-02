@@ -15,7 +15,7 @@ struct Set {
     private(set) var dealtCards = [Card]()
     private(set) var score = 0
     
-    // End game state is when there are no dealt cards & the deck is empty.
+    /// End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
         return dealtCards.isEmpty && deck.isEmpty
     }
@@ -76,12 +76,20 @@ struct Set {
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
         if let isMatch = selectedSetMatches, isMatch { // Replace selected, matching cards
-            selectedCards = dealCards
+            replaceSelectedCards(using: dealCards)
         } else {                                       // Add cards to the game
             dealtCards.append(contentsOf: dealCards)
         }
         
         deck.removeSubArray(subarray: dealCards)
+    }
+    
+    mutating private func replaceSelectedCards(using newCards: [Card]) {
+        for index in selectedCards.indices {
+            if let dealtCardIndex = dealtCards.index(of: selectedCards[index]) {
+                dealtCards[dealtCardIndex] = newCards[index]
+            }
+        }
     }
     
     /**
@@ -101,7 +109,9 @@ struct Set {
             } else if let isMatched = selectedSetMatches, isMatched {                   // Replace matched set
                 score += 3
                 dealThreeCards()
-                if dealtCards.contains(clickedCard) {                                   // Don't try to select a card that was just removed
+                selectedCards.removeAll()
+                // Don't try to select a card that was just removed
+                if dealtCards.contains(clickedCard) {
                     selectedCards.append(clickedCard)
                 }
             } else {                                                                    // Select clicked card
