@@ -140,7 +140,7 @@ class ViewController: UIViewController {
             let button = cardButtons[index]
             if game.dealtCards.indices.contains(index) {
                 let card = game.dealtCards[index]
-                button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                button.swapToColor(withDuration: 0.2, toColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
                 button.isEnabled = true
                 button.setAttributedTitle(getAttributedText(forCard: card), for: .normal)
                 
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
                     button.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
                 }
             } else {
-                button.backgroundColor = super.view.backgroundColor
+                button.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
                 button.isEnabled = false
                 button.setAttributedTitle(nil, for: .normal)
             }
