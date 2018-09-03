@@ -17,9 +17,9 @@ class ViewController: UIViewController {
          .two: "■",
          .three: "●"]
     private let colors: [Card.Variant: UIColor] =
-        [.one: #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1),
-         .two: #colorLiteral(red: 1, green: 0.2527923882, blue: 1, alpha: 1),
-         .three: #colorLiteral(red: 0, green: 0.9914394021, blue: 1, alpha: 1)]
+        [.one: UIColor(red: 1, green: 1, blue: 0, alpha: 1),
+         .two: UIColor(red: 1, green: 0, blue: 1, alpha: 1),
+         .three: UIColor(red: 0, green: 1, blue: 1, alpha: 1)]
     private let counts: [Card.Variant: Int] =
         [.one: 1,
          .two: 2,
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
             let index = game.dealtCards.index(of: card)
             let button = cardButtons[index!]
             button.layer.borderWidth = 3.0
-            button.layer.borderColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
+            button.layer.borderColor = UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor
         }
     }
     
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
      */
     private func createDeal3CardsDisabledText() {
         let disabledAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor(cgColor: #colorLiteral(red: 0.748572335, green: 0.1119795426, blue: 0.006467502925, alpha: 1))
+            NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
         ]
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
@@ -169,11 +169,11 @@ class ViewController: UIViewController {
                 
                 if game.selectedCards.contains(card) {
                     button.layer.borderWidth = 3.0
-                    button.layer.borderColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+                    button.layer.borderColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
                     
                     // Add colors to indicate a successful/unsuccessful set
                     if let isSetMatching = game.selectedSetMatches {
-                        button.layer.backgroundColor = isSetMatching ? #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1).withAlphaComponent(0.3).cgColor : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).withAlphaComponent(0.3).cgColor
+                        button.layer.backgroundColor = isSetMatching ? UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor : UIColor(red: 1, green: 0, blue: 1, alpha: 0.3).withAlphaComponent(0.3).cgColor
                     }
                 } else {
                     button.layer.borderWidth = 3.0
