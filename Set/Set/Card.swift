@@ -29,6 +29,13 @@ struct Card: Equatable {
                lhs.Attribute4 == rhs.Attribute4
     }
     
+    static func !=(lhs: Card, rhs: Card) -> Bool {
+        return lhs.Attribute1 != rhs.Attribute1 ||
+               lhs.Attribute2 != rhs.Attribute2 ||
+               lhs.Attribute3 != rhs.Attribute3 ||
+               lhs.Attribute4 != rhs.Attribute4
+    }
+    
     /**
      Determines whether the three given `Card` form a set.
      

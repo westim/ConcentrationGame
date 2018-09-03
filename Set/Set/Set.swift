@@ -52,6 +52,28 @@ struct Set {
     }
     
     /**
+     Searches the board for a set and returns the
+     first found matching set.
+     
+     - Returns: Matching set of 3 cards or nil if no matching set is present
+     */
+    func findMatchingSet() -> [Card]? {
+        for card1 in dealtCards {
+            for card2 in dealtCards {
+                for card3 in dealtCards {
+                    if (card1 != card2 && card2 != card3 && card1 != card3) {
+                        let matches = try! Card.makesSet([card1, card2, card3])
+                        if matches {
+                            return [card1, card2, card3]
+                        }
+                    }
+                }
+            }
+        }
+        return nil
+    }
+    
+    /**
      Deals the first 12 cards from the deck & resets the score.
      */
     mutating func startGame() {
@@ -67,11 +89,6 @@ struct Set {
      cards to the collection of dealt cards.
      */
     mutating func dealThreeCards() {
-        // Don't deal if there's nothing to deal!
-        if deck.count == 0 {
-            return
-        }
-        
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
@@ -84,10 +101,18 @@ struct Set {
         deck.removeSubArray(subarray: dealCards)
     }
     
+    /**
+     Replaces the selected cards with new cards from the deck.
+     If there are not enough cards from the deck, simply remove
+     the dealt card from the game.
+     */
     mutating private func replaceSelectedCards(using newCards: [Card]) {
         for index in selectedCards.indices {
-            if let dealtCardIndex = dealtCards.index(of: selectedCards[index]) {
+            guard let dealtCardIndex = dealtCards.index(of: selectedCards[index]) else { return }
+            if index < newCards.count {
                 dealtCards[dealtCardIndex] = newCards[index]
+            } else {
+                dealtCards.remove(at: dealtCardIndex)
             }
         }
     }

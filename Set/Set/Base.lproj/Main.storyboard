@@ -265,17 +265,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzX-N2-cjt">
+                                <rect key="frame" x="16" y="569.5" width="43" height="33"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <state key="normal" title="HINT">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchHint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yLB-4o-c8X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nuf-TA-lR0" firstAttribute="centerY" secondItem="50M-gg-ZYS" secondAttribute="centerY" id="2od-Zo-5h0"/>
                             <constraint firstItem="nuf-TA-lR0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.5" id="38C-DC-MW0"/>
+                            <constraint firstItem="n0v-cd-ttt" firstAttribute="leading" secondItem="NzX-N2-cjt" secondAttribute="trailing" constant="65.5" id="B3z-ih-L5i"/>
                             <constraint firstItem="WxT-bY-msd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Czj-jR-ew1"/>
                             <constraint firstItem="50M-gg-ZYS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="J7k-Wb-I7F"/>
                             <constraint firstItem="WxT-bY-msd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="KBB-f9-Q9w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="10" id="OP0-6F-NNY"/>
                             <constraint firstItem="xES-7o-BPG" firstAttribute="top" secondItem="WxT-bY-msd" secondAttribute="bottom" constant="20" id="R4P-pj-C9Z"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zwz-zc-5fI"/>
+                            <constraint firstItem="NzX-N2-cjt" firstAttribute="centerY" secondItem="n0v-cd-ttt" secondAttribute="centerY" id="ayJ-V6-odB"/>
+                            <constraint firstItem="NzX-N2-cjt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d9S-qS-sJQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WxT-bY-msd" secondAttribute="trailing" constant="16" id="dw4-e4-1Gg"/>
                             <constraint firstItem="xES-7o-BPG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fZb-fB-COA"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="centerY" secondItem="xES-7o-BPG" secondAttribute="centerY" id="h9P-xG-U8M"/>
@@ -286,6 +299,7 @@
                     <connections>
                         <outlet property="cardsLeftLabel" destination="nuf-TA-lR0" id="S8P-lr-3x1"/>
                         <outlet property="deal3CardsButton" destination="n0v-cd-ttt" id="1ix-0i-cs2"/>
+                        <outlet property="hintButton" destination="NzX-N2-cjt" id="dC5-Aq-AH6"/>
                         <outlet property="newGameButton" destination="xES-7o-BPG" id="Q4B-OS-pog"/>
                         <outlet property="scoreLabel" destination="50M-gg-ZYS" id="NeN-zm-bef"/>
                         <outletCollection property="cardButtons" destination="ayB-Mj-ijf" collectionClass="NSMutableArray" id="CWv-rv-y4J"/>

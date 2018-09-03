@@ -51,6 +51,16 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    @IBAction func touchHint(_ sender: UIButton) {
+        guard let set = game.findMatchingSet() else { return }
+        for card in set {
+            let index = game.dealtCards.index(of: card)
+            let button = cardButtons[index!]
+            button.layer.borderWidth = 3.0
+            button.layer.borderColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
+        }
+    }
+    
     @IBOutlet private weak var scoreLabel: UILabel! {
         didSet {
             updateScoreLabel()
@@ -65,6 +75,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var newGameButton: UIButton!
     @IBOutlet private weak var deal3CardsButton: UIButton!
+    @IBOutlet private weak var hintButton: UIButton!
     
     /**
      Changes the Deal 3 Cards button text color to indicate
