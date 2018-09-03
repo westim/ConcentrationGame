@@ -53,7 +53,7 @@ struct Card: Equatable {
         if cards.count != 3 {
             throw ArgumentError.invalidArraySize("Set has \(cards.count); can't check a set that doesn't have exactly 3 cards")
         }
-        return getNumberOfUniqueAttributes(cards: cards) >= 2 &&
+        return getNumberOfUniqueAttributes(cards: cards) >= 1 &&
                (getNumberOfUniqueAttributes(cards: cards) +
                getNumberOfSharedAttributes(cards: cards) == 4)
     }

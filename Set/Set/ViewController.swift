@@ -83,7 +83,7 @@ class ViewController: UIViewController {
      */
     private func createDeal3CardsDisabledText() {
         let disabledAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
+            NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         ]
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
@@ -173,7 +173,7 @@ class ViewController: UIViewController {
                     
                     // Add colors to indicate a successful/unsuccessful set
                     if let isSetMatching = game.selectedSetMatches {
-                        button.layer.backgroundColor = isSetMatching ? UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor : UIColor(red: 1, green: 0, blue: 1, alpha: 0.3).withAlphaComponent(0.3).cgColor
+                        button.layer.backgroundColor = isSetMatching ? UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor : UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).withAlphaComponent(0.3).cgColor
                     }
                 } else {
                     button.layer.borderWidth = 3.0
