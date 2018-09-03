@@ -22,7 +22,7 @@ struct Set {
     
     /// Determines if the current selected set is a match.
     /// If current selection isn't a complete set, return `nil`.
-    private var selectedSetMatches: Bool? {
+    var selectedSetMatches: Bool? {
         let success = try? Card.makesSet(selectedCards)
         return success
     }

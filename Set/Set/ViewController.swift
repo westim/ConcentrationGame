@@ -17,9 +17,9 @@ class ViewController: UIViewController {
          .two: "■",
          .three: "●"]
     private let colors: [Card.Variant: UIColor] =
-        [.one: #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1),
-         .two: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1),
-         .three: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)]
+        [.one: #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1),
+         .two: #colorLiteral(red: 1, green: 0.2527923882, blue: 1, alpha: 1),
+         .three: #colorLiteral(red: 0, green: 0.9914394021, blue: 1, alpha: 1)]
     private let counts: [Card.Variant: Int] =
         [.one: 1,
          .two: 2,
@@ -121,8 +121,8 @@ class ViewController: UIViewController {
                 fallthrough
             case .two: // solid
                 attributes[NSAttributedStringKey.foregroundColor] = color
-            case .three: // striped
-                attributes[NSAttributedStringKey.foregroundColor] = color.withAlphaComponent(0.3)
+            case .three: // faded
+                attributes[NSAttributedStringKey.foregroundColor] = color.withAlphaComponent(0.5)
         }
         
         let attributedText = NSAttributedString(string: cardText, attributes: attributes)
@@ -156,10 +156,14 @@ class ViewController: UIViewController {
                 button.isEnabled = true
                 button.setAttributedTitle(getAttributedText(forCard: card), for: .normal)
                 
-                // TODO: Move this logic for card selection graphic to another function
                 if game.selectedCards.contains(card) {
                     button.layer.borderWidth = 3.0
                     button.layer.borderColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+                    
+                    // Add colors to indicate a successful/unsuccessful set
+                    if let isSetMatching = game.selectedSetMatches {
+                        button.layer.backgroundColor = isSetMatching ? #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1).withAlphaComponent(0.3).cgColor : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).withAlphaComponent(0.3).cgColor
+                    }
                 } else {
                     button.layer.borderWidth = 3.0
                     button.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
