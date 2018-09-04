@@ -28,10 +28,6 @@ class ViewController: UIViewController {
     private var isBoardFull: Bool {
         return game.dealtCards.count == cardButtons.count
     }
-    
-    private var isDealCardButtonEnabled: Bool {
-        return !isBoardFull && !game.deck.isEmpty
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,13 +152,19 @@ class ViewController: UIViewController {
             endGame()
         } else {
             // Can't deal cards when the board is full or deck is empty
-            deal3CardsButton.isEnabled = isDealCardButtonEnabled
+            deal3CardsButton.isEnabled = !isBoardFull && !game.deck.isEmpty
         }
 
         for index in cardButtons.indices {
             let button = cardButtons[index]
             if game.dealtCards.indices.contains(index) {
                 let card = game.dealtCards[index]
+                if game.removedCards.contains(card) {
+                    button.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
+                    button.isEnabled = false
+                    button.setAttributedTitle(nil, for: .normal)
+                    return
+                }
                 button.swapToColor(withDuration: 0.2, toColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
                 button.isEnabled = true
                 button.setAttributedTitle(getAttributedText(forCard: card), for: .normal)
