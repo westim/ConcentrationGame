@@ -58,6 +58,9 @@ struct SetGame {
      - Returns: Matching set of 3 cards or nil if no matching set is present
      */
     func findMatchingSet() -> [Card]? {
+        if dealtCards.count < 3 {
+            return nil
+        }
         for card1 in dealtCards {
             for card2 in dealtCards {
                 for card3 in dealtCards {
@@ -92,9 +95,9 @@ struct SetGame {
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
-        if let isMatch = selectedSetMatches, isMatch { // Replace selected, matching cards
+        if let isMatch = selectedSetMatches, isMatch {  // Replace selected, matching cards
             replaceSelectedCards(using: dealCards)
-        } else {                                       // Add cards to the game
+        } else {  // Add cards to the game
             dealtCards.append(contentsOf: dealCards)
         }
         deck.removeSubArray(subarray: dealCards)
@@ -106,11 +109,11 @@ struct SetGame {
      the dealt card from the game.
      */
     mutating private func replaceSelectedCards(using newCards: [Card]) {
-        for index in selectedCards.indices {
-            guard let dealtCardIndex = dealtCards.index(of: selectedCards[index]) else { return }
+        for selectedCardIndex in selectedCards.indices {
+            guard let dealtCardIndex = dealtCards.index(of: selectedCards[selectedCardIndex]) else { return }
             removedCards.append(dealtCards[dealtCardIndex])
-            if index < newCards.count {
-                dealtCards[dealtCardIndex] = newCards[index]
+            if selectedCardIndex < newCards.count {
+                dealtCards[dealtCardIndex] = newCards[selectedCardIndex]
             } else {
                 dealtCards.remove(at: dealtCardIndex)
             }
