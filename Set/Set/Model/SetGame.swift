@@ -24,8 +24,7 @@ struct SetGame {
     /// Determines if the current selected set is a match.
     /// If current selection isn't a complete set, return `nil`.
     var selectedSetMatches: Bool? {
-        let success = try? Card.makesSet(selectedCards)
-        return success
+        return try? Card.makesSet(selectedCards)
     }
     
     init() {
@@ -89,7 +88,7 @@ struct SetGame {
      matches, replace the selected set. Otherwise, add the
      cards to the collection of dealt cards.
      */
-    mutating func dealThreeCards() {
+    mutating func dealCards() {
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
@@ -98,7 +97,6 @@ struct SetGame {
         } else {                                       // Add cards to the game
             dealtCards.append(contentsOf: dealCards)
         }
-        
         deck.removeSubArray(subarray: dealCards)
     }
     
@@ -125,7 +123,7 @@ struct SetGame {
      - Parameter clickedCard: The card that was selected by the player.
      */
     mutating func selectCard(clickedCardIndex: Int) {
-        if selectedCards.count != 3 { // Deselect clicked card
+        if selectedCards.count != 3 {  // Deselect clicked card
             score -= 1
             selectedCards.remove(at: clickedCardIndex)
         } else {
@@ -135,7 +133,7 @@ struct SetGame {
                 selectedCards.append(dealtCards[clickedCardIndex])
             } else if let isMatched = selectedSetMatches, isMatched {                   // Replace matched set
                 score += 3
-                dealThreeCards()
+                dealCards()
                 selectedCards.removeAll()
                 // Don't try to select a card that was just removed
                 if dealtCards.indices.contains(clickedCardIndex) {

@@ -101,7 +101,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deal3Cards(_ sender: UIButton) {
-        game.dealThreeCards()
+        game.dealCards()
         updateViewFromModel()
     }
     

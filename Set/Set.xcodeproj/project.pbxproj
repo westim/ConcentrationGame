@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */; };
-		2288BCC82136488900153FB7 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCC72136488900153FB7 /* SetGame.swift */; };
-		2288BCCE213648EA00153FB7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCD213648EA00153FB7 /* Card.swift */; };
-		2288BCD021379EDD00153FB7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */; };
-		2288BCD3213B286700153FB7 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCD2213B286700153FB7 /* UIButtonExtension.swift */; };
+		2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */; };
+		2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */; };
+		229D60B6213F7571001DDE7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D60B5213F7570001DDE7C /* ViewController.swift */; };
+		229D60B9213F757F001DDE7C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D60B7213F757E001DDE7C /* Card.swift */; };
+		229D60BA213F757F001DDE7C /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D60B8213F757F001DDE7C /* SetGame.swift */; };
 		22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C6213388C300151A24 /* AppDelegate.swift */; };
-		22C7F1C9213388C300151A24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C8213388C300151A24 /* ViewController.swift */; };
 		22C7F1CC213388C300151A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CA213388C300151A24 /* Main.storyboard */; };
 		22C7F1CE213388C600151A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CD213388C600151A24 /* Assets.xcassets */; };
 		22C7F1D1213388C600151A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CF213388C600151A24 /* LaunchScreen.storyboard */; };
@@ -21,13 +21,13 @@
 
 /* Begin PBXFileReference section */
 		2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
-		2288BCC72136488900153FB7 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
-		2288BCCD213648EA00153FB7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		2288BCD2213B286700153FB7 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BoolAndEquatable.swift"; sourceTree = "<group>"; };
+		2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+swapToColor.swift"; sourceTree = "<group>"; };
+		229D60B5213F7570001DDE7C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controller/ViewController.swift; sourceTree = "<group>"; };
+		229D60B7213F757E001DDE7C /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Model/Card.swift; sourceTree = "<group>"; };
+		229D60B8213F757F001DDE7C /* SetGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetGame.swift; path = Model/SetGame.swift; sourceTree = "<group>"; };
 		22C7F1C3213388C300151A24 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C7F1C6213388C300151A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22C7F1C8213388C300151A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		22C7F1CB213388C300151A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22C7F1CD213388C600151A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22C7F1D0213388C600151A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,8 +56,8 @@
 		2288BCD121379EF000153FB7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2288BCD2213B286700153FB7 /* UIButtonExtension.swift */,
-				2288BCCF21379EDD00153FB7 /* ArrayExtension.swift */,
+				2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */,
+				2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -91,13 +91,13 @@
 		22C7F1C5213388C300151A24 /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				229D60B7213F757E001DDE7C /* Card.swift */,
+				229D60B8213F757F001DDE7C /* SetGame.swift */,
+				229D60B5213F7570001DDE7C /* ViewController.swift */,
 				2288BCC6213645AF00153FB7 /* Font */,
 				22A93ABC21338A95003B69BE /* Supporting File */,
-				22C7F1C8213388C300151A24 /* ViewController.swift */,
 				22C7F1CA213388C300151A24 /* Main.storyboard */,
 				22C7F1D2213388C600151A24 /* Info.plist */,
-				2288BCC72136488900153FB7 /* SetGame.swift */,
-				2288BCCD213648EA00153FB7 /* Card.swift */,
 				2288BCD121379EF000153FB7 /* Extensions */,
 			);
 			path = Set;
@@ -175,12 +175,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2288BCD021379EDD00153FB7 /* ArrayExtension.swift in Sources */,
-				22C7F1C9213388C300151A24 /* ViewController.swift in Sources */,
+				2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */,
 				22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */,
-				2288BCC82136488900153FB7 /* SetGame.swift in Sources */,
-				2288BCCE213648EA00153FB7 /* Card.swift in Sources */,
-				2288BCD3213B286700153FB7 /* UIButtonExtension.swift in Sources */,
+				229D60B9213F757F001DDE7C /* Card.swift in Sources */,
+				229D60B6213F7571001DDE7C /* ViewController.swift in Sources */,
+				229D60BA213F757F001DDE7C /* SetGame.swift in Sources */,
+				2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
