@@ -53,6 +53,7 @@ While these solutions generally seek to fufill the assignments as efficiently an
 - Uses `NSAttributedString` with `UIControlState.disabled` to change the text color of the **Deal 3 Cards** button when no more cards can be dealt
 - Adds label to show the number of cards remaining in the deck
 - Provides a **HINT** button and match-finding algorithm to help the player find matching sets
+- Uses Apple's official font, [San Francisco](https://developer.apple.com/fonts/)
 
 ### :bulb: Challenges & Key Takeaways
 
