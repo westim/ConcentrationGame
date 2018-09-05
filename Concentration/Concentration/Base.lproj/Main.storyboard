@@ -82,8 +82,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="HZJ-vZ-G90"/>
                                                         <include reference="7RT-MF-dpn"/>
+                                                        <exclude reference="HZJ-vZ-G90"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -171,8 +171,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="vbv-oo-BPr"/>
                                                         <include reference="sO9-yJ-k5d"/>
+                                                        <exclude reference="vbv-oo-BPr"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -227,8 +227,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="y8L-bn-cVp"/>
                                                         <include reference="7es-tB-RsL"/>
+                                                        <exclude reference="y8L-bn-cVp"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -255,8 +255,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="rnT-xA-dAp"/>
                                                         <include reference="4rh-o2-Tlb"/>
+                                                        <exclude reference="rnT-xA-dAp"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -288,8 +288,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="y1I-zA-p3M"/>
                                                         <include reference="uYU-bi-YJY"/>
+                                                        <exclude reference="y1I-zA-p3M"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -433,8 +433,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="oMk-XX-eAa"/>
                                                         <include reference="6C9-v8-CCN"/>
+                                                        <exclude reference="oMk-XX-eAa"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -461,8 +461,8 @@
                                                 </variation>
                                                 <variation key="heightClass=compact-widthClass=compact">
                                                     <mask key="constraints">
-                                                        <exclude reference="sNa-Ob-o23"/>
                                                         <include reference="gUq-j9-OkR"/>
+                                                        <exclude reference="sNa-Ob-o23"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>

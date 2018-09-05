@@ -1,5 +1,5 @@
 //
-//  IntExtension.swift
+//  Int+arc4random.swift
 //  Concentration
 //
 //  Created by Timothy West on 8/28/18.

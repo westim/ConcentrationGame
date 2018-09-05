@@ -1,5 +1,5 @@
 //
-//  UIButtonExtension.swift
+//  UIButton+swapToColor.swift
 //  Concentration
 //
 //  Created by Timothy West on 8/28/18.

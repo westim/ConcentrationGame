@@ -7,37 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220F2E06213F90DF00728D0E /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F2DFF213F90DF00728D0E /* Concentration.swift */; };
+		220F2E07213F90DF00728D0E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F2E00213F90DF00728D0E /* Card.swift */; };
+		220F2E08213F90DF00728D0E /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F2E02213F90DF00728D0E /* UICard.swift */; };
+		220F2E09213F90DF00728D0E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F2E03213F90DF00728D0E /* Theme.swift */; };
+		220F2E0A213F90DF00728D0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220F2E05213F90DF00728D0E /* ViewController.swift */; };
 		221C87D720B51B170016C27F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C87D620B51B170016C27F /* AppDelegate.swift */; };
-		221C87D920B51B170016C27F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C87D820B51B170016C27F /* ViewController.swift */; };
 		221C87DC20B51B170016C27F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221C87DA20B51B170016C27F /* Main.storyboard */; };
 		221C87DE20B51B1B0016C27F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221C87DD20B51B1B0016C27F /* Assets.xcassets */; };
 		221C87E120B51B1B0016C27F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221C87DF20B51B1B0016C27F /* LaunchScreen.storyboard */; };
-		2248FAC020BA22CC008D8C89 /* UICard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248FABF20BA22CC008D8C89 /* UICard.swift */; };
-		2248FAC220BC6B91008D8C89 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248FAC120BC6B91008D8C89 /* Theme.swift */; };
-		22AA4304213632F4007D5130 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4303213632F4007D5130 /* IntExtension.swift */; };
-		22AA430E21363F66007D5130 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA430B21363F65007D5130 /* ArrayExtension.swift */; };
-		22AA430F21363F66007D5130 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA430C21363F65007D5130 /* CollectionExtension.swift */; };
-		22AA431021363F66007D5130 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA430D21363F66007D5130 /* UIButtonExtension.swift */; };
-		22D0AE4620B673F500BEA511 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0AE4520B673F500BEA511 /* Concentration.swift */; };
-		22D0AE4820B674AE00BEA511 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0AE4720B674AE00BEA511 /* Card.swift */; };
+		22AA4304213632F4007D5130 /* Int+arc4random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA4303213632F4007D5130 /* Int+arc4random.swift */; };
+		22AA430E21363F66007D5130 /* Array+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA430B21363F65007D5130 /* Array+Shuffle.swift */; };
+		22AA430F21363F66007D5130 /* Collection+OneAndOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA430C21363F65007D5130 /* Collection+OneAndOnly.swift */; };
+		22AA431021363F66007D5130 /* UIButton+swapToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA430D21363F66007D5130 /* UIButton+swapToColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220F2DFF213F90DF00728D0E /* Concentration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		220F2E00213F90DF00728D0E /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		220F2E02213F90DF00728D0E /* UICard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
+		220F2E03213F90DF00728D0E /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		220F2E05213F90DF00728D0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		221C87D320B51B170016C27F /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221C87D620B51B170016C27F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		221C87D820B51B170016C27F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		221C87DB20B51B170016C27F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		221C87DD20B51B1B0016C27F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		221C87E020B51B1B0016C27F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		221C87E220B51B1B0016C27F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2248FABF20BA22CC008D8C89 /* UICard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICard.swift; sourceTree = "<group>"; };
-		2248FAC120BC6B91008D8C89 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		22AA4303213632F4007D5130 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntExtension.swift; path = Concentration/Extensions/IntExtension.swift; sourceTree = SOURCE_ROOT; };
-		22AA430B21363F65007D5130 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Concentration/Extensions/ArrayExtension.swift; sourceTree = SOURCE_ROOT; };
-		22AA430C21363F65007D5130 /* CollectionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtension.swift; path = Concentration/Extensions/CollectionExtension.swift; sourceTree = SOURCE_ROOT; };
-		22AA430D21363F66007D5130 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtension.swift; path = Concentration/Extensions/UIButtonExtension.swift; sourceTree = SOURCE_ROOT; };
-		22D0AE4520B673F500BEA511 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
-		22D0AE4720B674AE00BEA511 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		22AA4303213632F4007D5130 /* Int+arc4random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Int+arc4random.swift"; path = "Concentration/Extensions/Int+arc4random.swift"; sourceTree = SOURCE_ROOT; };
+		22AA430B21363F65007D5130 /* Array+Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Shuffle.swift"; path = "Concentration/Extensions/Array+Shuffle.swift"; sourceTree = SOURCE_ROOT; };
+		22AA430C21363F65007D5130 /* Collection+OneAndOnly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Collection+OneAndOnly.swift"; path = "Concentration/Extensions/Collection+OneAndOnly.swift"; sourceTree = SOURCE_ROOT; };
+		22AA430D21363F66007D5130 /* UIButton+swapToColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+swapToColor.swift"; path = "Concentration/Extensions/UIButton+swapToColor.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +51,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220F2DFD213F90C500728D0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				220F2E04213F90DF00728D0E /* Controller */,
+				220F2DFE213F90DF00728D0E /* Model */,
+				220F2E01213F90DF00728D0E /* View */,
+			);
+			name = Model;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		220F2DFE213F90DF00728D0E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				220F2DFF213F90DF00728D0E /* Concentration.swift */,
+				220F2E00213F90DF00728D0E /* Card.swift */,
+			);
+			name = Model;
+			path = Concentration/Model;
+			sourceTree = SOURCE_ROOT;
+		};
+		220F2E01213F90DF00728D0E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				220F2E02213F90DF00728D0E /* UICard.swift */,
+				220F2E03213F90DF00728D0E /* Theme.swift */,
+			);
+			name = View;
+			path = Concentration/View;
+			sourceTree = SOURCE_ROOT;
+		};
+		220F2E04213F90DF00728D0E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				220F2E05213F90DF00728D0E /* ViewController.swift */,
+			);
+			name = Controller;
+			path = Concentration/Controller;
+			sourceTree = SOURCE_ROOT;
+		};
 		221C87CA20B51B170016C27F = {
 			isa = PBXGroup;
 			children = (
@@ -70,15 +110,11 @@
 		221C87D520B51B170016C27F /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				220F2DFD213F90C500728D0E /* Model */,
 				22AA4302213632D7007D5130 /* Extensions */,
 				221C87E820B51D0B0016C27F /* Supporting Files */,
-				221C87D820B51B170016C27F /* ViewController.swift */,
 				221C87DA20B51B170016C27F /* Main.storyboard */,
 				221C87E220B51B1B0016C27F /* Info.plist */,
-				22D0AE4520B673F500BEA511 /* Concentration.swift */,
-				22D0AE4720B674AE00BEA511 /* Card.swift */,
-				2248FABF20BA22CC008D8C89 /* UICard.swift */,
-				2248FAC120BC6B91008D8C89 /* Theme.swift */,
 			);
 			path = Concentration;
 			sourceTree = "<group>";
@@ -96,10 +132,10 @@
 		22AA4302213632D7007D5130 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				22AA430B21363F65007D5130 /* ArrayExtension.swift */,
-				22AA430C21363F65007D5130 /* CollectionExtension.swift */,
-				22AA430D21363F66007D5130 /* UIButtonExtension.swift */,
-				22AA4303213632F4007D5130 /* IntExtension.swift */,
+				22AA430B21363F65007D5130 /* Array+Shuffle.swift */,
+				22AA430C21363F65007D5130 /* Collection+OneAndOnly.swift */,
+				22AA430D21363F66007D5130 /* UIButton+swapToColor.swift */,
+				22AA4303213632F4007D5130 /* Int+arc4random.swift */,
 			);
 			name = Extensions;
 			path = "New Group";
@@ -176,16 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				221C87D920B51B170016C27F /* ViewController.swift in Sources */,
-				2248FAC020BA22CC008D8C89 /* UICard.swift in Sources */,
-				22AA4304213632F4007D5130 /* IntExtension.swift in Sources */,
-				22AA430F21363F66007D5130 /* CollectionExtension.swift in Sources */,
+				220F2E0A213F90DF00728D0E /* ViewController.swift in Sources */,
+				220F2E09213F90DF00728D0E /* Theme.swift in Sources */,
+				22AA4304213632F4007D5130 /* Int+arc4random.swift in Sources */,
+				22AA430F21363F66007D5130 /* Collection+OneAndOnly.swift in Sources */,
+				220F2E07213F90DF00728D0E /* Card.swift in Sources */,
 				221C87D720B51B170016C27F /* AppDelegate.swift in Sources */,
-				22AA431021363F66007D5130 /* UIButtonExtension.swift in Sources */,
-				2248FAC220BC6B91008D8C89 /* Theme.swift in Sources */,
-				22D0AE4620B673F500BEA511 /* Concentration.swift in Sources */,
-				22D0AE4820B674AE00BEA511 /* Card.swift in Sources */,
-				22AA430E21363F66007D5130 /* ArrayExtension.swift in Sources */,
+				22AA431021363F66007D5130 /* UIButton+swapToColor.swift in Sources */,
+				22AA430E21363F66007D5130 /* Array+Shuffle.swift in Sources */,
+				220F2E06213F90DF00728D0E /* Concentration.swift in Sources */,
+				220F2E08213F90DF00728D0E /* UICard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
