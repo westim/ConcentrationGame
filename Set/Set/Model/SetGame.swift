@@ -120,18 +120,6 @@ struct SetGame {
         }
     }
     
-    mutating func selectCard(clickCard: Int) {
-        if selectedCards.count == 3 {
-            let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
-            let dealCards = Array(deck[0..<numberOfCardsToDeal])
-            replaceSelectedCards(using: dealCards)
-            selectedCards.removeAll()
-            deck.removeSubArray(subarray: dealCards)
-        } else {
-            selectedCards.append(dealtCards[clickCard])
-        }
-    }
-    
     /**
      Acts on the clicked `Card` according to the game rules.
      

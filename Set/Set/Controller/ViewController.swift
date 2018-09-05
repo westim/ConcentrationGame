@@ -43,8 +43,7 @@ class ViewController: UIViewController {
     
     @IBAction func touchCard(_ sender: UIButton) {
         guard let index = cardButtons.index(of: sender) else { return }
-//        game.selectCard(clickedCardIndex: index)
-        game.selectCard(clickCard: index)
+        game.selectCard(clickedCardIndex: index)
         updateViewFromModel()
     }
     
