@@ -117,29 +117,37 @@ struct SetGame {
         }
     }
     
+    mutating func selectCard(clickCard: Int) {
+        if selectedCards.count == 3 {
+            let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
+            let dealCards = Array(deck[0..<numberOfCardsToDeal])
+            replaceSelectedCards(using: dealCards)
+            selectedCards.removeAll()
+            deck.removeSubArray(subarray: dealCards)
+        } else {
+            selectedCards.append(dealtCards[clickCard])
+        }
+    }
+    
     /**
      Acts on the clicked `Card` according to the game rules.
      
      - Parameter clickedCard: The card that was selected by the player.
      */
     mutating func selectCard(clickedCardIndex: Int) {
-        if selectedCards.count != 3 {  // Deselect clicked card
+        if let index = selectedCards.index(of: dealtCards[clickedCardIndex]), selectedCards.count != 3 {  // Deselect clicked card
             score -= 1
-            selectedCards.remove(at: clickedCardIndex)
+            selectedCards.remove(at: index)
         } else {
-             if let isMatched = selectedSetMatches, !isMatched {                        // Deselect unmatched set & select clicked card
+             if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
                 score -= 5
                 selectedCards.removeAll()
                 selectedCards.append(dealtCards[clickedCardIndex])
-            } else if let isMatched = selectedSetMatches, isMatched {                   // Replace matched set
+            } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
                 score += 3
                 dealCards()
                 selectedCards.removeAll()
-                // Don't try to select a card that was just removed
-                if dealtCards.indices.contains(clickedCardIndex) {
-                    selectedCards.append(dealtCards[clickedCardIndex])
-                }
-            } else {                                                                    // Select clicked card
+            } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
         }

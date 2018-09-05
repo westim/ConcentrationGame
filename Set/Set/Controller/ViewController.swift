@@ -34,6 +34,8 @@ class ViewController: UIViewController {
         for button in cardButtons {
             button.layer.cornerRadius = 8.0
             button.titleLabel?.font.withSize(12.0)
+            button.setAttributedTitle(nil, for: .disabled)
+            button.setTitle(nil, for: .disabled)
         }
         createDeal3CardsDisabledText()
         updateViewFromModel()
@@ -42,8 +44,9 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
     
     @IBAction func touchCard(_ sender: UIButton) {
-        let index = cardButtons.index(of: sender)
-        game.selectCard(clickedCardIndex: index!)
+        guard let index = cardButtons.index(of: sender) else { return }
+//        game.selectCard(clickedCardIndex: index)
+        game.selectCard(clickCard: index)
         updateViewFromModel()
     }
     
@@ -86,17 +89,14 @@ class ViewController: UIViewController {
     
     @IBAction func startNewGame(_ sender: UIButton) {
         game.startGame()
-        newGameButton.isEnabled = false
         newGameButton.isHidden = true
-        deal3CardsButton.isEnabled = true
         deal3CardsButton.isHidden = false
+        deal3CardsButton.isEnabled = true
         updateViewFromModel()
     }
     
     private func endGame() {
-        newGameButton.isEnabled = true
         newGameButton.isHidden = false
-        deal3CardsButton.isEnabled = false
         deal3CardsButton.isHidden = true
     }
     
@@ -155,37 +155,39 @@ class ViewController: UIViewController {
             deal3CardsButton.isEnabled = !isBoardFull && !game.deck.isEmpty
         }
 
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            if game.dealtCards.indices.contains(index) {
-                let card = game.dealtCards[index]
-                if game.removedCards.contains(card) {
-                    button.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
-                    button.isEnabled = false
-                    button.setAttributedTitle(nil, for: .normal)
-                    return
-                }
-                button.swapToColor(withDuration: 0.2, toColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
-                button.isEnabled = true
-                button.setAttributedTitle(getAttributedText(forCard: card), for: .normal)
+        for index in game.dealtCards.indices {
+            enableButton(at: index)
+            cardButtons[index].setAttributedTitle(getAttributedText(forCard: game.dealtCards[index]), for: .normal)
+            
+            if game.selectedCards.contains(game.dealtCards[index]) {
+                addSelectedBorder(to: index)
                 
-                if game.selectedCards.contains(card) {
-                    button.layer.borderWidth = 3.0
-                    button.layer.borderColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
-                    
-                    // Add colors to indicate a successful/unsuccessful set
-                    if let isSetMatching = game.selectedSetMatches {
-                        button.layer.backgroundColor = isSetMatching ? UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor : UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).withAlphaComponent(0.3).cgColor
-                    }
-                } else {
-                    button.layer.borderWidth = 3.0
-                    button.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
+                // Add colors to indicate a successful/unsuccessful set
+                if let isSetMatching = game.selectedSetMatches {
+                    cardButtons[index].layer.backgroundColor = isSetMatching ? UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor : UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).withAlphaComponent(0.3).cgColor
                 }
             } else {
-                button.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
-                button.isEnabled = false
-                button.setAttributedTitle(nil, for: .normal)
+                // Clear border color for unselected cards
+                cardButtons[index].layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
             }
         }
+        hideUnusedButtons()
+    }
+    
+    private func enableButton(at index: Int) {
+        let button = cardButtons[index]
+        button.isEnabled = true
+        button.swapToColor(withDuration: 0.2, toColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1))
+    }
+    
+    private func hideUnusedButtons() {
+        let hiddenButtons: [UIButton] = cardButtons.filter { !game.dealtCards.indices.contains(cardButtons.index(of: $0)!) }
+        hiddenButtons.forEach() { $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!); $0.isEnabled = false; $0.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) }
+    }
+    
+    private func addSelectedBorder(to index: Int) {
+        let button = cardButtons[index]
+        button.layer.borderWidth = 3.0
+        button.layer.borderColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
     }
 }
