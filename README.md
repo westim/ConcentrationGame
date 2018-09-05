@@ -58,5 +58,6 @@ While these solutions generally seek to fufill the assignments as efficiently an
 
 - Several features only available in Swift 4.2 would've been useful: [`CaseIterable`](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md) and [`Sequence.shuffle()`](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md).
 - Building the `NSAttributedString` text was difficult to do cleanly since it had dependencies on the other attributes of `Card`.
-- Keeping sync between the Model and View was difficult because the only correlation between the `UIButton` and the corresponding `Card` was the index. Ideally, this architecture should be improved.
+- Keeping sync between the Model and View was difficult because the only correlation between the `UIButton` and the corresponding `Card` was the index. This was complicated by the [`remove(at:)`](https://developer.apple.com/documentation/swift/array/1641390-remove) function, which moves Elements up in the `Array`. Ideally, this architecture should be improved.
+- The rules of the game itself were not easy to comprehend. Difficult requirements make for difficult business logic.
 
