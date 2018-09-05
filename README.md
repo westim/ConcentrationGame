@@ -9,9 +9,9 @@ All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 This repository exists for several purposes:
 
 1. Track my personal progression
-1. Provide a decent reference solution to the assignments
+1. Provide another reference solution to the assignments
 
-While these solutions generally seek to fufill the assignments as efficiently and clearly as possible, some additional langage features were leveraged where appropriate for the sake of additional learning and cleanliness. Also, since these assignments are not officially graded, I cannot guarantee that these solutions fulfill all requirements & bonuses prescribed by the assignment documents.
+These assignments are not officially graded or reviewed. While all core requirements are met for each assignment, not all bonus tasks are complete. Furthermore, some additional features outside the specification are implemented for learning purposes.
 
 ## Concentration Game
 
@@ -23,13 +23,16 @@ While these solutions generally seek to fufill the assignments as efficiently an
 
 ### :heavy_plus_sign: Additional Features
 
-- 6 available themes: halloween, christmas, people, animals, countries, and tech
+- 6 available (hardcoded) themes: halloween, christmas, people, animals, countries, and tech
 - Time-based bonus scoring, which awards anywhere from 0 points (10+ seconds after last match) to 10 points (<1 after last match)
 - True-to-life 3.5:2.5 aspect ratio for cards
 - Support for landscape orientation (cards will rotate to fit on screen)
 - Several `extension` are implemented for ease-of-use
+- [`assert`](https://developer.apple.com/documentation/swift/1541112-assert) used for debugging input arguments
 
 ### :bulb: Challenges & Key Takeaways
+
+Overall, this assignment wasn't too challenging because the bulk of the architecture was built almost entirely during the lectures.
 
 - Understanding Optionals is a unique and challenging concept. Thankfully, this project didn't rely on them too much.
 - Getting accustomed to argument & parameter labels is odd, but not an unwelcome language feature.
@@ -56,6 +59,8 @@ While these solutions generally seek to fufill the assignments as efficiently an
 - Uses Apple's official font, [San Francisco](https://developer.apple.com/fonts/)
 
 ### :bulb: Challenges & Key Takeaways
+
+This assignment was a big (and admittedly frustrating) leap from the first one. Not only is this project built from scratch, but the game logic itself is more involved than Concentration. The assignment documentation reflects this large scope: 16 required tasks + 23 implementation hints. I'm far from happy with the cleanliness of my code for this project, but the end-user experience does look and feel good with the exception of removing cards at the end of the game.
 
 - Several features only available in Swift 4.2 would've been useful: [`CaseIterable`](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md) and [`Sequence.shuffle()`](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md).
 - Building the `NSAttributedString` text was difficult to do cleanly since it had dependencies on the other attributes of `Card`.
