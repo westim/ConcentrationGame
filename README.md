@@ -6,12 +6,14 @@ All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
 
 ## Foreword
 
-This repository exists for several purposes:
+This repository exists for a few reasons:
 
 1. Track my personal progression
-1. Provide another reference solution to the assignments
+1. Provide a public solution for these public assignments
 
 These assignments are not officially graded or reviewed. While all core requirements are met for each assignment, not all bonus tasks are complete. Furthermore, some additional features outside the specification are implemented for learning purposes.
+
+To anyone completing the assignments: I encourage you to attempt to solve the assignments for a few days before referencing other public solutions. If you do get stuck, I recommend comparing several different solutions to find one that helps you complete your solution to the problem. Free from the constraints and pressure of a grading system, learning and staying motivated should be the top priorities.
 
 ## Concentration Game
 
