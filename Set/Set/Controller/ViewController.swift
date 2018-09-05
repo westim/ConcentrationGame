@@ -34,8 +34,6 @@ class ViewController: UIViewController {
         for button in cardButtons {
             button.layer.cornerRadius = 8.0
             button.titleLabel?.font.withSize(12.0)
-            button.setAttributedTitle(nil, for: .disabled)
-            button.setTitle(nil, for: .disabled)
         }
         createDeal3CardsDisabledText()
         updateViewFromModel()
@@ -182,7 +180,7 @@ class ViewController: UIViewController {
     
     private func hideUnusedButtons() {
         let hiddenButtons: [UIButton] = cardButtons.filter { !game.dealtCards.indices.contains(cardButtons.index(of: $0)!) }
-        hiddenButtons.forEach() { $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!); $0.isEnabled = false; $0.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) }
+        hiddenButtons.forEach() { $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!); $0.isEnabled = false; $0.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0); $0.setAttributedTitle(nil, for: .normal) }
     }
     
     private func addSelectedBorder(to index: Int) {
