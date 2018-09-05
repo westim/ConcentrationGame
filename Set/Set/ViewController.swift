@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private lazy var game = Set()
+    private lazy var game = SetGame()
     
     private let shapes: [Card.Variant: String] =
         [.one: "▲",
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     
     @IBAction func touchCard(_ sender: UIButton) {
         let index = cardButtons.index(of: sender)
-        game.selectCard(clickedCard: game.dealtCards[index!])
+        game.selectCard(clickedCardIndex: index!)
         updateViewFromModel()
     }
     

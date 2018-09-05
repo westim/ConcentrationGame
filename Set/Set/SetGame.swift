@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Set {
+struct SetGame {
     
     var deck = [Card]()
     private(set) var selectedCards = [Card]()
@@ -124,25 +124,25 @@ struct Set {
      
      - Parameter clickedCard: The card that was selected by the player.
      */
-    mutating func selectCard(clickedCard: Card) {
-        if let index = selectedCards.index(of: clickedCard), selectedCards.count != 3 { // Deselect clicked card
+    mutating func selectCard(clickedCardIndex: Int) {
+        if selectedCards.count != 3 { // Deselect clicked card
             score -= 1
-            selectedCards.remove(at: index)
+            selectedCards.remove(at: clickedCardIndex)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {                        // Deselect unmatched set & select clicked card
                 score -= 5
                 selectedCards.removeAll()
-                selectedCards.append(clickedCard)
+                selectedCards.append(dealtCards[clickedCardIndex])
             } else if let isMatched = selectedSetMatches, isMatched {                   // Replace matched set
                 score += 3
                 dealThreeCards()
                 selectedCards.removeAll()
                 // Don't try to select a card that was just removed
-                if dealtCards.contains(clickedCard) {
-                    selectedCards.append(clickedCard)
+                if dealtCards.indices.contains(clickedCardIndex) {
+                    selectedCards.append(dealtCards[clickedCardIndex])
                 }
             } else {                                                                    // Select clicked card
-                selectedCards.append(clickedCard)
+                selectedCards.append(dealtCards[clickedCardIndex])
             }
         }
     }
