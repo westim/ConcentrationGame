@@ -13,7 +13,6 @@ struct SetGame {
     var deck = [Card]()
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
-    private(set) var removedCards = [Card]()
     private(set) var score = 0
     
     /// End game state is when there are no dealt cards & the deck is empty.
@@ -111,7 +110,6 @@ struct SetGame {
     mutating private func replaceSelectedCards(using newCards: [Card]) {
         for selectedCardIndex in selectedCards.indices {
             guard let dealtCardIndex = dealtCards.index(of: selectedCards[selectedCardIndex]) else { return }
-            removedCards.append(dealtCards[dealtCardIndex])
             if selectedCardIndex < newCards.count {
                 dealtCards[dealtCardIndex] = newCards[selectedCardIndex]
             } else {

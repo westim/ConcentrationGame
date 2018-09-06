@@ -15,12 +15,9 @@ extension UIButton {
      over the given time interval.
      
      - Parameter withDuration: The time duration of the animation in seconds.
-     
      - Parameter toColor: The color to transition to.
     */
     func swapToColor(withDuration: TimeInterval, toColor color: UIColor) {
-        UIView.animate(withDuration: withDuration, animations: { () -> Void in
-            self.backgroundColor = color;
-        })
+        UIView.animate(withDuration: withDuration, animations: { self.backgroundColor = color })
     }
 }

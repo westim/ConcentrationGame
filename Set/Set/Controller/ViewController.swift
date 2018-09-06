@@ -57,21 +57,12 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var scoreLabel: UILabel! {
-        didSet {
-            updateScoreLabel()
-        }
-    }
+    @IBOutlet private var scoreLabel: UILabel!
+    @IBOutlet private var cardsLeftLabel: UILabel!
     
-    @IBOutlet weak var cardsLeftLabel: UILabel! {
-        didSet {
-            updateCardsLeftLabel()
-        }
-    }
-    
-    @IBOutlet private weak var newGameButton: UIButton!
-    @IBOutlet private weak var deal3CardsButton: UIButton!
-    @IBOutlet private weak var hintButton: UIButton!
+    @IBOutlet private var newGameButton: UIButton!
+    @IBOutlet private var deal3CardsButton: UIButton!
+    @IBOutlet private var hintButton: UIButton!
     
     /**
      Changes the Deal 3 Cards button text color to indicate
@@ -120,12 +111,12 @@ class ViewController: UIViewController {
         var attributes = [NSAttributedStringKey : Any]()
         
         switch card.Attribute4 {
-            case .one: // outlined
+            case .one:  // outlined
                 attributes[NSAttributedStringKey.strokeWidth] = 10
                 fallthrough
-            case .two: // solid
+            case .two:  // solid
                 attributes[NSAttributedStringKey.foregroundColor] = color
-            case .three: // faded
+            case .three:  // faded
                 attributes[NSAttributedStringKey.foregroundColor] = color.withAlphaComponent(0.5)
         }
         
@@ -161,27 +152,47 @@ class ViewController: UIViewController {
                 
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
-                    cardButtons[index].layer.backgroundColor = isSetMatching ? UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor : UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).withAlphaComponent(0.3).cgColor
+                    if isSetMatching {
+                        cardButtons[index].layer.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor
+                    } else {
+                        cardButtons[index].layer.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).cgColor
+                    }
                 }
             } else {
                 // Clear border color for unselected cards
-                cardButtons[index].layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
+                cardButtons[index].layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
             }
         }
         hideUnusedButtons()
     }
     
+    /**
+     Enables the button at the given index.
+     
+     - Parameter index: The index of the button to enable.
+     */
     private func enableButton(at index: Int) {
-        let button = cardButtons[index]
-        button.isEnabled = true
-        button.swapToColor(withDuration: 0.2, toColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1))
+        cardButtons[index].isEnabled = true
+        cardButtons[index].swapToColor(withDuration: 0.2, toColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1))
     }
     
+    /**
+     Identifies all unused buttons on the View and
+     makes the buttons disabled and "invisible".
+     */
     private func hideUnusedButtons() {
         let hiddenButtons: [UIButton] = cardButtons.filter { !game.dealtCards.indices.contains(cardButtons.index(of: $0)!) }
-        hiddenButtons.forEach() { $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!); $0.isEnabled = false; $0.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0); $0.setAttributedTitle(nil, for: .normal) }
+        hiddenButtons.forEach() {
+            $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
+            $0.isEnabled = false; $0.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
+            $0.setAttributedTitle(nil, for: .normal) }
     }
     
+    /**
+     Creates a highlighted border around the specified button.
+     
+     - Parameter index: The index of the button to highlight.
+     */
     private func addSelectedBorder(to index: Int) {
         let button = cardButtons[index]
         button.layer.borderWidth = 3.0
