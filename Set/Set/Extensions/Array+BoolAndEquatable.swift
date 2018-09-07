@@ -29,10 +29,6 @@ extension Array where Element: Equatable {
      - Parameter: subarray the subarray to remove
      */
     mutating func removeSubArray(subarray: [Element]) {
-        for element in subarray {
-            if let index = self.index(of: element) {
-                self.remove(at: index)
-            }
-        }
+        self = self.filter { !subarray.contains($0) }
     }
 }

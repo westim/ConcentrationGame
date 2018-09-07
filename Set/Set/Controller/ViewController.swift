@@ -184,7 +184,8 @@ class ViewController: UIViewController {
         let hiddenButtons: [UIButton] = cardButtons.filter { !game.dealtCards.indices.contains(cardButtons.index(of: $0)!) }
         hiddenButtons.forEach() {
             $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
-            $0.isEnabled = false; $0.layer.borderColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0)
+            $0.isEnabled = false
+            $0.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
             $0.setAttributedTitle(nil, for: .normal) }
     }
     

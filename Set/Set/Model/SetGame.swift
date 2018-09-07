@@ -1,5 +1,5 @@
 //
-//  Set.swift
+//  SetGame.swift
 //  Set
 //
 //  Created by Timothy West on 8/28/18.
@@ -64,8 +64,7 @@ struct SetGame {
             for card2 in dealtCards {
                 for card3 in dealtCards {
                     if (card1 != card2 && card2 != card3 && card1 != card3) {
-                        let matches = try! Card.makesSet([card1, card2, card3])
-                        if matches {
+                        if let matches = try? Card.makesSet([card1, card2, card3]), matches {
                             return [card1, card2, card3]
                         }
                     }
