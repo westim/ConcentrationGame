@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2224EB7F214622E10039489F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224EB7E214622E10039489F /* Grid.swift */; };
 		2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */; };
 		2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */; };
 		2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2224EB7E214622E10039489F /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BoolAndEquatable.swift"; sourceTree = "<group>"; };
 		2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+swapToColor.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		22C7F1C5213388C300151A24 /* GraphicalSet */ = {
 			isa = PBXGroup;
 			children = (
+				2224EB7E214622E10039489F /* Grid.swift */,
 				229D60B7213F757E001DDE7C /* Card.swift */,
 				229D60B8213F757F001DDE7C /* SetGame.swift */,
 				229D60B5213F7570001DDE7C /* ViewController.swift */,
@@ -180,6 +183,7 @@
 				229D60B9213F757F001DDE7C /* Card.swift in Sources */,
 				229D60B6213F7571001DDE7C /* ViewController.swift in Sources */,
 				229D60BA213F757F001DDE7C /* SetGame.swift in Sources */,
+				2224EB7F214622E10039489F /* Grid.swift in Sources */,
 				2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
