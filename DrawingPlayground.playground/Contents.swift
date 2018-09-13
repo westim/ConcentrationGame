@@ -64,6 +64,7 @@ class SquiggleView: UIView {
         if isStriped {
             drawStripes(bounds: rect, with: lineColor)
         } else if isSolid {
+            lineColor.setFill()
             path.fill()
         }
         
