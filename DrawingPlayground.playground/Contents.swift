@@ -17,20 +17,20 @@ extension CGRect {
     }
 }
 
-class SquiggleView: UIView {
-    private var isStriped = false
-    private var isSolid = false
-    private var lineColor: UIColor
+class SetSymbol: UIView {
+    var isStriped = false
+    var isSolid = false
+    var lineColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     
     init(frame: CGRect, fill: FillType, color: UIColor) {
         lineColor = color
         switch(fill) {
-            case .stripe:
-                isStriped = true
-            case .solid:
-                isSolid = true
-            case .none:
-                break
+        case .stripe:
+            isStriped = true
+        case .solid:
+            isSolid = true
+        case .none:
+            break
         }
         super.init(frame: frame)
     }
@@ -39,7 +39,7 @@ class SquiggleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func drawStripes(bounds: CGRect, with color: UIColor) {
+    func drawStripes(bounds: CGRect, with color: UIColor) {
         for x in stride(from: 0.1, to: 1, by: 0.1) {
             let line = UIBezierPath()
             line.lineWidth = bounds.percentMaxX(0.05)
@@ -48,6 +48,31 @@ class SquiggleView: UIView {
             color.setStroke()
             line.stroke()
         }
+    }
+}
+
+class TriangleView: SetSymbol {
+    
+    override init(frame: CGRect, fill: FillType, color: UIColor) {
+        super.init(frame: frame, fill: fill, color: color)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+    }
+}
+
+class SquiggleView: SetSymbol {
+    
+    override init(frame: CGRect, fill: FillType, color: UIColor) {
+        super.init(frame: frame, fill: fill, color: color)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func draw(_ rect: CGRect) {
@@ -61,21 +86,21 @@ class SquiggleView: UIView {
         path.close()
         path.addClip()
         
-        if isStriped {
-            drawStripes(bounds: rect, with: lineColor)
-        } else if isSolid {
-            lineColor.setFill()
+        if super.isStriped {
+            super.drawStripes(bounds: rect, with: super.lineColor)
+        } else if super.isSolid {
+            super.lineColor.setFill()
             path.fill()
         }
         
-        lineColor.setStroke()
+        super.lineColor.setStroke()
         path.lineWidth = rect.percentMaxX(0.02)
         
         path.stroke()
     }
 }
 
-let view = SquiggleView(frame: CGRect(x: 0, y: 0, width: 300, height: 100), fill: .stripe, color: UIColor(red: 1, green: 0, blue: 0, alpha: 1))
+let view = SquiggleView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
 view.backgroundColor = UIColor.white
 
 PlaygroundPage.current.liveView = view
