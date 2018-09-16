@@ -40,7 +40,7 @@ class SetSymbol: UIView {
     }
     
     func drawStripes(bounds: CGRect, with color: UIColor) {
-        for x in stride(from: 0.1, to: 1, by: 0.1) {
+        for x in stride(from: 0, to: 1, by: 0.1) {
             let line = UIBezierPath()
             line.lineWidth = bounds.percentMaxX(0.05)
             line.move(to: CGPoint(x: bounds.percentMaxX(CGFloat(x)), y: bounds.minY))
@@ -62,6 +62,54 @@ class TriangleView: SetSymbol {
     }
     
     override func draw(_ rect: CGRect) {
+        
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.percentMaxY(0.1)))
+        path.addLine(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.9)))
+        path.addLine(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.9)))
+        path.close()
+        path.addClip()
+        
+        if super.isStriped {
+            super.drawStripes(bounds: rect, with: super.lineColor)
+        } else if super.isSolid {
+            super.lineColor.setFill()
+            path.fill()
+        }
+        
+        super.lineColor.setStroke()
+        path.lineWidth = rect.percentMaxX(0.02)
+        
+        path.stroke()
+    }
+}
+
+class SquareView: SetSymbol {
+    
+    override init(frame: CGRect, fill: FillType, color: UIColor) {
+        super.init(frame: frame, fill: fill, color: color)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+//        transform = CGAffineTransform(scaleX: 0.9, y: 0.9).translatedBy(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.1))
+        let path = UIBezierPath(rect: rect)
+        path.addClip()
+        
+        if super.isStriped {
+            super.drawStripes(bounds: rect, with: super.lineColor)
+        } else if super.isSolid {
+            super.lineColor.setFill()
+            path.fill()
+        }
+        
+        super.lineColor.setStroke()
+        path.lineWidth = rect.percentMaxX(0.02)
+        
+        path.stroke()
     }
 }
 
@@ -100,7 +148,7 @@ class SquiggleView: SetSymbol {
     }
 }
 
-let view = SquiggleView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
+let view = SquareView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
 view.backgroundColor = UIColor.white
 
 PlaygroundPage.current.liveView = view
