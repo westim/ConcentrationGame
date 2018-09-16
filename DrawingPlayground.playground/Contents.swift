@@ -64,9 +64,9 @@ class TriangleView: SetSymbol {
     override func draw(_ rect: CGRect) {
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.percentMaxY(0.1)))
-        path.addLine(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.9)))
-        path.addLine(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.9)))
+        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.close()
         path.addClip()
         
@@ -126,11 +126,11 @@ class SquiggleView: SetSymbol {
     override func draw(_ rect: CGRect) {
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.2), y: rect.percentMaxY(0.1)))
-        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.8), y: rect.percentMaxY(0.1)), controlPoint1: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0)), controlPoint2: CGPoint(x: rect.percentMaxX(0.7), y: rect.percentMaxY(0.7)))
-        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.8), y: rect.percentMaxY(0.9)), controlPoint: CGPoint(x: rect.maxX, y: rect.percentMaxY(0.5)))
-        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.2), y: rect.percentMaxY(0.9)), controlPoint1: CGPoint(x: rect.percentMaxX(0.7), y: rect.maxY), controlPoint2: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0.3)))
-        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.2), y: rect.percentMaxY(0.1)), controlPoint: CGPoint(x: rect.minX, y: rect.percentMaxY(0.5)))
+        path.move(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.05)))
+        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.05)), controlPoint1: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0)), controlPoint2: CGPoint(x: rect.percentMaxX(0.7), y: rect.percentMaxY(0.7)))
+        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.95)), controlPoint: CGPoint(x: rect.percentMaxX(1.1), y: rect.percentMaxY(0.5)))
+        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.95)), controlPoint1: CGPoint(x: rect.percentMaxX(0.7), y: rect.maxY), controlPoint2: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0.3)))
+        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.05)), controlPoint: CGPoint(x: rect.percentMaxX(-0.1), y: rect.percentMaxY(0.5)))
         path.close()
         path.addClip()
         
@@ -148,7 +148,7 @@ class SquiggleView: SetSymbol {
     }
 }
 
-let view = SquareView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
+let view = SquiggleView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
 view.backgroundColor = UIColor.white
 
 PlaygroundPage.current.liveView = view
