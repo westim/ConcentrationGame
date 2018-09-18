@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var game = SetGame()
+    private lazy var cardButtons = [UIButton]()
     
     private let shapes: [Card.Variant: String] =
         [.one: "▲",
@@ -24,10 +25,6 @@ class ViewController: UIViewController {
         [.one: 1,
          .two: 2,
          .three: 3]
-    
-    private var isBoardFull: Bool {
-        return game.dealtCards.count == cardButtons.count
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +36,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet var CardView: UIView!
     
     @IBAction func touchCard(_ sender: UIButton) {
         guard let index = cardButtons.index(of: sender) else { return }
@@ -140,7 +137,7 @@ class ViewController: UIViewController {
             endGame()
         } else {
             // Can't deal cards when the board is full or deck is empty
-            deal3CardsButton.isEnabled = !isBoardFull && !game.deck.isEmpty
+            deal3CardsButton.isEnabled = !game.deck.isEmpty
         }
 
         for index in game.dealtCards.indices {
