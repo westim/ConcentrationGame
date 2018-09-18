@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetSymbol: UIView {
+class SetSymbolView: UIView {
 
     var isStriped = false
     var isSolid = false
@@ -18,7 +18,7 @@ class SetSymbol: UIView {
         case stripe, solid, none
     }
     
-    init(frame: CGRect, fill: SetSymbol.FillType, color: UIColor) {
+    init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         lineColor = color
         switch(fill) {
         case .stripe:

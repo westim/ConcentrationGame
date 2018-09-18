@@ -12,26 +12,10 @@ class ViewController: UIViewController {
     
     private lazy var game = SetGame()
     private lazy var cardButtons = [UIButton]()
-    
-    private let shapes: [Card.Variant: String] =
-        [.one: "▲",
-         .two: "■",
-         .three: "●"]
-    private let colors: [Card.Variant: UIColor] =
-        [.one: UIColor(red: 1, green: 1, blue: 0, alpha: 1),
-         .two: UIColor(red: 1, green: 0, blue: 1, alpha: 1),
-         .three: UIColor(red: 0, green: 1, blue: 1, alpha: 1)]
-    private let counts: [Card.Variant: Int] =
-        [.one: 1,
-         .two: 2,
-         .three: 3]
+    private lazy var grid = Grid(layout: .aspectRatio(CGFloat(3.5 / 2.5)), frame: CardView.frame)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for button in cardButtons {
-            button.layer.cornerRadius = 8.0
-            button.titleLabel?.font.withSize(12.0)
-        }
         createDeal3CardsDisabledText()
         updateViewFromModel()
     }
@@ -90,37 +74,6 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    /**
-     Constructs the card's attributed text based on
-     the card's other attributes.
-     
-     - Parameter card: The card for which to create attributed text.
-     
-     - Returns: Attributed text for the card.
-     */
-    private func getAttributedText(forCard card: Card) -> NSAttributedString? {
-       
-        guard let shape = shapes[card.Attribute1] else { return nil }
-        guard let color = colors[card.Attribute2] else { return nil }
-        guard let count = counts[card.Attribute3] else { return nil }
-        
-        let cardText = String(repeating: shape, count: count)
-        var attributes = [NSAttributedStringKey : Any]()
-        
-        switch card.Attribute4 {
-            case .one:  // outlined
-                attributes[NSAttributedStringKey.strokeWidth] = 10
-                fallthrough
-            case .two:  // solid
-                attributes[NSAttributedStringKey.foregroundColor] = color
-            case .three:  // faded
-                attributes[NSAttributedStringKey.foregroundColor] = color.withAlphaComponent(0.5)
-        }
-        
-        let attributedText = NSAttributedString(string: cardText, attributes: attributes)
-        return attributedText
-    }
-    
     private func updateScoreLabel() {
         scoreLabel.text = "Score: \(game.score)"
     }
@@ -142,7 +95,6 @@ class ViewController: UIViewController {
 
         for index in game.dealtCards.indices {
             enableButton(at: index)
-            cardButtons[index].setAttributedTitle(getAttributedText(forCard: game.dealtCards[index]), for: .normal)
             
             if game.selectedCards.contains(game.dealtCards[index]) {
                 addSelectedBorder(to: index)

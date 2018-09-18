@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TriangleView: SetSymbol {
+class TriangleView: SetSymbolView {
     
-    override init(frame: CGRect, fill: SetSymbol.FillType, color: UIColor) {
+    override init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
     }
     
