@@ -51,7 +51,7 @@ class SetSymbol: UIView {
     }
 }
 
-class TriangleView: SetSymbol {
+class OvalView: SetSymbol {
     
     override init(frame: CGRect, fill: FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
@@ -63,11 +63,7 @@ class TriangleView: SetSymbol {
     
     override func draw(_ rect: CGRect) {
         
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.close()
+        let path = UIBezierPath(roundedRect: rect, cornerRadius: rect.height / 2)
         path.addClip()
         
         if super.isStriped {
@@ -84,7 +80,7 @@ class TriangleView: SetSymbol {
     }
 }
 
-class SquareView: SetSymbol {
+class DiamondView: SetSymbol {
     
     override init(frame: CGRect, fill: FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
@@ -95,8 +91,13 @@ class SquareView: SetSymbol {
     }
     
     override func draw(_ rect: CGRect) {
-//        transform = CGAffineTransform(scaleX: 0.9, y: 0.9).translatedBy(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.1))
-        let path = UIBezierPath(rect: rect)
+
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.percentMaxY(0.5)))
+        path.addLine(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.percentMaxY(0.5)))
+        path.close()
         path.addClip()
         
         if super.isStriped {
@@ -148,7 +149,7 @@ class SquiggleView: SetSymbol {
     }
 }
 
-let view = SquiggleView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
+let view = OvalView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
 view.backgroundColor = UIColor.white
 
 PlaygroundPage.current.liveView = view

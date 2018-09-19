@@ -14,8 +14,8 @@
 		2248067A214F488500DF45A7 /* SquiggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480679214F488500DF45A7 /* SquiggleView.swift */; };
 		2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067B214F48B600DF45A7 /* SetSymbolView.swift */; };
 		2248067E214F48E800DF45A7 /* CGRect+PercentMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067D214F48E800DF45A7 /* CGRect+PercentMax.swift */; };
-		22480680214F495500DF45A7 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067F214F495500DF45A7 /* SquareView.swift */; };
-		22480682214F498E00DF45A7 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480681214F498E00DF45A7 /* TriangleView.swift */; };
+		22480680214F495500DF45A7 /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067F214F495500DF45A7 /* DiamondView.swift */; };
+		22480682214F498E00DF45A7 /* OvalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480681214F498E00DF45A7 /* OvalView.swift */; };
 		2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */; };
 		2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */; };
 		2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */; };
@@ -33,8 +33,8 @@
 		22480679214F488500DF45A7 /* SquiggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquiggleView.swift; sourceTree = "<group>"; };
 		2248067B214F48B600DF45A7 /* SetSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymbolView.swift; sourceTree = "<group>"; };
 		2248067D214F48E800DF45A7 /* CGRect+PercentMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+PercentMax.swift"; sourceTree = "<group>"; };
-		2248067F214F495500DF45A7 /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
-		22480681214F498E00DF45A7 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		2248067F214F495500DF45A7 /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
+		22480681214F498E00DF45A7 /* OvalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalView.swift; sourceTree = "<group>"; };
 		2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BoolAndEquatable.swift"; sourceTree = "<group>"; };
 		2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+swapToColor.swift"; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 			children = (
 				22480679214F488500DF45A7 /* SquiggleView.swift */,
 				2248067B214F48B600DF45A7 /* SetSymbolView.swift */,
-				2248067F214F495500DF45A7 /* SquareView.swift */,
-				22480681214F498E00DF45A7 /* TriangleView.swift */,
+				2248067F214F495500DF45A7 /* DiamondView.swift */,
+				22480681214F498E00DF45A7 /* OvalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,13 +224,13 @@
 				2248067A214F488500DF45A7 /* SquiggleView.swift in Sources */,
 				22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */,
 				2224EB7F214622E10039489F /* Grid.swift in Sources */,
-				22480680214F495500DF45A7 /* SquareView.swift in Sources */,
+				22480680214F495500DF45A7 /* DiamondView.swift in Sources */,
 				2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */,
 				2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */,
 				22480671214F480D00DF45A7 /* SetGame.swift in Sources */,
 				22480677214F485500DF45A7 /* ViewController.swift in Sources */,
 				2248067E214F48E800DF45A7 /* CGRect+PercentMax.swift in Sources */,
-				22480682214F498E00DF45A7 /* TriangleView.swift in Sources */,
+				22480682214F498E00DF45A7 /* OvalView.swift in Sources */,
 				22480672214F480D00DF45A7 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

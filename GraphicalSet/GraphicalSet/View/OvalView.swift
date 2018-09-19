@@ -1,5 +1,5 @@
 //
-//  SquareView.swift
+//  TriangleView.swift
 //  GraphicalSet
 //
 //  Created by Timothy West on 9/16/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SquareView: SetSymbolView {
+class OvalView: SetSymbolView {
     
     override init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
@@ -19,7 +19,8 @@ class SquareView: SetSymbolView {
     }
     
     override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(rect: rect)
+        
+        let path = UIBezierPath(roundedRect: rect, cornerRadius: rect.height / 2)
         path.addClip()
         
         if super.isStriped {

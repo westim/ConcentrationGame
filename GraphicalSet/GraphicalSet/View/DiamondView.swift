@@ -1,5 +1,5 @@
 //
-//  TriangleView.swift
+//  SquareView.swift
 //  GraphicalSet
 //
 //  Created by Timothy West on 9/16/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TriangleView: SetSymbolView {
+class DiamondView: SetSymbolView {
     
     override init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
@@ -19,11 +19,11 @@ class TriangleView: SetSymbolView {
     }
     
     override func draw(_ rect: CGRect) {
-        
         let path = UIBezierPath()
         path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.percentMaxY(0.5)))
+        path.addLine(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.percentMaxY(0.5)))
         path.close()
         path.addClip()
         
