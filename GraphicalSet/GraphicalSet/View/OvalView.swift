@@ -31,7 +31,7 @@ class OvalView: SetSymbolView {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = rect.percentMaxX(0.02)
+        path.lineWidth = 0.02 * rect.maxX
         
         path.stroke()
     }

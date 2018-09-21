@@ -9,14 +9,9 @@
 import UIKit
 
 class SetSymbolView: UIView {
-
     var isStriped = false
     var isSolid = false
     var lineColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-    
-    enum FillType {
-        case stripe, solid, none
-    }
     
     init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         lineColor = color
@@ -38,11 +33,15 @@ class SetSymbolView: UIView {
     func drawStripes(bounds: CGRect, with color: UIColor) {
         for x in stride(from: 0, to: 1, by: 0.1) {
             let line = UIBezierPath()
-            line.lineWidth = bounds.percentMaxX(0.05)
-            line.move(to: CGPoint(x: bounds.percentMaxX(CGFloat(x)), y: bounds.minY))
-            line.addLine(to: CGPoint(x: bounds.percentMaxX(CGFloat(x)), y: bounds.maxY))
+            line.lineWidth = 0.05 * bounds.maxX
+            line.move(to: bounds.getPoint(x: CGFloat(x), y: 0))
+            line.addLine(to: bounds.getPoint(x: CGFloat(x), y: 1))
             color.setStroke()
             line.stroke()
         }
+    }
+    
+    enum FillType {
+        case stripe, solid, none
     }
 }

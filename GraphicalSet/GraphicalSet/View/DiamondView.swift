@@ -19,11 +19,12 @@ class DiamondView: SetSymbolView {
     }
     
     override func draw(_ rect: CGRect) {
+        
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.percentMaxY(0.5)))
-        path.addLine(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.percentMaxY(0.5)))
+        path.move(to: rect.getPoint(x: 0.5, y: 0))
+        path.addLine(to: rect.getPoint(x: 1, y: 0.5))
+        path.addLine(to: rect.getPoint(x: 0.5, y: 1))
+        path.addLine(to: rect.getPoint(x: 0, y: 0.5))
         path.close()
         path.addClip()
         
@@ -35,7 +36,7 @@ class DiamondView: SetSymbolView {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = rect.percentMaxX(0.02)
+        path.lineWidth = 0.02 * rect.maxX
         
         path.stroke()
     }

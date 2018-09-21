@@ -8,12 +8,16 @@ enum FillType {
 }
 
 extension CGRect {
-    func percentMaxX(_ percent: CGFloat) -> CGFloat {
-        return self.maxX * percent
-    }
-    
-    func percentMaxY(_ percent: CGFloat) -> CGFloat {
-        return self.maxY * percent
+    /**
+     Gets a point as a percentage of `maxX` and `maxY`.
+     
+     - Parameter x: Percent of `maxX`.
+     - Parameter y: Percent of `maxY`.
+     
+     - Return: Point in the rect.
+    */
+    func getPoint(x: CGFloat, y: CGFloat) -> CGPoint {
+        return CGPoint(x: self.maxX * x, y: self.maxY * y)
     }
 }
 
@@ -42,9 +46,9 @@ class SetSymbol: UIView {
     func drawStripes(bounds: CGRect, with color: UIColor) {
         for x in stride(from: 0, to: 1, by: 0.1) {
             let line = UIBezierPath()
-            line.lineWidth = bounds.percentMaxX(0.05)
-            line.move(to: CGPoint(x: bounds.percentMaxX(CGFloat(x)), y: bounds.minY))
-            line.addLine(to: CGPoint(x: bounds.percentMaxX(CGFloat(x)), y: bounds.maxY))
+            line.lineWidth = 0.05 * bounds.maxX
+            line.move(to: bounds.getPoint(x: CGFloat(x), y: 0))
+            line.addLine(to: bounds.getPoint(x: CGFloat(x), y: 1))
             color.setStroke()
             line.stroke()
         }
@@ -74,7 +78,7 @@ class OvalView: SetSymbol {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = rect.percentMaxX(0.02)
+        path.lineWidth = 0.02 * rect.maxX
         
         path.stroke()
     }
@@ -93,10 +97,10 @@ class DiamondView: SetSymbol {
     override func draw(_ rect: CGRect) {
 
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.percentMaxY(0.5)))
-        path.addLine(to: CGPoint(x: rect.percentMaxX(0.5), y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.percentMaxY(0.5)))
+        path.move(to: rect.getPoint(x: 0.5, y: 0))
+        path.addLine(to: rect.getPoint(x: 1, y: 0.5))
+        path.addLine(to: rect.getPoint(x: 0.5, y: 1))
+        path.addLine(to: rect.getPoint(x: 0, y: 0.5))
         path.close()
         path.addClip()
         
@@ -108,7 +112,7 @@ class DiamondView: SetSymbol {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = rect.percentMaxX(0.02)
+        path.lineWidth = 0.02 * rect.maxX
         
         path.stroke()
     }
@@ -127,14 +131,17 @@ class SquiggleView: SetSymbol {
     override func draw(_ rect: CGRect) {
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.05)))
-        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.05)), controlPoint1: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0)), controlPoint2: CGPoint(x: rect.percentMaxX(0.7), y: rect.percentMaxY(0.7)))
-        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.95)), controlPoint: CGPoint(x: rect.percentMaxX(1.1), y: rect.percentMaxY(0.5)))
-        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.95)), controlPoint1: CGPoint(x: rect.percentMaxX(0.7), y: rect.maxY), controlPoint2: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0.3)))
-        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.05)), controlPoint: CGPoint(x: rect.percentMaxX(-0.1), y: rect.percentMaxY(0.5)))
+        path.move(to: rect.getPoint(x: 0.2, y: 0.05))
+        path.addCurve(to: rect.getPoint(x: 0.7, y: 0.2), controlPoint1: rect.getPoint(x: 0.3, y: 0), controlPoint2: rect.getPoint(x: 0.5, y: 0.2))
+        path.addCurve(to: rect.getPoint(x: 0.95, y: 0.15), controlPoint1: rect.getPoint(x: 0.8, y: 0.2), controlPoint2: rect.getPoint(x: 0.9, y: -0.1))
+        path.addCurve(to: rect.getPoint(x: 0.8, y: 0.95), controlPoint1: rect.getPoint(x: 1.05, y: 0.6), controlPoint2: rect.getPoint(x: 0.9, y: 0.9))
+        
+        path.addCurve(to: rect.getPoint(x: 0.3, y: 0.8), controlPoint1: rect.getPoint(x: 0.7, y: 1), controlPoint2: rect.getPoint(x: 0.5, y: 0.8))
+        path.addCurve(to: rect.getPoint(x: 0.05, y: 0.85), controlPoint1: rect.getPoint(x: 0.2, y: 0.8), controlPoint2: rect.getPoint(x: 0.1, y: 1.1))
+        path.addCurve(to: rect.getPoint(x: 0.2, y: 0.05), controlPoint1: rect.getPoint(x: -0.05, y: 0.4), controlPoint2: rect.getPoint(x: 0.1, y: 0.1))
         path.close()
         path.addClip()
-        
+
         if super.isStriped {
             super.drawStripes(bounds: rect, with: super.lineColor)
         } else if super.isSolid {
@@ -143,13 +150,13 @@ class SquiggleView: SetSymbol {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = rect.percentMaxX(0.02)
-        
+        path.lineWidth = 0.02 * rect.maxX
+        path.lineJoinStyle = .round
         path.stroke()
     }
 }
 
-let view = OvalView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
+let view = SquiggleView(frame: CGRect(x: 0, y: 0, width: 600, height: 300), fill: .stripe, color: UIColor(red: 0, green: 1, blue: 0, alpha: 1))
 view.backgroundColor = UIColor.white
 
 PlaygroundPage.current.liveView = view

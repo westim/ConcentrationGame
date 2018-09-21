@@ -9,7 +9,7 @@
 import UIKit
 
 class SquiggleView: SetSymbolView {
-
+    
     override init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
     }
@@ -21,11 +21,14 @@ class SquiggleView: SetSymbolView {
     override func draw(_ rect: CGRect) {
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.05)))
-        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.05)), controlPoint1: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0)), controlPoint2: CGPoint(x: rect.percentMaxX(0.7), y: rect.percentMaxY(0.7)))
-        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.9), y: rect.percentMaxY(0.95)), controlPoint: CGPoint(x: rect.percentMaxX(1.1), y: rect.percentMaxY(0.5)))
-        path.addCurve(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.95)), controlPoint1: CGPoint(x: rect.percentMaxX(0.7), y: rect.maxY), controlPoint2: CGPoint(x: rect.percentMaxX(0.3), y: rect.percentMaxY(0.3)))
-        path.addQuadCurve(to: CGPoint(x: rect.percentMaxX(0.1), y: rect.percentMaxY(0.05)), controlPoint: CGPoint(x: rect.percentMaxX(-0.1), y: rect.percentMaxY(0.5)))
+        path.move(to: rect.getPoint(x: 0.2, y: 0.05))
+        path.addCurve(to: rect.getPoint(x: 0.7, y: 0.2), controlPoint1: rect.getPoint(x: 0.3, y: 0), controlPoint2: rect.getPoint(x: 0.5, y: 0.2))
+        path.addCurve(to: rect.getPoint(x: 0.95, y: 0.15), controlPoint1: rect.getPoint(x: 0.8, y: 0.2), controlPoint2: rect.getPoint(x: 0.9, y: -0.1))
+        path.addCurve(to: rect.getPoint(x: 0.8, y: 0.95), controlPoint1: rect.getPoint(x: 1.05, y: 0.6), controlPoint2: rect.getPoint(x: 0.9, y: 0.9))
+        
+        path.addCurve(to: rect.getPoint(x: 0.3, y: 0.8), controlPoint1: rect.getPoint(x: 0.7, y: 1), controlPoint2: rect.getPoint(x: 0.5, y: 0.8))
+        path.addCurve(to: rect.getPoint(x: 0.05, y: 0.85), controlPoint1: rect.getPoint(x: 0.2, y: 0.8), controlPoint2: rect.getPoint(x: 0.1, y: 1.1))
+        path.addCurve(to: rect.getPoint(x: 0.2, y: 0.05), controlPoint1: rect.getPoint(x: -0.05, y: 0.4), controlPoint2: rect.getPoint(x: 0.1, y: 0.1))
         path.close()
         path.addClip()
         
@@ -37,8 +40,8 @@ class SquiggleView: SetSymbolView {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = rect.percentMaxX(0.02)
-        
+        path.lineWidth = 0.02 * rect.maxX
+        path.lineJoinStyle = .round
         path.stroke()
     }
 }
