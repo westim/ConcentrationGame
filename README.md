@@ -2,7 +2,7 @@
 
 [Assignment PDFs](https://drive.google.com/drive/folders/1-TWZDChwwzkiGzt78QlPZDzN-j82JfR6)
 
-All projects built using Swift 4.1 and Xcode 9, targeting iOS 11.4.
+All projects built using Swift 4.1, targeting iOS 11.4.
 
 ## Foreword
 
@@ -68,4 +68,15 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 - Building the `NSAttributedString` text was difficult to do cleanly since it had dependencies on the other attributes of `Card`.
 - Keeping sync between the Model and View was difficult because the only correlation between the `UIButton` and the corresponding `Card` was the index. This was complicated by the [`remove(at:)`](https://developer.apple.com/documentation/swift/array/1641390-remove) function, which moves Elements up in the `Array`. Ideally, this architecture should be improved.
 - The rules of the game itself were not easy to comprehend. Difficult requirements make for difficult business logic.
+
+## Graphical Set Game
+
+### Demo
+
+### :heavy_plus_sign: Additional Features
+
+### :bulb: Challenges & Key Takeaways
+
+- Getting an amorphous shape like the "squiggle" to look good, scale with the bounds, and avoid spaghetti code was fairly challenging. Thankfully, extension methods helped keep this a little cleaner.
+- Documentation for UIBezierPath is very respectable. This is what allowed me to find the [`lineJoinStyle`](https://developer.apple.com/documentation/uikit/uibezierpath/1624378-linejoinstyle) property to make the curves smooth.
 
