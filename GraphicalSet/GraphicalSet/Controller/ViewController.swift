@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     private lazy var game = SetGame()
     private lazy var cardButtons = [UIButton]()
-    private lazy var grid = Grid(layout: .aspectRatio(CGFloat(3.5 / 2.5)), frame: CardView.frame)
+    
+    // Standard poker cards have aspect ratio of 2.5" : 3.5"
+    private lazy var grid = Grid(layout: .aspectRatio(CGFloat(2.5 / 3.5)), frame: CardView.frame)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,17 @@ class ViewController: UIViewController {
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
+    
+    /**
+     Updates the card views currently played.
+     */
+    private func updateCards() {
+        grid.cellCount = game.dealtCards.count
+        for index in 0..<game.dealtCards.count {
+            guard let frame = grid[index] else { continue }
+            CardView.addSubview(UIButton(frame: frame))
+        }
+    }
     
     /**
      Changes the Deal 3 Cards button text color to indicate
@@ -83,6 +96,7 @@ class ViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
+        updateCards()
         updateScoreLabel()
         updateCardsLeftLabel()
         
