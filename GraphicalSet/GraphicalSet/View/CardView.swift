@@ -10,27 +10,35 @@ import UIKit
 
 @IBDesignable class CardView: UIButton {
     
-    private(set) var count: Int
-    private(set) var color: UIColor
-    private(set) var fill: SetSymbolView.FillType
-    private(set) var symbol: SetSymbolView
+    var count: Int
+    var color: UIColor
+    var fill: SetSymbolView.FillType
+    var symbol: SetSymbolView
     
-    func setup<T: SetSymbolView>(symbol: T, count: Int, fill: T.FillType, color: UIColor) {
-        self.layer.cornerRadius = self.bounds.width / 4
-        self.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        
-        self.symbol = symbol
-        self.count = count
-        self.fill = fill
-        self.color = color
+    private func addSymbols() {
+        for _ in 0..<count {
+            self.addSubview(SetSymbolView(frame: CGRect.zero, fill: fill, color: color))
+        }
     }
     
-    init(frame: CGRect, symbol: SetSymbolView, count: Int, fill: SetSymbolView.FillType, color: UIColor) {
-        super.init(frame: frame)
-        setup(symbol: symbol, count: count, fill: fill, color: color)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // TODO: Layout the symbol views
+    }    
+}
+
+// MARK: Constants
+
+extension CardView {
+    private struct SizeRatio {
+        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
+        static let symbolSizeToBoundsSize: CGFloat = 0.2
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    private var cornerRadius: CGFloat {
+        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
+    }
+    private var symbolSize: CGFloat {
+        return bounds.size.height * SizeRatio.symbolSizeToBoundsSize
     }
 }
