@@ -19,6 +19,7 @@
 		2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */; };
 		2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */; };
 		2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */; };
+		22ABFCDF2155F9420014E96F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABFCDE2155F9420014E96F /* CardView.swift */; };
 		22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C6213388C300151A24 /* AppDelegate.swift */; };
 		22C7F1CC213388C300151A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CA213388C300151A24 /* Main.storyboard */; };
 		22C7F1CE213388C600151A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CD213388C600151A24 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BoolAndEquatable.swift"; sourceTree = "<group>"; };
 		2288BCD2213B286700153FB7 /* UIButton+swapToColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+swapToColor.swift"; sourceTree = "<group>"; };
+		22ABFCDE2155F9420014E96F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		22C7F1C3213388C300151A24 /* GraphicalSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphicalSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C7F1C6213388C300151A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C7F1CB213388C300151A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				2248067B214F48B600DF45A7 /* SetSymbolView.swift */,
 				2248067F214F495500DF45A7 /* DiamondView.swift */,
 				22480681214F498E00DF45A7 /* OvalView.swift */,
+				22ABFCDE2155F9420014E96F /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				22480680214F495500DF45A7 /* DiamondView.swift in Sources */,
 				2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */,
 				2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */,
+				22ABFCDF2155F9420014E96F /* CardView.swift in Sources */,
 				22480671214F480D00DF45A7 /* SetGame.swift in Sources */,
 				22480677214F485500DF45A7 /* ViewController.swift in Sources */,
 				2248067E214F48E800DF45A7 /* CGRect+getPoint.swift in Sources */,

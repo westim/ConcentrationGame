@@ -99,7 +99,7 @@ struct Card: Equatable {
         case two
         case three
         
-        static var all: [Variant]{ return [.one, .two, three] }
+        static var all: [Variant]{ return [one, two, three] }
     }
 }
 

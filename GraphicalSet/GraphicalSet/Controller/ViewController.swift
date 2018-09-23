@@ -15,6 +15,27 @@ class ViewController: UIViewController {
     
     // Standard poker cards have aspect ratio of 2.5" : 3.5"
     private lazy var grid = Grid(layout: .aspectRatio(CGFloat(2.5 / 3.5)), frame: CardView.frame)
+    
+    private var symbols = [
+        Card.Variant.one: SquiggleView.self,
+        Card.Variant.two: DiamondView.self,
+        Card.Variant.three: OvalView.self
+    ]
+    private var counts = [
+        Card.Variant.one: 1,
+        Card.Variant.two: 2,
+        Card.Variant.three: 3
+    ]
+    private var fills = [
+        Card.Variant.one: SetSymbolView.FillType.none,
+        Card.Variant.one: SetSymbolView.FillType.solid,
+        Card.Variant.one: SetSymbolView.FillType.stripe
+    ]
+    private var colors = [
+        Card.Variant.one: UIColor(red: 1, green: 0, blue: 1, alpha: 1),
+        Card.Variant.one: UIColor(red: 0, green: 1, blue: 1, alpha: 1),
+        Card.Variant.one: UIColor(red: 1, green: 1, blue: 0, alpha: 1)
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +75,16 @@ class ViewController: UIViewController {
         grid.cellCount = game.dealtCards.count
         for index in 0..<game.dealtCards.count {
             guard let frame = grid[index] else { continue }
-            CardView.addSubview(UIButton(frame: frame))
+            CardView.addSubview(getCardView(frame: frame, card: game.dealtCards[index]))
         }
+    }
+    
+    private func getCardView(frame: CGRect, card: Card) -> CardView {
+        let symbol = symbols[card.Attribute1]
+        let count = counts[card.Attribute2]
+        let fill = fills[card.Attribute3]
+        let color = colors[card.Attribute4]
+        return new CardView(frame: frame, symbol: symbol, count: count, fill: fill, color: color)
     }
     
     /**
