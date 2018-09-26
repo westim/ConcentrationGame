@@ -30,6 +30,10 @@ class SetSymbolView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    init() {
+        super.init(frame: CGRect.zero)
+    }
+    
     func drawStripes(bounds: CGRect, with color: UIColor) {
         for x in stride(from: 0, to: 1, by: 0.1) {
             let line = UIBezierPath()

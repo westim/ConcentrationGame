@@ -13,9 +13,6 @@ class ViewController: UIViewController {
     private lazy var game = SetGame()
     private lazy var cardButtons = [UIButton]()
     
-    // Standard poker cards have aspect ratio of 2.5" : 3.5"
-    private lazy var grid = Grid(layout: .aspectRatio(CGFloat(2.5 / 3.5)), frame: CardView.frame)
-    
     private var symbols = [
         Card.Variant.one: SquiggleView.self,
         Card.Variant.two: DiamondView.self,
@@ -43,7 +40,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBOutlet var CardView: UIView!
+
     
     @IBAction func touchCard(_ sender: UIButton) {
         guard let index = cardButtons.index(of: sender) else { return }
@@ -63,7 +60,8 @@ class ViewController: UIViewController {
     
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardsLeftLabel: UILabel!
-    
+
+    @IBOutlet var CardAreaView: UIView!
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
@@ -72,19 +70,7 @@ class ViewController: UIViewController {
      Updates the card views currently played.
      */
     private func updateCards() {
-        grid.cellCount = game.dealtCards.count
-        for index in 0..<game.dealtCards.count {
-            guard let frame = grid[index] else { continue }
-            CardView.addSubview(getCardView(frame: frame, card: game.dealtCards[index]))
-        }
-    }
-    
-    private func getCardView(frame: CGRect, card: Card) -> CardView {
-        let symbol = symbols[card.Attribute1]
-        let count = counts[card.Attribute2]
-        let fill = fills[card.Attribute3]
-        let color = colors[card.Attribute4]
-        return new CardView(frame: frame, symbol: symbol, count: count, fill: fill, color: color)
+
     }
     
     /**
