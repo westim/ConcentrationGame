@@ -75,8 +75,9 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 
 ### :heavy_plus_sign: Additional Features
 
+- Used [Metatype](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_metatype-type) to draw the correct symbol on a given card
+
 ### :bulb: Challenges & Key Takeaways
 
-- Getting an amorphous shape like the "squiggle" to look good, scale with the bounds, and avoid spaghetti code was fairly challenging. Thankfully, extension methods helped keep this a little cleaner.
-- Documentation for UIBezierPath is very respectable. This is what allowed me to find the [`lineJoinStyle`](https://developer.apple.com/documentation/uikit/uibezierpath/1624378-linejoinstyle) property to make the curves smooth.
+- Drawing with `UIBezierPath` can get messy quickly. Conversely, the simplicity of the tool is very approachable.
 

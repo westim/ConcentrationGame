@@ -10,14 +10,20 @@ import UIKit
 
 @IBDesignable class CardView: UIButton {
     
-    // TODO: Figure out if I actually need default values for these properties
     var count = 0
     var color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     var fill = SetSymbolView.FillType.none
-    var symbol = SetSymbolView()
+    var symbol = SetSymbolView.self
     
     private func setup() {
-        // TODO: Provide values to the properties
+        let stackView = UIStackView()
+        for _ in 1...count {
+            stackView.addSubview(symbol.init(frame: stackView.bounds, fill: fill, color: color))
+        }
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.sizeThatFits(self.symbolAreaSize)
+        stackView.center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
     }
     
     override init(frame: CGRect) {
@@ -29,17 +35,6 @@ import UIKit
         super.init(coder: aDecoder)
         setup()
     }
-    
-    private func addSymbols() {
-        for _ in 0..<count {
-            self.addSubview(SetSymbolView(frame: CGRect.zero, fill: fill, color: color))
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        // TODO: Layout the symbol views
-    }    
 }
 
 // MARK: Constants
@@ -47,13 +42,16 @@ import UIKit
 extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
-        static let symbolSizeToBoundsSize: CGFloat = 0.2
+        static let symbolSizeToBoundsSize: CGFloat = 0.8
     }
     
     private var cornerRadius: CGFloat {
         return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
     }
-    private var symbolSize: CGFloat {
-        return bounds.size.height * SizeRatio.symbolSizeToBoundsSize
+    private var symbolAreaSize: CGSize {
+        let side = bounds.size.width * SizeRatio.symbolSizeToBoundsSize
+        return CGSize(width: side, height: side)
     }
+    
+    
 }

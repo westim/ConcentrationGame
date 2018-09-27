@@ -10,11 +10,11 @@ import UIKit
 
 class SquiggleView: SetSymbolView {
     
-    override init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
+    required init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         super.init(frame: frame, fill: fill, color: color)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

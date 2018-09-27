@@ -13,7 +13,7 @@ class SetSymbolView: UIView {
     var isSolid = false
     var lineColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     
-    init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
+    required init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         lineColor = color
         switch(fill) {
         case .stripe:
@@ -28,10 +28,6 @@ class SetSymbolView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    init() {
-        super.init(frame: CGRect.zero)
     }
     
     func drawStripes(bounds: CGRect, with color: UIColor) {
