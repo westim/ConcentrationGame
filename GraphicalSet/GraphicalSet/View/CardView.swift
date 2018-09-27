@@ -23,7 +23,7 @@ import UIKit
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.sizeThatFits(self.symbolAreaSize)
-        stackView.center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        stackView.center = self.bounds.center
     }
     
     override init(frame: CGRect) {
@@ -52,6 +52,4 @@ extension CardView {
         let side = bounds.size.width * SizeRatio.symbolSizeToBoundsSize
         return CGSize(width: side, height: side)
     }
-    
-    
 }

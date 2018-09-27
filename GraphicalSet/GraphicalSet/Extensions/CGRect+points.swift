@@ -1,5 +1,5 @@
 //
-//  CGRect+getPoint.swift
+//  CGRect+points.swift
 //  GraphicalSet
 //
 //  Created by Timothy West on 9/16/18.
@@ -20,5 +20,15 @@ extension CGRect {
      */
     func getPoint(x: CGFloat, y: CGFloat) -> CGPoint {
         return CGPoint(x: self.maxX * x, y: self.maxY * y)
+    }
+    
+    /**
+     Center of the current `CGRect`.
+     
+     This is useful for getting the center of `UIView.bounds`
+     rather than the center of `UIView.frame`.
+     */
+    var center: CGPoint {
+        return CGPoint(x: self.midX, y: self.midY)
     }
 }
