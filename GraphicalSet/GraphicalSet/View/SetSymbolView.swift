@@ -33,7 +33,7 @@ class SetSymbolView: UIView {
     func drawStripes(bounds: CGRect, with color: UIColor) {
         for x in stride(from: 0, to: 1, by: 0.1) {
             let line = UIBezierPath()
-            line.lineWidth = 0.05 * bounds.maxX
+            line.lineWidth = Ratio.lineWidthToSize * bounds.maxX
             line.move(to: bounds.getPoint(x: CGFloat(x), y: 0))
             line.addLine(to: bounds.getPoint(x: CGFloat(x), y: 1))
             color.setStroke()
@@ -43,5 +43,11 @@ class SetSymbolView: UIView {
     
     enum FillType {
         case stripe, solid, none
+    }
+}
+
+extension SetSymbolView {
+    struct Ratio {
+        static let lineWidthToSize: CGFloat = 0.05
     }
 }

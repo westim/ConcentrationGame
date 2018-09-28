@@ -40,7 +40,7 @@ class SquiggleView: SetSymbolView {
         }
         
         super.lineColor.setStroke()
-        path.lineWidth = 0.02 * rect.maxX
+        path.lineWidth = SetSymbolView.Ratio.lineWidthToSize * rect.maxX
         path.lineJoinStyle = .round
         path.stroke()
     }
