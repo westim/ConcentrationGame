@@ -40,7 +40,7 @@ class CardAreaView: UIView {
 extension CardAreaView {
     private struct SizeRatio {
         
-        // Standard poker cards have aspect ratio of 2.5" : 3.5"
+        /// Standard poker cards have aspect ratio of 2.5" : 3.5"
         static let cardAspectRatio: CGFloat = 2.5 / 3.5
     }
 }

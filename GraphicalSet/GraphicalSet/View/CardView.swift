@@ -15,6 +15,8 @@ import UIKit
     var fill = SetSymbolView.FillType.none
     var symbol = SetSymbolView.self
     
+    override var isSelected: Bool { didSet { changeBorder() } }
+    
     private func setup() {
         let stackView = UIStackView()
         for _ in 1...count {
@@ -24,6 +26,7 @@ import UIKit
         stackView.distribution = .fill
         stackView.sizeThatFits(self.symbolAreaSize)
         stackView.center = self.bounds.center
+        self.layer.borderColor = Colors.borderColor
     }
     
     override init(frame: CGRect) {
@@ -35,6 +38,10 @@ import UIKit
         super.init(coder: aDecoder)
         setup()
     }
+    
+    private func changeBorder() {
+        self.layer.borderColor = isSelected ? Colors.borderColor : Colors.transparentColor
+    }
 }
 
 // MARK: Constants
@@ -45,9 +52,15 @@ extension CardView {
         static let symbolSizeToBoundsSize: CGFloat = 0.8
     }
     
+    private struct Colors {
+        static let borderColor: CGColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
+        static let transparentColor: CGColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0).cgColor
+    }
+    
     private var cornerRadius: CGFloat {
         return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
     }
+    
     private var symbolAreaSize: CGSize {
         let side = bounds.size.width * SizeRatio.symbolSizeToBoundsSize
         return CGSize(width: side, height: side)
