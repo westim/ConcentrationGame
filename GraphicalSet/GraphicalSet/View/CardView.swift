@@ -46,7 +46,7 @@ import UIKit
 
 // MARK: Constants
 
-extension CardView {
+private extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
         static let symbolSizeToBoundsSize: CGFloat = 0.8

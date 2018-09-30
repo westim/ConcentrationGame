@@ -11,7 +11,12 @@ import UIKit
 class CardAreaView: UIView {
 
     /// Cards in the play area.
-    var cards = [CardView]() { didSet { resizeGrid(); layoutSubviews() } }
+    private(set) var cards = [CardView]() { didSet { resizeGrid(); layoutSubviews() } }
+    
+    func add(_ card: CardView) {
+        addSubview(card)
+        cards.append(card)
+    }
     
     private lazy var grid = Grid(layout: .aspectRatio(SizeRatio.cardAspectRatio), frame: self.bounds)
     
@@ -37,7 +42,7 @@ class CardAreaView: UIView {
 
 // MARK: Constants
 
-extension CardAreaView {
+private extension CardAreaView {
     private struct SizeRatio {
         
         /// Standard poker cards have aspect ratio of 2.5" : 3.5"

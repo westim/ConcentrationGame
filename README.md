@@ -80,4 +80,5 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 ### :bulb: Challenges & Key Takeaways
 
 - Drawing with `UIBezierPath` can get messy quickly. Conversely, the simplicity of the tool is very approachable.
+- While no mention was made in the assignment instructions or lectures, I needed to use the unique [`addTarget(_:action:for:)`](https://developer.apple.com/documentation/uikit/uicontrol/1618259-addtarget) method to use dynamically-created `UIButton` controls.
 
