@@ -28,9 +28,9 @@ class ViewController: UIViewController {
         Card.Variant.three: SetSymbolView.FillType.stripe
     ]
     private var colors = [
-        Card.Variant.one: UIColor(red: 1, green: 0, blue: 1, alpha: 1),
-        Card.Variant.two: UIColor(red: 0, green: 1, blue: 1, alpha: 1),
-        Card.Variant.three: UIColor(red: 1, green: 1, blue: 0, alpha: 1)
+        Card.Variant.one: UIColor.cyan,
+        Card.Variant.two: UIColor.magenta,
+        Card.Variant.three: UIColor.yellow
     ]
 
     override func viewDidLoad() {
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             let index = game.dealtCards.index(of: card)
             let button = CardAreaView.cards[index!]
             button.layer.borderWidth = 3.0
-            button.layer.borderColor = UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor
+            button.layer.borderColor = UIColor.green.cgColor
         }
     }
     
@@ -73,11 +73,18 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+     Create a `CardView` from a `Card`.
+     
+     - Parameter card: The `Card` to convert.
+     
+     - Returns: `CardView`.
+     */
     private func createCardView(from card: Card) -> CardView {
         let cardView = CardView()
         cardView.symbol = symbols[card.Attribute1] ?? SquiggleView.self
         cardView.count = counts[card.Attribute2] ?? 0
-        cardView.color = colors[card.Attribute3] ?? UIColor(red: 1, green: 1, blue: 1, alpha: 0)
+        cardView.color = colors[card.Attribute3] ?? UIColor.white
         cardView.fill = fills[card.Attribute4] ?? SetSymbolView.FillType.none
         cardView.addTarget(self, action: #selector(touchCard), for: .touchUpInside)
         
@@ -90,7 +97,7 @@ class ViewController: UIViewController {
      */
     private func createDeal3CardsDisabledText() {
         let disabledAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            NSAttributedStringKey.foregroundColor: UIColor.red
         ]
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
@@ -99,7 +106,6 @@ class ViewController: UIViewController {
         game.startGame()
         newGameButton.isHidden = true
         deal3CardsButton.isHidden = false
-        deal3CardsButton.isEnabled = true
         updateViewFromModel()
     }
     
@@ -141,14 +147,14 @@ class ViewController: UIViewController {
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
                     if isSetMatching {
-                        CardAreaView.cards[index].layer.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor
+                        CardAreaView.cards[index].layer.backgroundColor = UIColor.lightGreen.cgColor
                     } else {
-                        CardAreaView.cards[index].layer.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).cgColor
+                        CardAreaView.cards[index].layer.backgroundColor = UIColor.lightRed.cgColor
                     }
                 }
             } else {
                 // Clear border color for unselected cards
-                CardAreaView.cards[index].layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+                CardAreaView.cards[index].layer.borderColor = UIColor.transparent.cgColor
             }
         }
     }

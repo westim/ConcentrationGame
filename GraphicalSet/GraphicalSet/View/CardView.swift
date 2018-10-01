@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable class CardView: UIButton {
     
     var count = 0
-    var color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    var color = UIColor.black
     var fill = SetSymbolView.FillType.none
     var symbol = SetSymbolView.self
     
@@ -26,7 +26,7 @@ import UIKit
         stackView.distribution = .fill
         stackView.sizeThatFits(self.symbolAreaSize)
         stackView.center = self.bounds.center
-        self.layer.borderColor = Colors.borderColor
+        self.layer.borderColor = UIColor.yellow.cgColor
     }
     
     override init(frame: CGRect) {
@@ -40,7 +40,7 @@ import UIKit
     }
     
     private func changeBorder() {
-        self.layer.borderColor = isSelected ? Colors.borderColor : Colors.transparentColor
+        self.layer.borderColor = isSelected ? UIColor.yellow.cgColor : UIColor.transparent.cgColor
     }
 }
 
@@ -50,11 +50,6 @@ private extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
         static let symbolSizeToBoundsSize: CGFloat = 0.8
-    }
-    
-    private struct Colors {
-        static let borderColor: CGColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
-        static let transparentColor: CGColor = UIColor(red: 1, green: 1, blue: 0, alpha: 0).cgColor
     }
     
     private var cornerRadius: CGFloat {

@@ -11,7 +11,7 @@ import UIKit
 class SetSymbolView: UIView {
     var isStriped = false
     var isSolid = false
-    var lineColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    var lineColor = UIColor.black
     
     required init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         lineColor = color
