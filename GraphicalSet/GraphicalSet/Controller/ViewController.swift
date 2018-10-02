@@ -49,9 +49,7 @@ class ViewController: UIViewController {
         guard let set = game.findMatchingSet() else { return }
         for card in set {
             let index = game.dealtCards.index(of: card)
-            let button = CardAreaView.cards[index!]
-            button.layer.borderWidth = 3.0
-            button.layer.borderColor = UIColor.green.cgColor
+            CardAreaView.cards[index!].isHinted = true
         }
     }
     
@@ -142,7 +140,7 @@ class ViewController: UIViewController {
         for index in game.dealtCards.indices {
             
             if game.selectedCards.contains(game.dealtCards[index]) {
-                addSelectedBorder(to: index)
+                CardAreaView.cards[index].isSelected = true
                 
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
@@ -154,19 +152,8 @@ class ViewController: UIViewController {
                 }
             } else {
                 // Clear border color for unselected cards
-                CardAreaView.cards[index].layer.borderColor = UIColor.transparent.cgColor
+                CardAreaView.cards[index].isSelected = false
             }
         }
-    }
-    
-    /**
-     Creates a highlighted border around the specified button.
-     
-     - Parameter index: The index of the button to highlight.
-     */
-    private func addSelectedBorder(to index: Int) {
-        let button = CardAreaView.cards[index]
-        button.layer.borderWidth = 3.0
-        button.layer.borderColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
     }
 }
