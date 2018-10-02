@@ -35,11 +35,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        game.startGame()
         createDeal3CardsDisabledText()
         updateViewFromModel()
     }
     
     @IBAction func touchCard(_ sender: CardView) {
+        clearHint()
+        
         guard let index = CardAreaView.cards.index(of: sender) else { return }
         game.selectCard(clickedCardIndex: index)
         updateViewFromModel()
@@ -55,23 +58,27 @@ class ViewController: UIViewController {
     
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardsLeftLabel: UILabel!
-
     @IBOutlet var CardAreaView: CardAreaView!
+    
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
     
-    /**
-     Updates the card views currently played.
-     */
-    private func updateCards() {
-        for oldCard in CardAreaView.cards { oldCard.removeFromSuperview() }
-        CardAreaView.resizeGrid()
-        
-        for gameCard in game.dealtCards {
-            let cardView = createCardView(from: gameCard)
-            CardAreaView.add(cardView)
-        }
+    @IBAction func startNewGame(_ sender: UIButton) {
+        game.startGame()
+        newGameButton.isHidden = true
+        deal3CardsButton.isHidden = false
+        updateViewFromModel()
+    }
+    
+    @IBAction func deal3Cards(_ sender: UIButton) {
+        game.dealCards()
+        updateViewFromModel()
+    }
+
+    private func endGame() {
+        newGameButton.isHidden = false
+        deal3CardsButton.isHidden = true
     }
     
     /**
@@ -92,6 +99,18 @@ class ViewController: UIViewController {
         return cardView
     }
     
+    private func noMatchingSet() {
+        CardAreaView.cards.forEach { $0.isMatching = .none }
+    }
+    
+    private func removeAllCardsFromPlay() {
+        CardAreaView.cards.forEach { $0.removeFromSuperview() }
+    }
+    
+    private func clearHint() {
+        CardAreaView.cards.forEach { $0.isHinted = false }
+    }
+    
     /**
      Changes the Deal 3 Cards button text color to indicate
      that no more cards can be dealt.
@@ -102,22 +121,17 @@ class ViewController: UIViewController {
         ]
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
-    
-    @IBAction func startNewGame(_ sender: UIButton) {
-        game.startGame()
-        newGameButton.isHidden = true
-        deal3CardsButton.isHidden = false
-        updateViewFromModel()
-    }
-    
-    private func endGame() {
-        newGameButton.isHidden = false
-        deal3CardsButton.isHidden = true
-    }
-    
-    @IBAction func deal3Cards(_ sender: UIButton) {
-        game.dealCards()
-        updateViewFromModel()
+
+    /**
+     Updates the card views currently played.
+     */
+    private func updateCards() {
+        removeAllCardsFromPlay()
+        
+        for gameCard in game.dealtCards {
+            let cardView = createCardView(from: gameCard)
+            CardAreaView.add(cardView)
+        }
     }
     
     private func updateScoreLabel() {
@@ -151,11 +165,9 @@ class ViewController: UIViewController {
                 
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
-                    if isSetMatching {
-                        CardAreaView.cards[index].layer.backgroundColor = UIColor.lightGreen.cgColor
-                    } else {
-                        CardAreaView.cards[index].layer.backgroundColor = UIColor.lightRed.cgColor
-                    }
+                    CardAreaView.cards[index].isMatching = isSetMatching
+                } else {
+                    noMatchingSet()
                 }
             } else {
                 // Clear border color for unselected cards

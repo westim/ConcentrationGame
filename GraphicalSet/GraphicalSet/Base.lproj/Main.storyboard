@@ -97,6 +97,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="CardAreaView" destination="CYd-bc-zSF" id="VaG-Og-Ogo"/>
                         <outlet property="cardsLeftLabel" destination="nuf-TA-lR0" id="S8P-lr-3x1"/>
                         <outlet property="deal3CardsButton" destination="n0v-cd-ttt" id="1ix-0i-cs2"/>
                         <outlet property="hintButton" destination="NzX-N2-cjt" id="dC5-Aq-AH6"/>

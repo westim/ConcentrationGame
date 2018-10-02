@@ -8,13 +8,32 @@
 
 import UIKit
 
+@IBDesignable
 class CardAreaView: UIView {
 
     /// Cards in the play area.
-    private(set) var cards = [CardView]() { didSet { layoutSubviews() } }
+    private(set) var cards: [CardView] {
+        get {
+            return self.subviews as! [CardView]
+        }
+        set {
+            guard let card = newValue.first else { return }
+            addSubview(card)
+            layoutSubviews()
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        cards = [CardView]()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        cards = [CardView]()
+    }
     
     func add(_ card: CardView) {
-        addSubview(card)
         cards.append(card)
     }
     
@@ -23,6 +42,7 @@ class CardAreaView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        resizeGrid()
         for index in 0..<cards.count {
             cards[index].sizeThatFits(grid.cellSize)
             
@@ -35,13 +55,10 @@ class CardAreaView: UIView {
      Ensures the grid has the same number of cells
      as the current card count.
      */
-    func resizeGrid() {
+    private func resizeGrid() {
         grid.cellCount = cards.count
     }
-    
-    func removeAllCards() {
-        cards.forEach { $0.removeFromSuperview() }
-    }
+
 }
 
 // MARK: Constants

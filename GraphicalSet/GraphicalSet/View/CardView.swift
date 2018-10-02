@@ -16,7 +16,7 @@ import UIKit
     var symbol = SetSymbolView.self { didSet { refreshSymbols() } }
     
     override var isSelected: Bool { didSet { changeBorder(); setNeedsDisplay() } }
-    var isMatchingSet: Bool? = nil { didSet { changeBackgroundColor(); setNeedsDisplay() } }
+    var isMatching: Bool? = nil { didSet { changeBackgroundColor(); setNeedsDisplay() } }
     var isHinted: Bool = false { didSet { changeBorder(); setNeedsDisplay() } }
     
     lazy var stackView: UIStackView = {
@@ -38,7 +38,7 @@ import UIKit
     private func refreshSymbols() {
         stackView.subviews.forEach { $0.removeFromSuperview() }
         
-        for _ in 1...count {
+        for _ in 0..<count {
             stackView.addSubview(symbol.init(frame: stackView.bounds, fill: fill, color: color))
         }
         stackView.setNeedsDisplay()
@@ -66,8 +66,8 @@ import UIKit
     }
     
     private func changeBackgroundColor() {
-        guard let matching = isMatchingSet else { self.layer.backgroundColor = Colors.background.cgColor; return }
-        self.layer.backgroundColor = matching ? Colors.matchingSet.cgColor : Colors.mismatchingSet.cgColor
+        guard let match = isMatching else { self.layer.backgroundColor = Colors.background.cgColor; return }
+        self.layer.backgroundColor = match ? Colors.matchingSet.cgColor : Colors.mismatchingSet.cgColor
     }
 }
 
