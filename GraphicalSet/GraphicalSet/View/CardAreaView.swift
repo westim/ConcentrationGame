@@ -11,7 +11,7 @@ import UIKit
 class CardAreaView: UIView {
 
     /// Cards in the play area.
-    private(set) var cards = [CardView]() { didSet { resizeGrid(); layoutSubviews() } }
+    private(set) var cards = [CardView]() { didSet { layoutSubviews() } }
     
     func add(_ card: CardView) {
         addSubview(card)
@@ -35,8 +35,12 @@ class CardAreaView: UIView {
      Ensures the grid has the same number of cells
      as the current card count.
      */
-    private func resizeGrid() {
+    func resizeGrid() {
         grid.cellCount = cards.count
+    }
+    
+    func removeAllCards() {
+        cards.forEach { $0.removeFromSuperview() }
     }
 }
 

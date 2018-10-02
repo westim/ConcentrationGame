@@ -65,6 +65,9 @@ class ViewController: UIViewController {
      Updates the card views currently played.
      */
     private func updateCards() {
+        for oldCard in CardAreaView.cards { oldCard.removeFromSuperview() }
+        CardAreaView.resizeGrid()
+        
         for gameCard in game.dealtCards {
             let cardView = createCardView(from: gameCard)
             CardAreaView.add(cardView)
@@ -126,9 +129,13 @@ class ViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
-        updateCards()
+        
         updateScoreLabel()
         updateCardsLeftLabel()
+        
+        if game.dealtCards.count != CardAreaView.cards.count {
+            updateCards()
+        }
         
         if game.gameOver {
             endGame()

@@ -11,27 +11,38 @@ import UIKit
 @IBDesignable class CardView: UIButton {
     
     var count = 0
-    var color = UIColor.black
-    var fill = SetSymbolView.FillType.none
-    var symbol = SetSymbolView.self
+    var color = UIColor.black { didSet { refreshSymbols() } }
+    var fill = SetSymbolView.FillType.none { didSet { refreshSymbols() } }
+    var symbol = SetSymbolView.self { didSet { refreshSymbols() } }
     
     override var isSelected: Bool { didSet { changeBorder(); setNeedsDisplay() } }
     var isMatchingSet: Bool? = nil { didSet { changeBackgroundColor(); setNeedsDisplay() } }
     var isHinted: Bool = false { didSet { changeBorder(); setNeedsDisplay() } }
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.center = self.bounds.center
+        self.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.sizeThatFits(self.symbolAreaSize)
+        return stackView
+    }()
+    
     private func setup() {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = borderWidth
         changeBackgroundColor()
+    }
+    
+    private func refreshSymbols() {
+        stackView.subviews.forEach { $0.removeFromSuperview() }
         
-        let stackView = UIStackView()
         for _ in 1...count {
             stackView.addSubview(symbol.init(frame: stackView.bounds, fill: fill, color: color))
         }
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.sizeThatFits(self.symbolAreaSize)
-        stackView.center = self.bounds.center
+        stackView.setNeedsDisplay()
+        stackView.setNeedsLayout()
     }
     
     override init(frame: CGRect) {
@@ -65,7 +76,7 @@ import UIKit
 private extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
-        static let symbolSizeToBoundsSize: CGFloat = 0.8
+        static let symbolSizeToBoundsWidthSize: CGFloat = 0.8
         static let borderSize: CGFloat = 0.05
     }
     
@@ -84,7 +95,7 @@ private extension CardView {
     }
     
     private var symbolAreaSize: CGSize {
-        let side = bounds.size.width * SizeRatio.symbolSizeToBoundsSize
+        let side = bounds.size.width * SizeRatio.symbolSizeToBoundsWidthSize
         return CGSize(width: side, height: side)
     }
 }
