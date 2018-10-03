@@ -8,33 +8,24 @@
 
 import UIKit
 
-@IBDesignable
 class CardAreaView: UIView {
 
     /// Cards in the play area.
-    private(set) var cards: [CardView] {
-        get {
-            return self.subviews as! [CardView]
-        }
-        set {
-            guard let card = newValue.first else { return }
-            addSubview(card)
-            layoutSubviews()
-        }
+    var cards: [CardView] {
+        return self.subviews as! [CardView]
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        cards = [CardView]()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        cards = [CardView]()
     }
     
     func add(_ card: CardView) {
-        cards.append(card)
+        self.addSubview(card)
+        layoutSubviews()
     }
     
     private lazy var grid = Grid(layout: .aspectRatio(SizeRatio.cardAspectRatio), frame: self.bounds)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class CardView: UIButton {
+class CardView: UIButton {
     
     var count = 0
     var color = UIColor.black { didSet { refreshSymbols() } }

@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBAction func touchCard(_ sender: CardView) {
+    @objc func touchCard(_ sender: CardView) {
         clearHint()
         
         guard let index = CardAreaView.cards.index(of: sender) else { return }
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardsLeftLabel: UILabel!
-    @IBOutlet var CardAreaView: CardAreaView!
+    @IBOutlet private var CardAreaView: CardAreaView!
     
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
@@ -94,13 +94,13 @@ class ViewController: UIViewController {
         cardView.count = counts[card.Attribute2] ?? 0
         cardView.color = colors[card.Attribute3] ?? UIColor.white
         cardView.fill = fills[card.Attribute4] ?? SetSymbolView.FillType.none
-        cardView.addTarget(self, action: #selector(touchCard), for: .touchUpInside)
+        cardView.addTarget(self, action: #selector(touchCard(_:)), for: .touchUpInside)
         
         return cardView
     }
     
     private func noMatchingSet() {
-        CardAreaView.cards.forEach { $0.isMatching = .none }
+        CardAreaView.cards.forEach { $0.isMatching = nil }
     }
     
     private func removeAllCardsFromPlay() {
