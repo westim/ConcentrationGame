@@ -24,6 +24,7 @@ class SetSymbolView: UIView {
         case .none:
             break
         }
+        self.backgroundColor = UIColor.transparent
     }
     
     required init?(coder aDecoder: NSCoder) {

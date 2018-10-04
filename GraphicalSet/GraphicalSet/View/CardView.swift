@@ -21,10 +21,11 @@ class CardView: UIButton {
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.center = self.bounds.center
+        stackView.center = self.convert(self.center, from: stackView)
         stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.sizeThatFits(self.symbolAreaSize)
+        stackView.distribution = .fillEqually
+        stackView.frame.size = self.symbolAreaSize
+        stackView.isUserInteractionEnabled = false
         return stackView
     }()
     
@@ -40,10 +41,8 @@ class CardView: UIButton {
     
     private func createSymbols() {
         for _ in 0..<count {
-            stackView.addSubview(symbol.init(frame: stackView.bounds, fill: fill, color: color))
+            stackView.addArrangedSubview(symbol.init(frame: CGRect.zero, fill: fill, color: color))
         }
-        stackView.setNeedsDisplay()
-        stackView.setNeedsLayout()
     }
     
     override init(frame: CGRect) {
@@ -83,7 +82,7 @@ class CardView: UIButton {
 private extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.05
-        static let symbolSizeToBoundsWidthSize: CGFloat = 0.8
+        static let symbolSizeToBoundsWidthSize: CGFloat = 0.5
         static let borderSize: CGFloat = 0.03
     }
     
