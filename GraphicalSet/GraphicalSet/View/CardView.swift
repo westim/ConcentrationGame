@@ -21,10 +21,11 @@ class CardView: UIButton {
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.center = self.convert(self.center, from: stackView)
+        stackView.frame.size = self.symbolAreaSize
+        stackView.center = self.bounds.center
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.frame.size = self.symbolAreaSize
+        stackView.spacing = symbolSpacing
         stackView.isUserInteractionEnabled = false
         return stackView
     }()
@@ -82,7 +83,8 @@ class CardView: UIButton {
 private extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.05
-        static let symbolSizeToBoundsWidthSize: CGFloat = 0.5
+        static let symbolSizeToBoundsWidthSize: CGFloat = 0.8
+        static let symbolSpacingToBoundsHeight: CGFloat = 0.02
         static let borderSize: CGFloat = 0.03
     }
     
@@ -106,5 +108,9 @@ private extension CardView {
     private var symbolAreaSize: CGSize {
         let side = bounds.size.width * SizeRatio.symbolSizeToBoundsWidthSize
         return CGSize(width: side, height: side)
+    }
+    
+    private var symbolSpacing: CGFloat {
+        return bounds.size.height * SizeRatio.symbolSpacingToBoundsHeight
     }
 }
