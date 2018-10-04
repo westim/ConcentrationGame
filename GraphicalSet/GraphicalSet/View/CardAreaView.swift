@@ -23,33 +23,20 @@ class CardAreaView: UIView {
         super.init(coder: aDecoder)
     }
     
-    func add(_ card: CardView) {
-        self.addSubview(card)
-        layoutSubviews()
+    func add(_ newCards: [CardView]) {
+        newCards.forEach { self.addSubview($0) }
+        resizeGrid()
+        newCards.forEach { $0.setup() }
     }
     
     private lazy var grid = Grid(layout: .aspectRatio(SizeRatio.cardAspectRatio), frame: self.bounds)
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        resizeGrid()
+    private func resizeGrid() {
+        grid.cellCount = cards.count
         for index in 0..<cards.count {
-            cards[index].sizeThatFits(grid.cellSize)
-            
-            // Force unwrapping because grid.cellCount == cards.count
             cards[index].frame = grid[index]!
         }
     }
-    
-    /**
-     Ensures the grid has the same number of cells
-     as the current card count.
-     */
-    private func resizeGrid() {
-        grid.cellCount = cards.count
-    }
-
 }
 
 // MARK: Constants
@@ -57,7 +44,7 @@ class CardAreaView: UIView {
 private extension CardAreaView {
     private struct SizeRatio {
         
-        /// Standard poker cards have aspect ratio of 2.5" : 3.5"
+        /// Standard poker cards aspect ratio of 2.5" : 3.5"
         static let cardAspectRatio: CGFloat = 2.5 / 3.5
     }
 }

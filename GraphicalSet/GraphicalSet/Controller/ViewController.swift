@@ -88,19 +88,23 @@ class ViewController: UIViewController {
      
      - Returns: `CardView`.
      */
-    private func createCardView(from card: Card) -> CardView {
-        let cardView = CardView()
-        cardView.symbol = symbols[card.Attribute1] ?? SquiggleView.self
-        cardView.count = counts[card.Attribute2] ?? 0
-        cardView.color = colors[card.Attribute3] ?? UIColor.white
-        cardView.fill = fills[card.Attribute4] ?? SetSymbolView.FillType.none
-        cardView.addTarget(self, action: #selector(touchCard(_:)), for: .touchUpInside)
-        
-        return cardView
+    private func createCardViews(from cards: [Card]) -> [CardView] {
+        var cardViews = [CardView]()
+        for card in cards {
+            let symbol = symbols[card.Attribute1] ?? SquiggleView.self
+            let count = counts[card.Attribute2] ?? 0
+            let color = colors[card.Attribute3] ?? UIColor.white
+            let fill = fills[card.Attribute4] ?? SetSymbolView.FillType.none
+            let cardView = CardView(count: count, color: color, fill: fill, symbol: symbol)
+            cardView.addTarget(self, action: #selector(touchCard(_:)), for: .touchUpInside)
+            cardViews.append(cardView)
+        }
+
+        return cardViews
     }
     
     private func noMatchingSet() {
-        CardAreaView.cards.forEach { $0.isMatching = nil }
+        CardAreaView.cards.filter { $0.isMatching != nil }.forEach { $0.isMatching = nil }
     }
     
     private func removeAllCardsFromPlay() {
@@ -108,7 +112,7 @@ class ViewController: UIViewController {
     }
     
     private func clearHint() {
-        CardAreaView.cards.forEach { $0.isHinted = false }
+        CardAreaView.cards.filter { $0.isHinted }.forEach { $0.isHinted = false }
     }
     
     /**
@@ -128,10 +132,8 @@ class ViewController: UIViewController {
     private func updateCards() {
         removeAllCardsFromPlay()
         
-        for gameCard in game.dealtCards {
-            let cardView = createCardView(from: gameCard)
-            CardAreaView.add(cardView)
-        }
+        let cardViews = createCardViews(from: game.dealtCards)
+        CardAreaView.add(cardViews)
     }
     
     private func updateScoreLabel() {

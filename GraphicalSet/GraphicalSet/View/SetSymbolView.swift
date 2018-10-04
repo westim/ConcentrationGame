@@ -14,6 +14,7 @@ class SetSymbolView: UIView {
     var lineColor = UIColor.black
     
     required init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
+        super.init(frame: frame)
         lineColor = color
         switch(fill) {
         case .stripe:
@@ -23,7 +24,6 @@ class SetSymbolView: UIView {
         case .none:
             break
         }
-        super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
