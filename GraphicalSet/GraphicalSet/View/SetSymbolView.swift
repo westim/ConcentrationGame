@@ -24,7 +24,8 @@ class SetSymbolView: UIView {
         case .none:
             break
         }
-        self.backgroundColor = UIColor.transparent
+        backgroundColor = UIColor.transparent
+        isUserInteractionEnabled = false
     }
     
     required init?(coder aDecoder: NSCoder) {

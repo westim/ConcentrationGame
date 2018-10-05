@@ -10,26 +10,22 @@ import UIKit
 
 class CardAreaView: UIView {
 
+    private lazy var grid = Grid(layout: .aspectRatio(SizeRatio.cardAspectRatio), frame: self.bounds)
+    
     /// Cards in the play area.
     var cards: [CardView] {
-        return self.subviews as! [CardView]
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        return subviews as! [CardView]
     }
     
     func add(_ newCards: [CardView]) {
-        newCards.forEach { self.addSubview($0) }
+        newCards.forEach { addSubview($0) }
         resizeGrid()
         newCards.forEach { $0.setup() }
     }
     
-    private lazy var grid = Grid(layout: .aspectRatio(SizeRatio.cardAspectRatio), frame: self.bounds)
+    func removeAllCards() {
+        cards.forEach { $0.removeFromSuperview() }
+    }
     
     private func resizeGrid() {
         grid.cellCount = cards.count

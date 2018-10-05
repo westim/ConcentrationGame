@@ -19,39 +19,39 @@ class CardView: UIButton {
     var isMatching: Bool? = nil { didSet { changeBackgroundColor() } }
     var isHinted: Bool = false { didSet { changeBorder() } }
     
-    lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.frame.size = self.symbolAreaSize
-        stackView.center = self.bounds.center
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = symbolSpacing
-        stackView.isUserInteractionEnabled = false
-        return stackView
-    }()
-    
     func setup() {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = Colors.selectedBorder
-        self.addSubview(stackView)
         clipsToBounds = true
         changeBackgroundColor()
         createSymbols()
     }
     
     private func createSymbols() {
-        for _ in 0..<count {
-            stackView.addArrangedSubview(symbol.init(frame: CGRect.zero, fill: fill, color: color))
+        switch count {
+        case 1:
+            let firstSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
+            addSubview(firstSymbol)
+        case 2:
+            let firstSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
+            let secondSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
+            firstSymbol.transform = CGAffineTransform(translationX: 0, y: twoSymbolOffset)
+            secondSymbol.transform = CGAffineTransform(translationX: 0, y: -twoSymbolOffset)
+            addSubview(firstSymbol)
+            addSubview(secondSymbol)
+        case 3:
+            let firstSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
+            let secondSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
+            let thirdSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
+            secondSymbol.transform = CGAffineTransform(translationX: 0, y: threeSymbolOffset)
+            thirdSymbol.transform = CGAffineTransform(translationX: 0, y: -threeSymbolOffset)
+            addSubview(firstSymbol)
+            addSubview(secondSymbol)
+            addSubview(thirdSymbol)
+        default:
+            print("Invalid symbol count: \(count)")
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     convenience init(count: Int, color: UIColor, fill: SetSymbolView.FillType, symbol: SetSymbolView.Type) {
@@ -64,17 +64,18 @@ class CardView: UIButton {
     
     private func changeBorder() {
         if isSelected {
-            self.layer.borderColor = Colors.selectedBorder
+            layer.borderColor = Colors.selectedBorder
         } else if isHinted {
-            self.layer.borderColor = Colors.hintedBorder
+            layer.borderColor = Colors.hintedBorder
         } else {
-            self.layer.borderColor = Colors.transparentBorder
+            layer.borderColor = Colors.transparentBorder
         }
     }
     
     private func changeBackgroundColor() {
-        guard let match = isMatching else { self.layer.backgroundColor = Colors.background; return }
-        self.layer.backgroundColor = match ? Colors.matchingSet : Colors.mismatchingSet
+        guard let match = isMatching else { swapToColor(withDuration: Timing.animationDuration, toColor: Colors.background); return }
+        let matchColor = match ? Colors.matchingSet : Colors.mismatchingSet
+        swapToColor(withDuration: Timing.animationDuration, toColor: matchColor)
     }
 }
 
@@ -83,15 +84,19 @@ class CardView: UIButton {
 private extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.05
-        static let symbolSizeToBoundsWidthSize: CGFloat = 0.8
-        static let symbolSpacingToBoundsHeight: CGFloat = 0.02
+        static let symbolWidthSizeToBoundsWidthSize: CGFloat = 0.8
+        static let symbolHeightSizeToBoundsHeightSize: CGFloat = 0.3
         static let borderSize: CGFloat = 0.03
     }
     
+    private struct Timing {
+        static let animationDuration: Double = 0.3
+    }
+    
     private struct Colors {
-        static let background = UIColor.black.cgColor
-        static let matchingSet = UIColor.lightGreen.cgColor
-        static let mismatchingSet = UIColor.lightRed.cgColor
+        static let background = UIColor.black
+        static let matchingSet = UIColor.lightGreen
+        static let mismatchingSet = UIColor.lightRed
         static let selectedBorder = UIColor.yellow.cgColor
         static let transparentBorder = UIColor.transparent.cgColor
         static let hintedBorder = UIColor.green.cgColor
@@ -105,12 +110,23 @@ private extension CardView {
         return bounds.size.height * SizeRatio.borderSize
     }
     
-    private var symbolAreaSize: CGSize {
-        let side = bounds.size.width * SizeRatio.symbolSizeToBoundsWidthSize
-        return CGSize(width: side, height: side)
+    private var symbolSize: CGSize {
+        let height = bounds.height * SizeRatio.symbolHeightSizeToBoundsHeightSize
+        let width = bounds.width * SizeRatio.symbolWidthSizeToBoundsWidthSize
+        return CGSize(width: width, height: height)
     }
     
-    private var symbolSpacing: CGFloat {
-        return bounds.size.height * SizeRatio.symbolSpacingToBoundsHeight
+    private var twoSymbolOffset: CGFloat {
+        return symbolSize.height * 0.51
+    }
+    
+    private var threeSymbolOffset: CGFloat {
+        return symbolSize.height * 1.02
+    }
+    
+    private var symbolOrigin: CGPoint {
+        let x = bounds.center.x - symbolSize.width / 2
+        let y = bounds.center.y - symbolSize.height / 2
+        return CGPoint(x: x, y: y)
     }
 }

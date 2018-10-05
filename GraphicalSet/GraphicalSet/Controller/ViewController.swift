@@ -107,10 +107,6 @@ class ViewController: UIViewController {
         CardAreaView.cards.filter { $0.isMatching != nil }.forEach { $0.isMatching = nil }
     }
     
-    private func removeAllCardsFromPlay() {
-        CardAreaView.cards.forEach { $0.removeFromSuperview() }
-    }
-    
     private func clearHint() {
         CardAreaView.cards.filter { $0.isHinted }.forEach { $0.isHinted = false }
     }
@@ -130,7 +126,7 @@ class ViewController: UIViewController {
      Updates the card views currently played.
      */
     private func updateCards() {
-        removeAllCardsFromPlay()
+        CardAreaView.removeAllCards()
         
         let cardViews = createCardViews(from: game.dealtCards)
         CardAreaView.add(cardViews)
