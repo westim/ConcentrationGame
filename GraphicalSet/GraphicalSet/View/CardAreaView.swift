@@ -18,7 +18,7 @@ class CardAreaView: UIView {
     }
     
     func add(_ newCards: [CardView]) {
-        newCards.forEach { addSubview($0) }
+        addSubViews(newCards)
         resizeGrid()
         newCards.forEach { $0.setup() }
     }

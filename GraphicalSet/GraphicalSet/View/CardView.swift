@@ -29,29 +29,20 @@ class CardView: UIButton {
     }
     
     private func createSymbols() {
-        switch count {
+        let symbols = Array(count: count, elementCreator: symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color))
+        switch symbols.count {
         case 1:
-            let firstSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
-            addSubview(firstSymbol)
+            break
         case 2:
-            let firstSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
-            let secondSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
-            firstSymbol.transform = CGAffineTransform(translationX: 0, y: twoSymbolOffset)
-            secondSymbol.transform = CGAffineTransform(translationX: 0, y: -twoSymbolOffset)
-            addSubview(firstSymbol)
-            addSubview(secondSymbol)
+            symbols[0].transform = CGAffineTransform(translationX: 0, y: twoSymbolOffset)
+            symbols[1].transform = CGAffineTransform(translationX: 0, y: -twoSymbolOffset)
         case 3:
-            let firstSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
-            let secondSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
-            let thirdSymbol = symbol.init(frame: CGRect(origin: symbolOrigin, size: symbolSize), fill: fill, color: color)
-            secondSymbol.transform = CGAffineTransform(translationX: 0, y: threeSymbolOffset)
-            thirdSymbol.transform = CGAffineTransform(translationX: 0, y: -threeSymbolOffset)
-            addSubview(firstSymbol)
-            addSubview(secondSymbol)
-            addSubview(thirdSymbol)
+            symbols[1].transform = CGAffineTransform(translationX: 0, y: threeSymbolOffset)
+            symbols[2].transform = CGAffineTransform(translationX: 0, y: -threeSymbolOffset)
         default:
             print("Invalid symbol count: \(count)")
         }
+        addSubViews(symbols)
     }
     
     convenience init(count: Int, color: UIColor, fill: SetSymbolView.FillType, symbol: SetSymbolView.Type) {

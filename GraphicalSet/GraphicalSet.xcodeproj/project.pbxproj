@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2224EB7F214622E10039489F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224EB7E214622E10039489F /* Grid.swift */; };
 		223B898E2161C6B70064405F /* UIColor+colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B898D2161C6B70064405F /* UIColor+colors.swift */; };
+		223B8990216727370064405F /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B898F216727370064405F /* UIView+addSubViews.swift */; };
+		223B8992216728D70064405F /* Array+repeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B8991216728D70064405F /* Array+repeating.swift */; };
 		22480671214F480D00DF45A7 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248066F214F480D00DF45A7 /* SetGame.swift */; };
 		22480672214F480D00DF45A7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480670214F480D00DF45A7 /* Card.swift */; };
 		22480677214F485500DF45A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480676214F485500DF45A7 /* ViewController.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		2224EB7E214622E10039489F /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		223B898D2161C6B70064405F /* UIColor+colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+colors.swift"; sourceTree = "<group>"; };
+		223B898F216727370064405F /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
+		223B8991216728D70064405F /* Array+repeating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+repeating.swift"; sourceTree = "<group>"; };
 		2248066F214F480D00DF45A7 /* SetGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetGame.swift; path = GraphicalSet/Model/SetGame.swift; sourceTree = SOURCE_ROOT; };
 		22480670214F480D00DF45A7 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = GraphicalSet/Model/Card.swift; sourceTree = SOURCE_ROOT; };
 		22480676214F485500DF45A7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = GraphicalSet/Controller/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -110,6 +114,8 @@
 				2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */,
 				2248067D214F48E800DF45A7 /* CGRect+points.swift */,
 				223B898D2161C6B70064405F /* UIColor+colors.swift */,
+				223B898F216727370064405F /* UIView+addSubViews.swift */,
+				223B8991216728D70064405F /* Array+repeating.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				2288BCD3213B286700153FB7 /* UIButton+swapToColor.swift in Sources */,
 				2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */,
 				22ABFCE1215B16CD0014E96F /* CardAreaView.swift in Sources */,
+				223B8990216727370064405F /* UIView+addSubViews.swift in Sources */,
 				22ABFCDF2155F9420014E96F /* CardView.swift in Sources */,
 				22480671214F480D00DF45A7 /* SetGame.swift in Sources */,
 				22480677214F485500DF45A7 /* ViewController.swift in Sources */,
@@ -244,6 +251,7 @@
 				22480682214F498E00DF45A7 /* OvalView.swift in Sources */,
 				223B898E2161C6B70064405F /* UIColor+colors.swift in Sources */,
 				22480672214F480D00DF45A7 /* Card.swift in Sources */,
+				223B8992216728D70064405F /* Array+repeating.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
