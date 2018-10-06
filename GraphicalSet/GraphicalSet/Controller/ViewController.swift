@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         Card.Variant.two: UIColor.magenta,
         Card.Variant.three: UIColor.yellow
     ]
+    
+    private var updateCardsOnNextTouch: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,8 +147,9 @@ class ViewController: UIViewController {
         updateScoreLabel()
         updateCardsLeftLabel()
         
-        if game.dealtCards.count != CardAreaView.cards.count {
+        if game.dealtCards.count != CardAreaView.cards.count || updateCardsOnNextTouch {
             updateCards()
+            updateCardsOnNextTouch = false
         }
         
         if game.gameOver {
@@ -157,13 +160,13 @@ class ViewController: UIViewController {
         }
 
         for index in game.dealtCards.indices {
-            
             if game.selectedCards.contains(game.dealtCards[index]) {
                 CardAreaView.cards[index].isSelected = true
                 
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
                     CardAreaView.cards[index].isMatching = isSetMatching
+                    updateCardsOnNextTouch = isSetMatching
                 } else {
                     noMatchingSet()
                 }

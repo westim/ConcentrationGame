@@ -64,9 +64,8 @@ class CardView: UIButton {
     }
     
     private func changeBackgroundColor() {
-        guard let match = isMatching else { swapToColor(withDuration: Timing.animationDuration, toColor: Colors.background); return }
-        let matchColor = match ? Colors.matchingSet : Colors.mismatchingSet
-        swapToColor(withDuration: Timing.animationDuration, toColor: matchColor)
+        guard let match = isMatching else { backgroundColor = Colors.background; return }
+        backgroundColor = match ? Colors.matchingSet : Colors.mismatchingSet
     }
 }
 

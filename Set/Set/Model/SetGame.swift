@@ -115,6 +115,7 @@ struct SetGame {
                 dealtCards.remove(at: dealtCardIndex)
             }
         }
+	selectedCards.removeAll()
     }
     
     /**
@@ -134,7 +135,6 @@ struct SetGame {
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
                 score += 3
                 dealCards()
-                selectedCards.removeAll()
             } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
