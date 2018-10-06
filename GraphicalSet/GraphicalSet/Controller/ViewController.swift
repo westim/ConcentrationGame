@@ -65,6 +65,7 @@ class ViewController: UIViewController {
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
+    @IBOutlet private var shuffleButton: UIButton!
     
     @IBAction func startNewGame(_ sender: UIButton) {
         game.startGame()
@@ -77,11 +78,19 @@ class ViewController: UIViewController {
         game.dealCards()
         updateViewFromModel()
     }
+    
+    @IBAction func ShuffleCards(_ sender: UIButton) {
+        game.shufflePlayedCards()
+        updateCards()
+        updateViewFromModel()
+    }
 
     private func endGame() {
         newGameButton.isHidden = false
         deal3CardsButton.isHidden = true
     }
+    
+
     
     /**
      Create a `CardView` from a `Card`.

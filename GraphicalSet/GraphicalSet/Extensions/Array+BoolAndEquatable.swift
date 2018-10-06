@@ -16,7 +16,7 @@ extension Array where Element: Equatable {
      */
     mutating func shuffle() {
         if self.count >= 2 {
-            for index in 0..<self.count - 1 {
+            for index in 0..<self.count {
                 let swapIndex = Int(arc4random_uniform(UInt32(index + 1)))
                 self.swapAt(index, swapIndex)
             }

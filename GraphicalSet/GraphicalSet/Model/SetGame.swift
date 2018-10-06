@@ -51,6 +51,13 @@ struct SetGame {
     }
     
     /**
+     Shuffles the current played cards.
+     */
+    mutating func shufflePlayedCards() {
+        dealtCards.shuffle()
+    }
+    
+    /**
      Searches the board for a set and returns the
      first found matching set.
      
