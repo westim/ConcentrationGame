@@ -62,7 +62,11 @@ class ViewController: UIViewController {
         didSet {
             let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipe(recognizer:)))
             swipeGestureRecognizer.direction = .down
+            
+            let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate(recognizer:)))
+            
             baseView.addGestureRecognizer(swipeGestureRecognizer)
+            baseView.addGestureRecognizer(rotationGestureRecognizer)
         }
     }
     
@@ -86,7 +90,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBAction func ShuffleCards(_ sender: UIButton) {
+    private func ShuffleCards() {
         game.shufflePlayedCards()
         updateCards()
         updateViewFromModel()
@@ -141,6 +145,12 @@ class ViewController: UIViewController {
     @objc func swipe(recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {
             deal3Cards(nil)
+        }
+    }
+    
+    @objc func rotate(recognizer: UIRotationGestureRecognizer) {
+        if recognizer.state == .ended {
+            ShuffleCards()
         }
     }
     

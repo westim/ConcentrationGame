@@ -75,14 +75,6 @@
                                 <rect key="frame" x="16" y="36" width="343" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-7g-ibo" userLabel="Shuffle Button">
-                                <rect key="frame" x="298" y="569.5" width="61" height="33"/>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
-                                <state key="normal" title="Shuffle"/>
-                                <connections>
-                                    <action selector="ShuffleCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tts-C6-Cz0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -94,14 +86,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="10" id="OP0-6F-NNY"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yeb-43-NCH"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zwz-zc-5fI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oBY-7g-ibo" secondAttribute="trailing" constant="16" id="aeS-eo-SnJ"/>
                             <constraint firstItem="NzX-N2-cjt" firstAttribute="centerY" secondItem="n0v-cd-ttt" secondAttribute="centerY" id="ayJ-V6-odB"/>
                             <constraint firstItem="NzX-N2-cjt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d9S-qS-sJQ"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eYb-z6-Sst"/>
                             <constraint firstItem="xES-7o-BPG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fZb-fB-COA"/>
-                            <constraint firstItem="oBY-7g-ibo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="n0v-cd-ttt" secondAttribute="trailing" constant="8" symbolic="YES" id="h4l-lu-bKP"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="centerY" secondItem="xES-7o-BPG" secondAttribute="centerY" id="h9P-xG-U8M"/>
-                            <constraint firstItem="oBY-7g-ibo" firstAttribute="centerY" secondItem="n0v-cd-ttt" secondAttribute="centerY" id="nxx-eq-nHG"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="16" id="sXm-m5-aFD"/>
                             <constraint firstItem="50M-gg-ZYS" firstAttribute="top" secondItem="xES-7o-BPG" secondAttribute="bottom" constant="10" id="wDK-Y0-4o5"/>
                         </constraints>
@@ -115,7 +104,6 @@
                         <outlet property="hintButton" destination="NzX-N2-cjt" id="XNV-ok-u3o"/>
                         <outlet property="newGameButton" destination="xES-7o-BPG" id="Q4B-OS-pog"/>
                         <outlet property="scoreLabel" destination="50M-gg-ZYS" id="NeN-zm-bef"/>
-                        <outlet property="shuffleButton" destination="oBY-7g-ibo" id="As0-yw-Rgf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
