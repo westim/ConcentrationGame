@@ -58,10 +58,17 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBOutlet private var baseView: UIView! {
+        didSet {
+            let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipe(recognizer:)))
+            swipeGestureRecognizer.direction = .down
+            baseView.addGestureRecognizer(swipeGestureRecognizer)
+        }
+    }
+    
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardsLeftLabel: UILabel!
     @IBOutlet private var CardAreaView: CardAreaView!
-    
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
@@ -74,7 +81,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBAction func deal3Cards(_ sender: UIButton) {
+    @IBAction func deal3Cards(_ sender: UIButton?) {
         game.dealCards()
         updateViewFromModel()
     }
@@ -89,8 +96,6 @@ class ViewController: UIViewController {
         newGameButton.isHidden = false
         deal3CardsButton.isHidden = true
     }
-    
-
     
     /**
      Create a `CardView` from a `Card`.
@@ -133,6 +138,12 @@ class ViewController: UIViewController {
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
 
+    @objc func swipe(recognizer: UISwipeGestureRecognizer) {
+        if recognizer.state == .ended {
+            deal3Cards(nil)
+        }
+    }
+    
     /**
      Updates the card views currently played.
      */
