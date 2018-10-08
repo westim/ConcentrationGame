@@ -40,6 +40,24 @@ class ViewController: UIViewController {
         game.startGame()
         createDeal3CardsDisabledText()
         updateViewFromModel()
+        setupDynamicFont()
+    }
+    
+    private func setupDynamicFont() {
+        guard let customFont = UIFont(name: "SFProText-Semibold", size: 24) else {
+            fatalError("""
+        Failed to load the "SF-Pro-Text-Semibold" font.
+        Make sure the font file is included in the project and the font name is spelled correctly.
+        """
+            )
+        }
+        
+        let scaledFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
+        scoreLabel.font = scaledFont
+        cardsLeftLabel.font = scaledFont
+        newGameButton?.titleLabel?.font = scaledFont
+        deal3CardsButton?.titleLabel?.font = scaledFont
+        hintButton?.titleLabel?.font = scaledFont
     }
     
     @objc func touchCard(_ sender: CardView) {
@@ -76,7 +94,6 @@ class ViewController: UIViewController {
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
-    @IBOutlet private var shuffleButton: UIButton!
     
     @IBAction func startNewGame(_ sender: UIButton) {
         game.startGame()
@@ -142,13 +159,13 @@ class ViewController: UIViewController {
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
 
-    @objc func swipe(recognizer: UISwipeGestureRecognizer) {
+    @objc private func swipe(recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {
             deal3Cards(nil)
         }
     }
     
-    @objc func rotate(recognizer: UIRotationGestureRecognizer) {
+    @objc private func rotate(recognizer: UIRotationGestureRecognizer) {
         if recognizer.state == .ended {
             ShuffleCards()
         }

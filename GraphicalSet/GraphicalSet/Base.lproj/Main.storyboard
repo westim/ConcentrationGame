@@ -9,26 +9,21 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Semibold.otf">
-            <string>SFProText-Semibold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GraphicalSet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="redraw" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xES-7o-BPG">
-                                <rect key="frame" x="134.5" y="566" width="106" height="40"/>
+                                <rect key="frame" x="145.5" y="566" width="84" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kJ8-9h-4Rv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -36,18 +31,18 @@
                                     <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zcl-zM-Ckb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS">
-                                <rect key="frame" x="32" y="616" width="123.5" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS">
+                                <rect key="frame" x="62" y="616" width="64" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="sqB-oI-5dW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0v-cd-ttt">
-                                <rect key="frame" x="124.5" y="568" width="126" height="36"/>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="20"/>
+                                <rect key="frame" x="138" y="569.5" width="99" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Deal 3 Cards">
                                     <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -56,14 +51,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards Left: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-TA-lR0">
-                                <rect key="frame" x="227" y="626.5" width="108.5" height="20.5"/>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <rect key="frame" x="232" y="626.5" width="99" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzX-N2-cjt">
-                                <rect key="frame" x="16" y="569.5" width="43" height="33"/>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
+                                <rect key="frame" x="16" y="569.5" width="56.5" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Hint">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -72,7 +67,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYd-bc-zSF" userLabel="CardAreaView" customClass="CardAreaView" customModule="GraphicalSet" customModuleProvider="target">
-                                <rect key="frame" x="16" y="36" width="343" height="516"/>
+                                <rect key="frame" x="16" y="36" width="343" height="517.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -80,7 +75,7 @@
                         <constraints>
                             <constraint firstItem="nuf-TA-lR0" firstAttribute="centerY" secondItem="50M-gg-ZYS" secondAttribute="centerY" id="2od-Zo-5h0"/>
                             <constraint firstItem="nuf-TA-lR0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.5" id="38C-DC-MW0"/>
-                            <constraint firstItem="n0v-cd-ttt" firstAttribute="leading" secondItem="NzX-N2-cjt" secondAttribute="trailing" constant="65.5" id="B3z-ih-L5i"/>
+                            <constraint firstItem="n0v-cd-ttt" firstAttribute="leading" secondItem="NzX-N2-cjt" secondAttribute="trailing" priority="750" constant="65.5" id="B3z-ih-L5i"/>
                             <constraint firstItem="50M-gg-ZYS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="J7k-Wb-I7F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CYd-bc-zSF" secondAttribute="trailing" constant="16" id="M7D-AG-JKp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="10" id="OP0-6F-NNY"/>
