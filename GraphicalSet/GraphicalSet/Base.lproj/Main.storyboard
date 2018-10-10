@@ -18,76 +18,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xES-7o-BPG">
-                                <rect key="frame" x="145.5" y="566" width="84" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="kJ8-9h-4Rv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="New Game">
-                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zcl-zM-Ckb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS">
-                                <rect key="frame" x="62" y="616" width="64" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="sqB-oI-5dW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0v-cd-ttt">
-                                <rect key="frame" x="138" y="569.5" width="99" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Deal 3 Cards">
-                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deal3Cards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rty-9E-U5I"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards Left: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-TA-lR0">
-                                <rect key="frame" x="232" y="626.5" width="99" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzX-N2-cjt">
-                                <rect key="frame" x="16" y="569.5" width="56.5" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Hint">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="touchHint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yLB-4o-c8X"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYd-bc-zSF" userLabel="CardAreaView" customClass="CardAreaView" customModule="GraphicalSet" customModuleProvider="target">
-                                <rect key="frame" x="16" y="36" width="343" height="517.5"/>
+                                <rect key="frame" x="16" y="36" width="343" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-jD-dL7">
+                                <rect key="frame" x="16" y="519" width="343" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0v-cd-ttt">
+                                        <rect key="frame" x="122" y="0.0" width="99" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Deal 3 Cards">
+                                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deal3Cards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rty-9E-U5I"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xES-7o-BPG">
+                                        <rect key="frame" x="129.5" y="33" width="84" height="0.0"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="New Game">
+                                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zcl-zM-Ckb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzX-N2-cjt">
+                                        <rect key="frame" x="155.5" y="33" width="32" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Hint">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="touchHint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yLB-4o-c8X"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS">
+                                        <rect key="frame" x="139.5" y="66" width="64" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards Left: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-TA-lR0">
+                                        <rect key="frame" x="122" y="99" width="99" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nuf-TA-lR0" firstAttribute="centerY" secondItem="50M-gg-ZYS" secondAttribute="centerY" id="2od-Zo-5h0"/>
-                            <constraint firstItem="nuf-TA-lR0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.5" id="38C-DC-MW0"/>
-                            <constraint firstItem="n0v-cd-ttt" firstAttribute="leading" secondItem="NzX-N2-cjt" secondAttribute="trailing" priority="750" constant="65.5" id="B3z-ih-L5i"/>
-                            <constraint firstItem="50M-gg-ZYS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="J7k-Wb-I7F"/>
+                            <constraint firstItem="sbH-jD-dL7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="62S-IB-hBX"/>
+                            <constraint firstAttribute="bottom" secondItem="sbH-jD-dL7" secondAttribute="bottom" constant="16" id="FJA-3j-jfp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CYd-bc-zSF" secondAttribute="trailing" constant="16" id="M7D-AG-JKp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="10" id="OP0-6F-NNY"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yeb-43-NCH"/>
-                            <constraint firstItem="n0v-cd-ttt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zwz-zc-5fI"/>
-                            <constraint firstItem="NzX-N2-cjt" firstAttribute="centerY" secondItem="n0v-cd-ttt" secondAttribute="centerY" id="ayJ-V6-odB"/>
-                            <constraint firstItem="NzX-N2-cjt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d9S-qS-sJQ"/>
+                            <constraint firstItem="sbH-jD-dL7" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="16" id="dcI-Hw-9u6"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eYb-z6-Sst"/>
-                            <constraint firstItem="xES-7o-BPG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fZb-fB-COA"/>
-                            <constraint firstItem="n0v-cd-ttt" firstAttribute="centerY" secondItem="xES-7o-BPG" secondAttribute="centerY" id="h9P-xG-U8M"/>
-                            <constraint firstItem="n0v-cd-ttt" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="16" id="sXm-m5-aFD"/>
-                            <constraint firstItem="50M-gg-ZYS" firstAttribute="top" secondItem="xES-7o-BPG" secondAttribute="bottom" constant="10" id="wDK-Y0-4o5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sbH-jD-dL7" secondAttribute="trailing" constant="16" id="et3-0E-4lb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
