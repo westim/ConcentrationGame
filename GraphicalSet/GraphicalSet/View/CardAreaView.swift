@@ -33,6 +33,11 @@ class CardAreaView: UIView {
             cards[index].frame = grid[index]!
         }
     }
+    
+    override func draw(_ rect: CGRect) {
+        grid.frame = self.bounds
+        resizeGrid()
+    }
 }
 
 // MARK: Constants
