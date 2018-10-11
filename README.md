@@ -20,12 +20,9 @@ To anyone completing the assignments: I encourage you to attempt to solve the as
 
 ### :heavy_plus_sign: Additional Features
 
-- 6 available (hardcoded) themes: halloween, christmas, people, animals, countries, and tech
 - Time-based bonus scoring, which awards anywhere from 0 points (10+ seconds after last match) to 10 points (<1 after last match)
 - True-to-life 3.5:2.5 aspect ratio for cards
 - Support for landscape orientation (cards will rotate to fit on screen)
-- Several `extension` are implemented for ease-of-use
-- [`assert`](https://developer.apple.com/documentation/swift/1541112-assert) used for debugging input arguments
 
 ### :bulb: Challenges & Key Takeaways
 
@@ -42,9 +39,8 @@ Overall, this assignment wasn't too challenging because the bulk of the architec
 ### :heavy_plus_sign: Additional Features
 
 - Uses a [Swift language version build configuration](https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md) statement to swap the `shuffle()` implementation for the Swift 4.2 implementation, depending on the Swift version
-- Minor implementations of error-handling
 - Uses `NSAttributedString` with `UIControlState.disabled` to change the text color of the **Deal 3 Cards** button when no more cards can be dealt
-- Adds label to show the number of cards remaining in the deck
+- Shows label for the number of cards remaining in the deck
 - Provides a **HINT** button and match-finding algorithm to help the player find matching sets
 - Uses Apple's official font, [San Francisco](https://developer.apple.com/fonts/)
 
