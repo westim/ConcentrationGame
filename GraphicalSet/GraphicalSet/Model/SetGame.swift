@@ -13,7 +13,9 @@ struct SetGame {
     var deck = [Card]()
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
-    private(set) var score = 0
+    private(set) var player1Score = 0
+    private(set) var player2Score = 0
+    var currentTurn: Turn = .none
     
     /// End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
@@ -88,7 +90,8 @@ struct SetGame {
         deck = createDeck()
         dealtCards = Array(deck[0..<12])
         deck.removeSubArray(subarray: dealtCards)
-        score = 0
+        player1Score = 0
+        player2Score = 0
     }
     
     /**
@@ -132,20 +135,35 @@ struct SetGame {
      */
     mutating func selectCard(clickedCardIndex: Int) {
         if let index = selectedCards.index(of: dealtCards[clickedCardIndex]), selectedCards.count != 3 {  // Deselect clicked card
-            score -= 1
+            Score(-1)
             selectedCards.remove(at: index)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
-                score -= 5
+                Score(-5)
                 selectedCards.removeAll()
                 selectedCards.append(dealtCards[clickedCardIndex])
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
-                score += 3
+                Score(3)
                 dealCards()
             } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
         }
+    }
+    
+    private mutating func Score(_ value: Int) {
+        switch currentTurn {
+        case .player1:
+            player1Score += value
+        case .player2:
+            player2Score += value
+        default:
+            print("Invalid turn")
+        }
+    }
+    
+    enum Turn {
+        case player1, player2, none
     }
 }
 

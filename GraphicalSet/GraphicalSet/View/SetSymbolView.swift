@@ -24,7 +24,7 @@ class SetSymbolView: UIView {
         case .none:
             break
         }
-        backgroundColor = UIColor.transparent
+        backgroundColor = UIColor.clear
         isUserInteractionEnabled = false
     }
     

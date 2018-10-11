@@ -17,7 +17,6 @@ class CardView: UIButton {
     
     override var isSelected: Bool { didSet { changeBorder() } }
     var isMatching: Bool? = nil { didSet { changeBackgroundColor() } }
-    var isHinted: Bool = false { didSet { changeBorder() } }
     
     func setup() {
         self.layer.cornerRadius = cornerRadius
@@ -56,8 +55,6 @@ class CardView: UIButton {
     private func changeBorder() {
         if isSelected {
             layer.borderColor = Colors.selectedBorder
-        } else if isHinted {
-            layer.borderColor = Colors.hintedBorder
         } else {
             layer.borderColor = Colors.transparentBorder
         }
@@ -88,7 +85,7 @@ private extension CardView {
         static let matchingSet = UIColor.lightGreen
         static let mismatchingSet = UIColor.lightRed
         static let selectedBorder = UIColor.yellow.cgColor
-        static let transparentBorder = UIColor.transparent.cgColor
+        static let transparentBorder = UIColor.clear.cgColor
         static let hintedBorder = UIColor.green.cgColor
     }
     

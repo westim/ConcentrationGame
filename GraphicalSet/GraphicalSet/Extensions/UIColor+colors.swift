@@ -12,5 +12,4 @@ import UIKit
 extension UIColor {
     static let lightGreen = UIColor(red: 144/255, green: 238/255, blue: 144/255, alpha: 1)
     static let lightRed = UIColor(red: 238/255, green: 144/255, blue: 144/255, alpha: 1)
-    static let transparent = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
 }

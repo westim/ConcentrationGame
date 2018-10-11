@@ -38,12 +38,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         game.startGame()
-        createDeal3CardsDisabledText()
         updateViewFromModel()
-        setupDynamicFont()
+        setupDynamicFonts()
+        setupTurnButtons()
     }
     
-    private func setupDynamicFont() {
+    private func setupDynamicFonts() {
         guard let customFont = UIFont(name: "SFProText-Semibold", size: 24) else {
             fatalError("""
         Failed to load the "SF-Pro-Text-Semibold" font.
@@ -53,27 +53,28 @@ class ViewController: UIViewController {
         }
         
         let scaledFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
-        scoreLabel.font = scaledFont
-        cardsLeftLabel.font = scaledFont
-        newGameButton?.titleLabel?.font = scaledFont
-        deal3CardsButton?.titleLabel?.font = scaledFont
-        hintButton?.titleLabel?.font = scaledFont
+        player1ScoreLabel.font = scaledFont
+        player2ScoreLabel.font = scaledFont
+        player1Label.font = scaledFont
+        player2Label.font = scaledFont
+        player1Deal3CardsButton?.titleLabel?.font = scaledFont
+        player2Deal3CardsButton?.titleLabel?.font = scaledFont
+        player1ClaimSetButton?.titleLabel?.font = scaledFont
+        player2ClaimSetButton?.titleLabel?.font = scaledFont
     }
     
-    @objc func touchCard(_ sender: CardView) {
-        clearHint()
-        
+    private func setupTurnButtons() {
+        player1ClaimSetButton.layer.borderWidth = 3.0
+        player2ClaimSetButton.layer.borderWidth = 3.0
+    }
+    
+    @objc func touchCard(_ sender: CardView) {       
+        if game.currentTurn == .none {
+            return
+        }
         guard let index = CardAreaView.cards.index(of: sender) else { return }
         game.selectCard(clickedCardIndex: index)
         updateViewFromModel()
-    }
-    
-    @IBAction func touchHint(_ sender: UIButton) {
-        guard let set = game.findMatchingSet() else { return }
-        for card in set {
-            let index = game.dealtCards.index(of: card)
-            CardAreaView.cards[index!].isHinted = true
-        }
     }
     
     @IBOutlet private var baseView: UIView! {
@@ -88,19 +89,15 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet private var scoreLabel: UILabel!
-    @IBOutlet private var cardsLeftLabel: UILabel!
+    @IBOutlet private var player1Label: UILabel!
+    @IBOutlet private var player2Label: UILabel!
+    @IBOutlet private var player2ScoreLabel: UILabel!
+    @IBOutlet private var player1ScoreLabel: UILabel!
     @IBOutlet private var CardAreaView: CardAreaView!
-    @IBOutlet private var newGameButton: UIButton!
-    @IBOutlet private var deal3CardsButton: UIButton!
-    @IBOutlet private var hintButton: UIButton!
-    
-    @IBAction func startNewGame(_ sender: UIButton) {
-        game.startGame()
-        newGameButton.isHidden = true
-        deal3CardsButton.isHidden = false
-        updateViewFromModel()
-    }
+    @IBOutlet private var player1Deal3CardsButton: UIButton!
+    @IBOutlet private var player2Deal3CardsButton: UIButton!
+    @IBOutlet private var player1ClaimSetButton: UIButton!
+    @IBOutlet private var player2ClaimSetButton: UIButton!
     
     @IBAction func deal3Cards(_ sender: UIButton?) {
         game.dealCards()
@@ -111,11 +108,6 @@ class ViewController: UIViewController {
         game.shufflePlayedCards()
         updateCards()
         updateViewFromModel()
-    }
-
-    private func endGame() {
-        newGameButton.isHidden = false
-        deal3CardsButton.isHidden = true
     }
     
     /**
@@ -143,21 +135,6 @@ class ViewController: UIViewController {
     private func noMatchingSet() {
         CardAreaView.cards.filter { $0.isMatching != nil }.forEach { $0.isMatching = nil }
     }
-    
-    private func clearHint() {
-        CardAreaView.cards.filter { $0.isHinted }.forEach { $0.isHinted = false }
-    }
-    
-    /**
-     Changes the Deal 3 Cards button text color to indicate
-     that no more cards can be dealt.
-     */
-    private func createDeal3CardsDisabledText() {
-        let disabledAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor.red
-        ]
-        deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
-    }
 
     @objc private func swipe(recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .ended {
@@ -182,28 +159,17 @@ class ViewController: UIViewController {
     }
     
     private func updateScoreLabel() {
-        scoreLabel.text = "Score: \(game.score)"
-    }
-    
-    private func updateCardsLeftLabel() {
-        cardsLeftLabel.text = "Cards Left: \(game.deck.count)"
+        player1ScoreLabel.text = "Score: \(game.player1Score)"
+        player2ScoreLabel.text = "Score: \(game.player2Score)"
     }
     
     private func updateViewFromModel() {
         
         updateScoreLabel()
-        updateCardsLeftLabel()
         
         if game.dealtCards.count != CardAreaView.cards.count || updateCardsOnNextTouch {
             updateCards()
             updateCardsOnNextTouch = false
-        }
-        
-        if game.gameOver {
-            endGame()
-        } else {
-            // Can't deal cards when the deck is empty
-            deal3CardsButton.isEnabled = !game.deck.isEmpty
         }
 
         for index in game.dealtCards.indices {
