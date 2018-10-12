@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         game.startGame()
         updateViewFromModel()
         setupDynamicFonts()
-        setupTurnButtons()
+        setupTurnButtonBorders()
     }
     
     private func setupDynamicFonts() {
@@ -63,11 +63,22 @@ class ViewController: UIViewController {
         player2ClaimSetButton?.titleLabel?.font = scaledFont
     }
     
-    private func setupTurnButtons() {
+    private func setupTurnButtonBorders() {
         player1ClaimSetButton.layer.borderWidth = 3.0
         player2ClaimSetButton.layer.borderWidth = 3.0
+        player1ClaimSetButton.layer.borderColor = UIColor.clear.cgColor
+        player2ClaimSetButton.layer.borderColor = UIColor.clear.cgColor
     }
     
+    @objc func endTurnByTimeout() {
+        game.endTurnByTimeout()
+        setupTurnButtonBorders()
+    }
+    
+    private func endTurn() {
+        setupTurnButtonBorders()
+    }
+
     @objc func touchCard(_ sender: CardView) {       
         if game.currentTurn == .none {
             return
@@ -102,6 +113,17 @@ class ViewController: UIViewController {
     @IBAction func deal3Cards(_ sender: UIButton?) {
         game.dealCards()
         updateViewFromModel()
+        endTurn()
+    }
+    
+    @IBAction func touchClaimSetButton(_ sender: UIButton) {
+        if sender == player1ClaimSetButton {
+            game.currentTurn = .player1
+            player1ClaimSetButton.layer.borderColor = UIColor.yellow.cgColor
+        } else {
+            game.currentTurn = .player2
+            player2ClaimSetButton.layer.borderColor = UIColor.yellow.cgColor
+        }
     }
     
     private func ShuffleCards() {
@@ -130,10 +152,6 @@ class ViewController: UIViewController {
         }
 
         return cardViews
-    }
-    
-    private func noMatchingSet() {
-        CardAreaView.cards.filter { $0.isMatching != nil }.forEach { $0.isMatching = nil }
     }
 
     @objc private func swipe(recognizer: UISwipeGestureRecognizer) {
@@ -181,12 +199,17 @@ class ViewController: UIViewController {
                     CardAreaView.cards[index].isMatching = isSetMatching
                     updateCardsOnNextTouch = isSetMatching
                 } else {
-                    noMatchingSet()
+                    CardAreaView.cards[index].isMatching = nil
+                    updateCardsOnNextTouch = true
                 }
             } else {
                 // Clear border color for unselected cards
                 CardAreaView.cards[index].isSelected = false
             }
+        }
+        
+        if game.currentTurn == .none {
+            endTurn()
         }
     }
 }

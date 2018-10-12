@@ -8,14 +8,16 @@
 
 import Foundation
 
-struct SetGame {
+class SetGame {
     
     var deck = [Card]()
+    var currentTurn: Turn = .none { didSet { startTurn() } }
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
     private(set) var player1Score = 0
     private(set) var player2Score = 0
-    var currentTurn: Turn = .none
+    private let secondsPerTurn: Double = 10
+    private var turnTimer = Timer()
     
     /// End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
@@ -55,7 +57,7 @@ struct SetGame {
     /**
      Shuffles the current played cards.
      */
-    mutating func shufflePlayedCards() {
+    func shufflePlayedCards() {
         dealtCards.shuffle()
     }
     
@@ -86,7 +88,7 @@ struct SetGame {
     /**
      Deals the first 12 cards from the deck & resets the score.
      */
-    mutating func startGame() {
+    func startGame() {
         deck = createDeck()
         dealtCards = Array(deck[0..<12])
         deck.removeSubArray(subarray: dealtCards)
@@ -99,7 +101,11 @@ struct SetGame {
      matches, replace the selected set. Otherwise, add the
      cards to the collection of dealt cards.
      */
-    mutating func dealCards() {
+    func dealCards() {
+        if currentTurn == .none {
+            return
+        }
+        
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
@@ -109,6 +115,7 @@ struct SetGame {
             dealtCards.append(contentsOf: dealCards)
         }
         deck.removeSubArray(subarray: dealCards)
+        endTurnByDeal()
     }
     
     /**
@@ -116,7 +123,7 @@ struct SetGame {
      If there are not enough cards from the deck, simply remove
      the dealt card from the game.
      */
-    mutating private func replaceSelectedCards(using newCards: [Card]) {
+    private func replaceSelectedCards(using newCards: [Card]) {
         for selectedCardIndex in selectedCards.indices {
             guard let dealtCardIndex = dealtCards.index(of: selectedCards[selectedCardIndex]) else { return }
             if selectedCardIndex < newCards.count {
@@ -133,7 +140,7 @@ struct SetGame {
      
      - Parameter clickedCard: The card that was selected by the player.
      */
-    mutating func selectCard(clickedCardIndex: Int) {
+    func selectCard(clickedCardIndex: Int) {
         if let index = selectedCards.index(of: dealtCards[clickedCardIndex]), selectedCards.count != 3 {  // Deselect clicked card
             Score(-1)
             selectedCards.remove(at: index)
@@ -141,17 +148,18 @@ struct SetGame {
              if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
                 Score(-5)
                 selectedCards.removeAll()
-                selectedCards.append(dealtCards[clickedCardIndex])
+                currentTurn = .none
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
                 Score(3)
                 dealCards()
+                currentTurn = .none
             } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
         }
     }
     
-    private mutating func Score(_ value: Int) {
+    private func Score(_ value: Int) {
         switch currentTurn {
         case .player1:
             player1Score += value
@@ -162,8 +170,27 @@ struct SetGame {
         }
     }
     
+    private func startTurn() {
+        if currentTurn == .none {
+            turnTimer.invalidate()
+        } else {
+            // I'm not sure if this is MVC heresy, but it works well
+            turnTimer = Timer.scheduledTimer(timeInterval: secondsPerTurn, target: self, selector: #selector(ViewController.endTurnByTimeout), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func endTurnByTimeout() {
+        Score(-5)
+        currentTurn = .none
+    }
+    
+    private func endTurnByDeal() {
+        Score(-1)
+        currentTurn = .none
+    }
+
+    
     enum Turn {
         case player1, player2, none
     }
 }
-

@@ -38,6 +38,9 @@
                                                 <rect key="frame" x="49.5" y="25" width="73" height="25"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="Claim Set"/>
+                                                <connections>
+                                                    <action selector="touchClaimSetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYT-5p-jKF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0v-cd-ttt" userLabel="Player1 Deal 3 Cards Button">
                                                 <rect key="frame" x="36.5" y="50" width="99" height="25"/>
@@ -70,6 +73,9 @@
                                                 <rect key="frame" x="49.5" y="25" width="73" height="25"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="Claim Set"/>
+                                                <connections>
+                                                    <action selector="touchClaimSetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aOJ-R1-enF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEh-BI-Agl" userLabel="Player2 Deal 3 Cards Button">
                                                 <rect key="frame" x="36.5" y="50" width="99" height="25"/>
