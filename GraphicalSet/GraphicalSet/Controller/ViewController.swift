@@ -43,7 +43,6 @@ class ViewController: UIViewController {
         game.startGame()
         updateViewFromModel()
         setupDynamicFonts()
-        setupTurnButtonBorders()
     }
     
     private func setupDynamicFonts() {
@@ -66,13 +65,6 @@ class ViewController: UIViewController {
         player2ClaimSetButton?.titleLabel?.font = scaledFont
     }
     
-    private func setupTurnButtonBorders() {
-        player1ClaimSetButton.layer.borderWidth = 3.0
-        player2ClaimSetButton.layer.borderWidth = 3.0
-        player1ClaimSetButton.layer.borderColor = UIColor.clear.cgColor
-        player2ClaimSetButton.layer.borderColor = UIColor.clear.cgColor
-    }
-    
     private func startTurn() {
         if game.currentTurn == .none {
             turnTimer.invalidate()
@@ -87,8 +79,8 @@ class ViewController: UIViewController {
     }
     
     private func endTurn() {
-        player1ClaimSetButton.isSelected = false
-        player2ClaimSetButton.isSelected = false
+        player1ClaimSetButton.removeHighlight()
+        player2ClaimSetButton.removeHighlight()
     }
 
     @objc func touchCard(_ sender: CardView) {       
@@ -130,10 +122,8 @@ class ViewController: UIViewController {
     @IBAction func touchClaimSetButton(_ sender: UIButton) {
         if sender == player1ClaimSetButton {
             game.currentTurn = .player1
-            player1ClaimSetButton.layer.borderColor = UIColor.yellow.cgColor
         } else {
             game.currentTurn = .player2
-            player2ClaimSetButton.layer.borderColor = UIColor.yellow.cgColor
         }
     }
     

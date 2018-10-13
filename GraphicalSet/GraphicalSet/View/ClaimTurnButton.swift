@@ -10,16 +10,6 @@ import UIKit
 
 class ClaimTurnButton: UIButton {
     
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                layer.borderColor = UIColor.yellow.cgColor
-            } else {
-                layer.borderColor = UIColor.clear.cgColor
-            }
-        }
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupButton()
@@ -32,6 +22,15 @@ class ClaimTurnButton: UIButton {
 
     private func setupButton() {
         layer.borderWidth = 3.0
+        layer.borderColor = UIColor.clear.cgColor
+        addTarget(self, action: #selector(highlightBorder), for: .touchUpInside)
+    }
+    
+    @objc private func highlightBorder() {
+        layer.borderColor = UIColor.yellow.cgColor
+    }
+    
+    func removeHighlight() {
         layer.borderColor = UIColor.clear.cgColor
     }
 }
