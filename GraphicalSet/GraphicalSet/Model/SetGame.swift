@@ -11,13 +11,12 @@ import Foundation
 class SetGame {
     
     var deck = [Card]()
-    var currentTurn: Turn = .none { didSet { startTurn() } }
+    var currentTurn: Turn = .none
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
     private(set) var player1Score = 0
     private(set) var player2Score = 0
-    private let secondsPerTurn: Double = 10
-    private var turnTimer = Timer()
+
     
     /// End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
@@ -102,10 +101,6 @@ class SetGame {
      cards to the collection of dealt cards.
      */
     func dealCards() {
-        if currentTurn == .none {
-            return
-        }
-        
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
@@ -115,7 +110,6 @@ class SetGame {
             dealtCards.append(contentsOf: dealCards)
         }
         deck.removeSubArray(subarray: dealCards)
-        endTurnByDeal()
     }
     
     /**
@@ -170,22 +164,8 @@ class SetGame {
         }
     }
     
-    private func startTurn() {
-        if currentTurn == .none {
-            turnTimer.invalidate()
-        } else {
-            // I'm not sure if this is MVC heresy, but it works well
-            turnTimer = Timer.scheduledTimer(timeInterval: secondsPerTurn, target: self, selector: #selector(ViewController.endTurnByTimeout), userInfo: nil, repeats: false)
-        }
-    }
-    
-    func endTurnByTimeout() {
-        Score(-5)
-        currentTurn = .none
-    }
-    
-    private func endTurnByDeal() {
-        Score(-1)
+    func expireTurn() {
+        Score(-2)
         currentTurn = .none
     }
 

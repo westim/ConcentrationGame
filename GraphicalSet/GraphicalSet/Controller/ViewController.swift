@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     
     private lazy var game = SetGame()
     
+    private let secondsPerTurn: Double = 10
+    private var turnTimer = Timer()
+    
     private var symbols = [
         Card.Variant.one: SquiggleView.self,
         Card.Variant.two: DiamondView.self,
@@ -70,19 +73,26 @@ class ViewController: UIViewController {
         player2ClaimSetButton.layer.borderColor = UIColor.clear.cgColor
     }
     
-    @objc func endTurnByTimeout() {
-        game.endTurnByTimeout()
-        setupTurnButtonBorders()
+    private func startTurn() {
+        if game.currentTurn == .none {
+            turnTimer.invalidate()
+        } else {
+            turnTimer = Timer.scheduledTimer(timeInterval: secondsPerTurn, target: self, selector: #selector(expireTurn), userInfo: nil, repeats: false)
+        }
+    }
+    
+    @objc func expireTurn() {
+        game.expireTurn()
+        endTurn()
     }
     
     private func endTurn() {
-        setupTurnButtonBorders()
+        player1ClaimSetButton.isSelected = false
+        player2ClaimSetButton.isSelected = false
     }
 
     @objc func touchCard(_ sender: CardView) {       
-        if game.currentTurn == .none {
-            return
-        }
+        if game.currentTurn == .none { return }
         guard let index = CardAreaView.cards.index(of: sender) else { return }
         game.selectCard(clickedCardIndex: index)
         updateViewFromModel()
@@ -107,13 +117,14 @@ class ViewController: UIViewController {
     @IBOutlet private var CardAreaView: CardAreaView!
     @IBOutlet private var player1Deal3CardsButton: UIButton!
     @IBOutlet private var player2Deal3CardsButton: UIButton!
-    @IBOutlet private var player1ClaimSetButton: UIButton!
-    @IBOutlet private var player2ClaimSetButton: UIButton!
+    @IBOutlet private var player1ClaimSetButton: ClaimTurnButton!
+    @IBOutlet private var player2ClaimSetButton: ClaimTurnButton!
     
     @IBAction func deal3Cards(_ sender: UIButton?) {
+        if game.currentTurn == .none { return }
         game.dealCards()
         updateViewFromModel()
-        endTurn()
+        expireTurn()
     }
     
     @IBAction func touchClaimSetButton(_ sender: UIButton) {

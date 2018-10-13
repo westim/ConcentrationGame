@@ -11,6 +11,7 @@
 		223B898E2161C6B70064405F /* UIColor+colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B898D2161C6B70064405F /* UIColor+colors.swift */; };
 		223B8990216727370064405F /* UIView+addSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B898F216727370064405F /* UIView+addSubViews.swift */; };
 		223B8992216728D70064405F /* Array+repeating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B8991216728D70064405F /* Array+repeating.swift */; };
+		2241BA8C2171946E0031E9C7 /* ClaimTurnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */; };
 		22480671214F480D00DF45A7 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248066F214F480D00DF45A7 /* SetGame.swift */; };
 		22480672214F480D00DF45A7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480670214F480D00DF45A7 /* Card.swift */; };
 		22480677214F485500DF45A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480676214F485500DF45A7 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		223B898D2161C6B70064405F /* UIColor+colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+colors.swift"; sourceTree = "<group>"; };
 		223B898F216727370064405F /* UIView+addSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubViews.swift"; sourceTree = "<group>"; };
 		223B8991216728D70064405F /* Array+repeating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+repeating.swift"; sourceTree = "<group>"; };
+		2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimTurnButton.swift; sourceTree = "<group>"; };
 		2248066F214F480D00DF45A7 /* SetGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetGame.swift; path = GraphicalSet/Model/SetGame.swift; sourceTree = SOURCE_ROOT; };
 		22480670214F480D00DF45A7 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = GraphicalSet/Model/Card.swift; sourceTree = SOURCE_ROOT; };
 		22480676214F485500DF45A7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = GraphicalSet/Controller/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -93,6 +95,7 @@
 				22480681214F498E00DF45A7 /* OvalView.swift */,
 				22ABFCDE2155F9420014E96F /* CardView.swift */,
 				22ABFCE0215B16CD0014E96F /* CardAreaView.swift */,
+				2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */,
+				2241BA8C2171946E0031E9C7 /* ClaimTurnButton.swift in Sources */,
 				2248067A214F488500DF45A7 /* SquiggleView.swift in Sources */,
 				22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */,
 				2224EB7F214622E10039489F /* Grid.swift in Sources */,
