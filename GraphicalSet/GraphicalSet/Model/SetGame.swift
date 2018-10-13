@@ -167,6 +167,7 @@ class SetGame {
     func expireTurn() {
         Score(-2)
         currentTurn = .none
+        selectedCards.removeAll()
     }
 
     

@@ -9,9 +9,9 @@
 import UIKit
 
 class SetSymbolView: UIView {
-    var isStriped = false
-    var isSolid = false
-    var lineColor = UIColor.black
+    private(set) var isStriped = false
+    private(set) var isSolid = false
+    private(set) var lineColor = UIColor.black
     
     required init(frame: CGRect, fill: SetSymbolView.FillType, color: UIColor) {
         super.init(frame: frame)
@@ -35,7 +35,7 @@ class SetSymbolView: UIView {
     func drawStripes(bounds: CGRect, with color: UIColor) {
         for x in stride(from: 0, to: 1, by: 0.1) {
             let line = UIBezierPath()
-            line.lineWidth = Ratio.lineWidthToSize * bounds.maxX
+            line.lineWidth = lineWidth
             line.move(to: bounds.getPoint(x: CGFloat(x), y: 0))
             line.addLine(to: bounds.getPoint(x: CGFloat(x), y: 1))
             color.setStroke()
@@ -51,5 +51,9 @@ class SetSymbolView: UIView {
 extension SetSymbolView {
     struct Ratio {
         static let lineWidthToSize: CGFloat = 0.05
+    }
+    
+    var lineWidth: CGFloat {
+        return Ratio.lineWidthToSize * bounds.maxX
     }
 }

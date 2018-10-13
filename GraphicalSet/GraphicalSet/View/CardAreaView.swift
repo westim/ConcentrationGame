@@ -24,7 +24,7 @@ class CardAreaView: UIView {
     }
     
     func removeAllCards() {
-        cards.forEach { $0.removeFromSuperview() }
+        removeAllSubViews()
     }
     
     private func resizeGrid() {
@@ -45,7 +45,7 @@ class CardAreaView: UIView {
 private extension CardAreaView {
     private struct SizeRatio {
         
-        /// Standard poker cards aspect ratio of 2.5" : 3.5"
+        /// Standard poker cards aspect ratio of 2.5" : 3.5".
         static let cardAspectRatio: CGFloat = 2.5 / 3.5
     }
 }

@@ -28,15 +28,15 @@ class DiamondView: SetSymbolView {
         path.close()
         path.addClip()
         
-        if super.isStriped {
-            super.drawStripes(bounds: rect, with: super.lineColor)
-        } else if super.isSolid {
-            super.lineColor.setFill()
+        if isStriped {
+            drawStripes(bounds: rect, with: lineColor)
+        } else if isSolid {
+            lineColor.setFill()
             path.fill()
         }
         
-        super.lineColor.setStroke()
-        path.lineWidth = SetSymbolView.Ratio.lineWidthToSize * rect.maxX
+        lineColor.setStroke()
+        path.lineWidth = lineWidth
         
         path.stroke()
     }

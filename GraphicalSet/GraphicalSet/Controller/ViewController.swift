@@ -12,8 +12,12 @@ class ViewController: UIViewController {
     
     private lazy var game = SetGame()
     
-    private let secondsPerTurn: Double = 10
-    private var turnTimer = Timer()
+    private let secondsPerTurn: Double = 3
+    private var turnTimer: Timer? = nil {
+        willSet {
+            turnTimer?.invalidate()
+        }
+    }
     
     private var symbols = [
         Card.Variant.one: SquiggleView.self,
@@ -67,15 +71,16 @@ class ViewController: UIViewController {
     
     private func startTurn() {
         if game.currentTurn == .none {
-            turnTimer.invalidate()
+            turnTimer = nil
         } else {
             turnTimer = Timer.scheduledTimer(timeInterval: secondsPerTurn, target: self, selector: #selector(expireTurn), userInfo: nil, repeats: false)
         }
     }
     
-    @objc func expireTurn() {
+    @objc private func expireTurn() {
         game.expireTurn()
         endTurn()
+        updateViewFromModel()
     }
     
     private func endTurn() {
@@ -120,10 +125,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchClaimSetButton(_ sender: UIButton) {
-        if sender == player1ClaimSetButton {
-            game.currentTurn = .player1
-        } else {
-            game.currentTurn = .player2
+        if game.currentTurn == .none {
+            if sender == player1ClaimSetButton {
+                game.currentTurn = .player1
+            } else {
+                game.currentTurn = .player2
+            }
+            startTurn()
         }
     }
     
