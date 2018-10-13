@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         player2ClaimSetButton.removeHighlight()
     }
 
-    @objc func touchCard(_ sender: CardView) {       
+    @objc private func touchCard(_ sender: CardView) {
         if game.currentTurn == .none { return }
         guard let index = CardAreaView.cards.index(of: sender) else { return }
         game.selectCard(clickedCardIndex: index)
@@ -128,8 +128,10 @@ class ViewController: UIViewController {
         if game.currentTurn == .none {
             if sender == player1ClaimSetButton {
                 game.currentTurn = .player1
+                player1ClaimSetButton.highlightBorder()
             } else {
                 game.currentTurn = .player2
+                player2ClaimSetButton.highlightBorder()
             }
             startTurn()
         }

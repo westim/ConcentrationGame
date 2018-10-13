@@ -23,10 +23,9 @@ class ClaimTurnButton: UIButton {
     private func setupButton() {
         layer.borderWidth = 3.0
         layer.borderColor = UIColor.clear.cgColor
-        addTarget(self, action: #selector(highlightBorder), for: .touchUpInside)
     }
     
-    @objc private func highlightBorder() {
+    func highlightBorder() {
         layer.borderColor = UIColor.yellow.cgColor
     }
     

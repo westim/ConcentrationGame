@@ -61,38 +61,12 @@ class SetGame {
     }
     
     /**
-     Searches the board for a set and returns the
-     first found matching set.
-     
-     - Returns: Matching set of 3 cards or nil if no matching set is present
-     */
-    func findMatchingSet() -> [Card]? {
-        if dealtCards.count < 3 {
-            return nil
-        }
-        for card1 in dealtCards {
-            for card2 in dealtCards {
-                for card3 in dealtCards {
-                    if (card1 != card2 && card2 != card3 && card1 != card3) {
-                        if let matches = try? Card.makesSet([card1, card2, card3]), matches {
-                            return [card1, card2, card3]
-                        }
-                    }
-                }
-            }
-        }
-        return nil
-    }
-    
-    /**
      Deals the first 12 cards from the deck & resets the score.
      */
     func startGame() {
         deck = createDeck()
         dealtCards = Array(deck[0..<12])
         deck.removeSubArray(subarray: dealtCards)
-        player1Score = 0
-        player2Score = 0
     }
     
     /**

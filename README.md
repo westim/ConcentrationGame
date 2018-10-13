@@ -8,7 +8,11 @@ All projects built using Swift 4.1, targeting iOS 11.4.
 
 These assignments are not graded or reviewed.
 
-To anyone completing the assignments: I encourage you to attempt to solve the assignments for a few days before referencing other public solutions. If you do get stuck, I recommend comparing several different solutions to find one that helps you complete your solution to the problem. Free from the constraints and pressure of a grading system, learning and staying motivated should be the top priorities.
+I encourage any future students to attempt to solve the assignments for a few days before referencing other public solutions. I also recommend comparing several different solutions to find one that helps find a solution to the problem.
+
+## Contributing
+
+I welcome any Issues or Pull Requests to improve this repository! I am not an iOS expert.
 
 ## Concentration Game
 
@@ -51,6 +55,10 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 ## Graphical Set Game
 
 ### Demo
+
+<p align="center">
+	<img src="Demos/graphicalset.gif">
+</p>
 
 ### :heavy_plus_sign: Additional Features
 
