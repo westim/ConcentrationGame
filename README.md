@@ -16,7 +16,7 @@ I welcome any Issues or Pull Requests to improve this repository! I am not an iO
 
 ## Concentration Game
 
-### Demo
+### :movie_camera: Demo
 
 <p align="center">
 	<img src="Demos/concentration.gif">
@@ -34,7 +34,7 @@ Overall, this assignment wasn't too challenging because the bulk of the architec
 
 ## Set Game
 
-### Demo
+### :movie_camera: Demo
 
 <p align="center">
 	<img src="Demos/set.gif">
@@ -54,7 +54,7 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 
 ## Graphical Set Game
 
-### Demo
+### :movie_camera: Demo
 
 <p align="center">
 	<img src="Demos/graphicalset.gif">
