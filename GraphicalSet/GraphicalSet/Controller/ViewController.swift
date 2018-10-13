@@ -198,10 +198,9 @@ class ViewController: UIViewController {
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
                     CardAreaView.cards[index].isMatching = isSetMatching
-                    updateCardsOnNextTouch = isSetMatching
+                    updateCardsOnNextTouch = true
                 } else {
                     CardAreaView.cards[index].isMatching = nil
-                    updateCardsOnNextTouch = true
                 }
             } else {
                 // Clear border color for unselected cards
