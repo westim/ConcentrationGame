@@ -99,6 +99,11 @@ struct SetGame {
         if let isMatch = selectedSetMatches, isMatch {  // Replace selected, matching cards
             replaceSelectedCards(using: dealCards)
         } else {  // Add cards to the game
+            
+            // MARK: Bonus 2 (penalty with available set)
+            if findMatchingSet() != nil {
+                score -= 3
+            }
             dealtCards.append(contentsOf: dealCards)
         }
         deck.removeSubArray(subarray: dealCards)
