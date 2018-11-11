@@ -17,9 +17,9 @@ class ViewController: UIViewController {
          .two: "■",
          .three: "●"]
     private let colors: [Card.Variant: UIColor] =
-        [.one: UIColor(red: 1, green: 1, blue: 0, alpha: 1),
-         .two: UIColor(red: 1, green: 0, blue: 1, alpha: 1),
-         .three: UIColor(red: 0, green: 1, blue: 1, alpha: 1)]
+        [.one: UIColor.magenta,
+         .two: UIColor.yellow,
+         .three: UIColor.purple]
     private let counts: [Card.Variant: Int] =
         [.one: 1,
          .two: 2,
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             let index = game.dealtCards.index(of: card)
             let button = cardButtons[index!]
             button.layer.borderWidth = 3.0
-            button.layer.borderColor = UIColor(red: 0, green: 1, blue: 0, alpha: 1).cgColor
+            button.layer.borderColor = UIColor.green.cgColor
         }
     }
     
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
      */
     private func createDeal3CardsDisabledText() {
         let disabledAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+            NSAttributedStringKey.foregroundColor: UIColor.red
         ]
         deal3CardsButton.setAttributedTitle(NSAttributedString(string: deal3CardsButton.titleLabel!.text!, attributes: disabledAttributes), for: .disabled)
     }
@@ -153,14 +153,14 @@ class ViewController: UIViewController {
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
                     if isSetMatching {
-                        cardButtons[index].layer.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.3).cgColor
+                        cardButtons[index].layer.backgroundColor = UIColor.green.withAlphaComponent(0.3).cgColor
                     } else {
-                        cardButtons[index].layer.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3).cgColor
+                        cardButtons[index].layer.backgroundColor = UIColor.red.withAlphaComponent(0.3).cgColor
                     }
                 }
             } else {
                 // Clear border color for unselected cards
-                cardButtons[index].layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+                cardButtons[index].layer.borderColor = UIColor.clear.cgColor
             }
         }
         hideUnusedButtons()
@@ -173,7 +173,7 @@ class ViewController: UIViewController {
      */
     private func enableButton(at index: Int) {
         cardButtons[index].isEnabled = true
-        cardButtons[index].swapToColor(withDuration: 0.2, toColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1))
+        cardButtons[index].swapToColor(withDuration: 0.2, toColor: UIColor.black)
     }
     
     /**
@@ -185,7 +185,7 @@ class ViewController: UIViewController {
         hiddenButtons.forEach() {
             $0.swapToColor(withDuration: 0.2, toColor: super.view.backgroundColor!)
             $0.isEnabled = false
-            $0.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+            $0.layer.borderColor = UIColor.clear.cgColor
             $0.setAttributedTitle(nil, for: .normal) }
     }
     
@@ -197,6 +197,6 @@ class ViewController: UIViewController {
     private func addSelectedBorder(to index: Int) {
         let button = cardButtons[index]
         button.layer.borderWidth = 3.0
-        button.layer.borderColor = UIColor(red: 1, green: 1, blue: 0, alpha: 1).cgColor
+        button.layer.borderColor = UIColor.magenta.cgColor
     }
 }

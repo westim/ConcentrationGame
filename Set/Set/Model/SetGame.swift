@@ -14,6 +14,8 @@ struct SetGame {
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
     private(set) var score = 0
+    private let maxTimeBonus = 5
+    private var lastPlay = Date.init()
     
     /// End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
@@ -82,6 +84,7 @@ struct SetGame {
         dealtCards = Array(deck[0..<12])
         deck.removeSubArray(subarray: dealtCards)
         score = 0
+        lastPlay = Date.init()
     }
     
     /**
@@ -129,16 +132,37 @@ struct SetGame {
             selectedCards.remove(at: index)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
-                score -= 5
+                score -= 5 - timeBonus(maxBonus: maxTimeBonus)
                 selectedCards.removeAll()
                 selectedCards.append(dealtCards[clickedCardIndex])
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
-                score += 3
+                score += 3 + timeBonus(maxBonus: maxTimeBonus)
                 dealCards()
             } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
         }
+    }
+    
+    // MARK: Bonus 1 (speed bonus/penalty)
+    
+    /**
+     Calculates the score bonus earned from quick play
+     and resets the last play to the current date & time.
+     
+     Note that this value will also be used as a penalty for
+     quick mismatched sets; this is implemented to discourage quick
+     but inaccurate guessing.
+     
+     - Parameter maxBonus: The maximum score bonus that can be earned, in seconds.
+     
+     - Returns: The score bonus.
+     */
+    private mutating func timeBonus(maxBonus: Int) -> Int {
+        let timeSinceLastPlay = lastPlay.timeIntervalSinceNow.rounded()
+        let appliedBonus = maxBonus - Int(timeSinceLastPlay)
+        lastPlay = Date.init()
+        return appliedBonus > 0 ? appliedBonus : 0
     }
 }
 
