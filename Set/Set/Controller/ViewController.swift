@@ -197,6 +197,6 @@ class ViewController: UIViewController {
     private func addSelectedBorder(to index: Int) {
         let button = cardButtons[index]
         button.layer.borderWidth = 3.0
-        button.layer.borderColor = UIColor.magenta.cgColor
+        button.layer.borderColor = UIColor.yellow.cgColor
     }
 }

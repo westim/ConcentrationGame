@@ -132,7 +132,7 @@ struct SetGame {
             selectedCards.remove(at: index)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
-                score -= 5 - timeBonus(maxBonus: maxTimeBonus)
+                score -= 5 + timeBonus(maxBonus: maxTimeBonus)
                 selectedCards.removeAll()
                 selectedCards.append(dealtCards[clickedCardIndex])
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
