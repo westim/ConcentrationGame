@@ -13,7 +13,8 @@ struct SetGame {
     var deck = [Card]()
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
-    private(set) var score = 0
+    private(set) var playerScore = 0
+    private(set) var aiScore = 0
     private let maxTimeBonus = 5
     private var lastPlay = Date.init()
     
@@ -52,6 +53,8 @@ struct SetGame {
         return newDeck
     }
     
+    // MARK: Bonus 3 (algorithm to find matching set)
+    
     /**
      Searches the board for a set and returns the
      first found matching set.
@@ -83,7 +86,8 @@ struct SetGame {
         deck = createDeck()
         dealtCards = Array(deck[0..<12])
         deck.removeSubArray(subarray: dealtCards)
-        score = 0
+        playerScore = 0
+        aiScore = 0
         lastPlay = Date.init()
     }
     
@@ -92,7 +96,7 @@ struct SetGame {
      matches, replace the selected set. Otherwise, add the
      cards to the collection of dealt cards.
      */
-    mutating func dealCards() {
+    mutating func dealCards(player: Player = .human) {
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
         let dealCards = Array(deck[0..<numberOfCardsToDeal])
         
@@ -101,8 +105,8 @@ struct SetGame {
         } else {  // Add cards to the game
             
             // MARK: Bonus 2 (penalty with available set)
-            if findMatchingSet() != nil {
-                score -= 3
+            if findMatchingSet() != nil && player == .human {
+                playerScore -= 3
             }
             dealtCards.append(contentsOf: dealCards)
         }
@@ -133,20 +137,28 @@ struct SetGame {
      */
     mutating func selectCard(clickedCardIndex: Int) {
         if let index = selectedCards.index(of: dealtCards[clickedCardIndex]), selectedCards.count != 3 {  // Deselect clicked card
-            score -= 1
+            playerScore -= 1
             selectedCards.remove(at: index)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
-                score -= 5 + timeBonus(maxBonus: maxTimeBonus)
+                playerScore -= 5 + timeBonus(maxBonus: maxTimeBonus)
                 selectedCards.removeAll()
                 selectedCards.append(dealtCards[clickedCardIndex])
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
-                score += 3 + timeBonus(maxBonus: maxTimeBonus)
+                playerScore += 3 + timeBonus(maxBonus: maxTimeBonus)
                 dealCards()
             } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
         }
+    }
+    
+    mutating func aiSelect() {
+        guard let set = findMatchingSet() else { return }
+        selectedCards.removeAll()
+        selectedCards.append(contentsOf: set)
+        dealCards(player: .ai)
+        aiScore += 3
     }
     
     // MARK: Bonus 1 (speed bonus/penalty)
@@ -168,6 +180,14 @@ struct SetGame {
         let appliedBonus = maxBonus - Int(timeSinceLastPlay)
         lastPlay = Date.init()
         return appliedBonus > 0 ? appliedBonus : 0
+    }
+    
+    enum AiState {
+        case neutral, running, win, lose
+    }
+    
+    enum Player {
+        case human, ai
     }
 }
 

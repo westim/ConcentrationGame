@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var game = SetGame()
+    private var timer = Timer()
     
     private let shapes: [Card.Variant: String] =
         [.one: "▲",
@@ -24,9 +25,18 @@ class ViewController: UIViewController {
         [.one: 1,
          .two: 2,
          .three: 3]
+    private let aiStates: [SetGame.AiState: String] =
+        [.running: "🤔",
+         .neutral: "😀",
+         .win: "😂",
+         .lose: "😭"]
     
     private var isBoardFull: Bool {
         return game.dealtCards.count == cardButtons.count
+    }
+    
+    private var randomTimeInterval: TimeInterval {
+        return Double.random(in: 5.0...10.0)
     }
 
     override func viewDidLoad() {
@@ -63,6 +73,32 @@ class ViewController: UIViewController {
     @IBOutlet private var newGameButton: UIButton!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var hintButton: UIButton!
+    @IBOutlet private var AIButton: UIButton!
+    
+    @IBAction func clickAiButton(_ sender: UIButton) {
+        fireNewTimer()
+    }
+    
+    // MARK: Bonus 4 (AI Player)
+    
+    /**
+     Recursively fires new timers at the random interval.
+     */
+    private func fireNewTimer() {
+        updateAiButton(state: .running)
+        timer.invalidate()
+        let interval = randomTimeInterval
+        
+        // "Found match" timer
+        Timer.scheduledTimer(withTimeInterval: interval - 2, repeats: false) { _ in self.updateAiButton(state: .neutral) }
+        
+        // Recursive timer
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) {_ in
+            self.game.aiSelect()
+            self.updateViewFromModel()
+            self.fireNewTimer()
+        }
+    }
     
     /**
      Changes the Deal 3 Cards button text color to indicate
@@ -80,10 +116,14 @@ class ViewController: UIViewController {
         newGameButton.isHidden = true
         deal3CardsButton.isHidden = false
         deal3CardsButton.isEnabled = true
+        updateAiButton(state: .neutral)
         updateViewFromModel()
     }
     
     private func endGame() {
+        let aiState: SetGame.AiState = game.playerScore > game.aiScore ? .lose : .win
+        updateAiButton(state: aiState)
+        timer.invalidate()
         newGameButton.isHidden = false
         deal3CardsButton.isHidden = true
     }
@@ -124,8 +164,12 @@ class ViewController: UIViewController {
         return attributedText
     }
     
+    private func updateAiButton(state: SetGame.AiState) {
+        AIButton.setTitle(aiStates[state], for: .normal)
+    }
+    
     private func updateScoreLabel() {
-        scoreLabel.text = "Score: \(game.score)"
+        scoreLabel.text = "\(game.playerScore) : \(game.aiScore)"
     }
     
     private func updateCardsLeftLabel() {

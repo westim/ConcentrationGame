@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -228,7 +227,7 @@
                                 </subviews>
                             </stackView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xES-7o-BPG">
-                                <rect key="frame" x="134" y="566" width="106" height="40"/>
+                                <rect key="frame" x="134.5" y="566" width="106" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kJ8-9h-4Rv"/>
                                 </constraints>
@@ -240,8 +239,8 @@
                                     <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zcl-zM-Ckb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS">
-                                <rect key="frame" x="32" y="616" width="123.5" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 : 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS">
+                                <rect key="frame" x="61" y="616" width="66" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="sqB-oI-5dW"/>
                                 </constraints>
@@ -275,6 +274,17 @@
                                     <action selector="touchHint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yLB-4o-c8X"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3v-oT-Yt3">
+                                <rect key="frame" x="329" y="565" width="30" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ofJ-zD-WVD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="😀"/>
+                                <connections>
+                                    <action selector="clickAiButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iqf-yb-x9J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -282,10 +292,12 @@
                             <constraint firstItem="nuf-TA-lR0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.5" id="38C-DC-MW0"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="leading" secondItem="NzX-N2-cjt" secondAttribute="trailing" constant="65.5" id="B3z-ih-L5i"/>
                             <constraint firstItem="WxT-bY-msd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Czj-jR-ew1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A3v-oT-Yt3" secondAttribute="trailing" constant="16" id="FjT-JB-7HJ"/>
                             <constraint firstItem="50M-gg-ZYS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.5" id="J7k-Wb-I7F"/>
                             <constraint firstItem="WxT-bY-msd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="KBB-f9-Q9w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="10" id="OP0-6F-NNY"/>
                             <constraint firstItem="xES-7o-BPG" firstAttribute="top" secondItem="WxT-bY-msd" secondAttribute="bottom" constant="20" id="R4P-pj-C9Z"/>
+                            <constraint firstItem="A3v-oT-Yt3" firstAttribute="centerY" secondItem="n0v-cd-ttt" secondAttribute="centerY" id="SZh-N1-rDx"/>
                             <constraint firstItem="n0v-cd-ttt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zwz-zc-5fI"/>
                             <constraint firstItem="NzX-N2-cjt" firstAttribute="centerY" secondItem="n0v-cd-ttt" secondAttribute="centerY" id="ayJ-V6-odB"/>
                             <constraint firstItem="NzX-N2-cjt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d9S-qS-sJQ"/>
@@ -297,6 +309,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="AIButton" destination="A3v-oT-Yt3" id="fkC-X9-e3l"/>
                         <outlet property="cardsLeftLabel" destination="nuf-TA-lR0" id="S8P-lr-3x1"/>
                         <outlet property="deal3CardsButton" destination="n0v-cd-ttt" id="1ix-0i-cs2"/>
                         <outlet property="hintButton" destination="NzX-N2-cjt" id="dC5-Aq-AH6"/>
