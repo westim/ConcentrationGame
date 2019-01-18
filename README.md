@@ -57,7 +57,7 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 ### :movie_camera: Demo
 
 <p align="center">
-	<img src="Demos/graphicalset.gif">
+	<img src="Demos/GraphicalSetDemoGif2.gif">
 </p>
 
 ### :heavy_plus_sign: Additional Features
