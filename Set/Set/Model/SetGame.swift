@@ -176,7 +176,7 @@ struct SetGame {
      - Returns: The score bonus.
      */
     private mutating func timeBonus(maxBonus: Int) -> Int {
-        let timeSinceLastPlay = lastPlay.timeIntervalSinceNow.rounded()
+        let timeSinceLastPlay = abs(lastPlay.timeIntervalSinceNow.rounded())
         let appliedBonus = maxBonus - Int(timeSinceLastPlay)
         lastPlay = Date.init()
         return appliedBonus > 0 ? appliedBonus : 0
