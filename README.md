@@ -19,7 +19,7 @@ I welcome any Issues or Pull Requests to improve this repository! I am not an iO
 ### :movie_camera: Demo
 
 <p align="center">
-	<img src="Demos/concentration.gif">
+	<img src="Demos/concentration.gif" width="400">
 </p>
 
 ### :heavy_plus_sign: Additional Features
@@ -37,7 +37,7 @@ Overall, this assignment wasn't too challenging because the bulk of the architec
 ### :movie_camera: Demo
 
 <p align="center">
-	<img src="Demos/set.gif">
+	<img src="Demos/set.gif" width="400">
 </p>
 
 ### :heavy_plus_sign: Additional Features
@@ -57,7 +57,7 @@ This assignment was a big (and admittedly frustrating) leap from the first one. 
 ### :movie_camera: Demo
 
 <p align="center">
-	<img src="Demos/GraphicalSetDemoGif2.gif">
+	<img src="Demos/GraphicalSetDemoGif2.gif" width="400">
 </p>
 
 ### :heavy_plus_sign: Additional Features
