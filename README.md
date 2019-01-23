@@ -37,7 +37,7 @@ Overall, this assignment wasn't too challenging because the bulk of the architec
 ### :movie_camera: Demo
 
 <p align="center">
-	<img src="Demos/set.gif" width="400">
+	<img src="Demos/SetWithAi.gif" width="400">
 </p>
 
 ### :heavy_plus_sign: Additional Features
