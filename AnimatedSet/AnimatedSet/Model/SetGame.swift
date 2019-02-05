@@ -11,11 +11,9 @@ import Foundation
 class SetGame {
     
     var deck = [Card]()
-    var currentTurn: Turn = .none
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
-    private(set) var player1Score = 0
-    private(set) var player2Score = 0
+    private(set) var score = 0
 
     
     /// End game state is when there are no dealt cards & the deck is empty.
@@ -110,42 +108,23 @@ class SetGame {
      */
     func selectCard(clickedCardIndex: Int) {
         if let index = selectedCards.index(of: dealtCards[clickedCardIndex]), selectedCards.count != 3 {  // Deselect clicked card
-            Score(-1)
+            score -= 1
             selectedCards.remove(at: index)
         } else {
              if let isMatched = selectedSetMatches, !isMatched {  // Deselect unmatched set & select clicked card
-                Score(-5)
+                score -= 5
                 selectedCards.removeAll()
-                currentTurn = .none
             } else if let isMatched = selectedSetMatches, isMatched {  // Replace matched set
-                Score(3)
+                score += 3
                 dealCards()
-                currentTurn = .none
             } else {  // Select clicked card
                 selectedCards.append(dealtCards[clickedCardIndex])
             }
         }
     }
     
-    private func Score(_ value: Int) {
-        switch currentTurn {
-        case .player1:
-            player1Score += value
-        case .player2:
-            player2Score += value
-        default:
-            print("Invalid turn")
-        }
-    }
-    
     func expireTurn() {
-        Score(-2)
-        currentTurn = .none
+        score -= 2
         selectedCards.removeAll()
-    }
-
-    
-    enum Turn {
-        case player1, player2, none
     }
 }

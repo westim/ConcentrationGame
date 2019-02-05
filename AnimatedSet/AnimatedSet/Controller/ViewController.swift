@@ -12,13 +12,6 @@ class ViewController: UIViewController {
     
     private lazy var game = SetGame()
     
-    private let secondsPerTurn: Double = 3
-    private var turnTimer: Timer? = nil {
-        willSet {
-            turnTimer?.invalidate()
-        }
-    }
-    
     private var symbols = [
         Card.Variant.one: SquiggleView.self,
         Card.Variant.two: DiamondView.self,
@@ -51,46 +44,22 @@ class ViewController: UIViewController {
     
     private func setupDynamicFonts() {
         guard let customFont = UIFont(name: "SFProText-Semibold", size: 24) else {
-            fatalError("""
-        Failed to load the "SF-Pro-Text-Semibold" font.
-        Make sure the font file is included in the project and the font name is spelled correctly.
-        """
+            fatalError(
+            """
+            Failed to load the "SF-Pro-Text-Semibold" font.
+            Make sure the font file is included in the project and the font name is spelled correctly.
+            """
             )
         }
         
         let scaledFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
-        player1ScoreLabel.font = scaledFont
-        player2ScoreLabel.font = scaledFont
-        player1Label.font = scaledFont
-        player2Label.font = scaledFont
-        player1Deal3CardsButton?.titleLabel?.font = scaledFont
-        player2Deal3CardsButton?.titleLabel?.font = scaledFont
-        player1ClaimSetButton?.titleLabel?.font = scaledFont
-        player2ClaimSetButton?.titleLabel?.font = scaledFont
-    }
-    
-    private func startTurn() {
-        if game.currentTurn == .none {
-            turnTimer = nil
-        } else {
-            turnTimer = Timer.scheduledTimer(timeInterval: secondsPerTurn, target: self, selector: #selector(expireTurn), userInfo: nil, repeats: false)
-        }
-    }
-    
-    @objc private func expireTurn() {
-        game.expireTurn()
-        endTurn()
-        updateViewFromModel()
-    }
-    
-    private func endTurn() {
-        player1ClaimSetButton.removeHighlight()
-        player2ClaimSetButton.removeHighlight()
+        scoreLabel.font = scaledFont
+        deal3CardsButton?.titleLabel?.font = scaledFont
+        claimSetButton?.titleLabel?.font = scaledFont
     }
 
     @objc private func touchCard(_ sender: CardView) {
-        if game.currentTurn == .none { return }
-        guard let index = CardAreaView.cards.index(of: sender) else { return }
+        guard let index = cardAreaView.cards.index(of: sender) else { return }
         game.selectCard(clickedCardIndex: index)
         updateViewFromModel()
     }
@@ -107,34 +76,18 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet private var player1Label: UILabel!
-    @IBOutlet private var player2Label: UILabel!
-    @IBOutlet private var player2ScoreLabel: UILabel!
-    @IBOutlet private var player1ScoreLabel: UILabel!
-    @IBOutlet private var CardAreaView: CardAreaView!
-    @IBOutlet private var player1Deal3CardsButton: UIButton!
-    @IBOutlet private var player2Deal3CardsButton: UIButton!
-    @IBOutlet private var player1ClaimSetButton: ClaimTurnButton!
-    @IBOutlet private var player2ClaimSetButton: ClaimTurnButton!
+    @IBOutlet private var scoreLabel: UILabel!
+    @IBOutlet private var cardAreaView: CardAreaView!
+    @IBOutlet private var deal3CardsButton: UIButton!
+    @IBOutlet private var claimSetButton: ClaimTurnButton!
     
     @IBAction func deal3Cards(_ sender: UIButton?) {
-        if game.currentTurn == .none { return }
         game.dealCards()
         updateViewFromModel()
-        expireTurn()
     }
     
     @IBAction func touchClaimSetButton(_ sender: UIButton) {
-        if game.currentTurn == .none {
-            if sender == player1ClaimSetButton {
-                game.currentTurn = .player1
-                player1ClaimSetButton.highlightBorder()
-            } else {
-                game.currentTurn = .player2
-                player2ClaimSetButton.highlightBorder()
-            }
-            startTurn()
-        }
+        claimSetButton.highlightBorder()
     }
     
     private func ShuffleCards() {
@@ -181,45 +134,41 @@ class ViewController: UIViewController {
      Updates the card views currently played.
      */
     private func updateCards() {
-        CardAreaView.removeAllCards()
+        cardAreaView.removeAllCards()
         
         let cardViews = createCardViews(from: game.dealtCards)
-        CardAreaView.add(cardViews)
+        cardAreaView.add(cardViews)
     }
     
     private func updateScoreLabel() {
-        player1ScoreLabel.text = "Score: \(game.player1Score)"
-        player2ScoreLabel.text = "Score: \(game.player2Score)"
+        scoreLabel.text = "Score: \(game.score)"
     }
     
     private func updateViewFromModel() {
         
         updateScoreLabel()
         
-        if game.dealtCards.count != CardAreaView.cards.count || updateCardsOnNextTouch {
+        if game.dealtCards.count != cardAreaView.cards.count || updateCardsOnNextTouch {
             updateCards()
             updateCardsOnNextTouch = false
         }
 
         for index in game.dealtCards.indices {
             if game.selectedCards.contains(game.dealtCards[index]) {
-                CardAreaView.cards[index].isSelected = true
+                cardAreaView.cards[index].isSelected = true
                 
                 // Add colors to indicate a successful/unsuccessful set
                 if let isSetMatching = game.selectedSetMatches {
-                    CardAreaView.cards[index].isMatching = isSetMatching
+                    cardAreaView.cards[index].isMatching = isSetMatching
                     updateCardsOnNextTouch = true
                 } else {
-                    CardAreaView.cards[index].isMatching = nil
+                    cardAreaView.cards[index].isMatching = nil
                 }
             } else {
                 // Clear border color for unselected cards
-                CardAreaView.cards[index].isSelected = false
+                cardAreaView.cards[index].isSelected = false
             }
         }
-        
-        if game.currentTurn == .none {
-            endTurn()
-        }
+        claimSetButton.removeHighlight()
     }
 }
