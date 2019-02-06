@@ -15,6 +15,12 @@ struct Card: Equatable {
     let Attribute3: Variant
     let Attribute4: Variant
     
+    private var attributeArray: [Variant] {
+        get {
+            return [Attribute1, Attribute2, Attribute3, Attribute4]
+        }
+    }
+    
     init(Att1: Variant, Att2: Variant, Att3: Variant, Att4: Variant) {
         Attribute1 = Att1
         Attribute2 = Att2
@@ -23,17 +29,11 @@ struct Card: Equatable {
     }
     
     static func ==(lhs: Card, rhs: Card) -> Bool {
-        return lhs.Attribute1 == rhs.Attribute1 &&
-               lhs.Attribute2 == rhs.Attribute2 &&
-               lhs.Attribute3 == rhs.Attribute3 &&
-               lhs.Attribute4 == rhs.Attribute4
+        return lhs.attributeArray.elementsEqual(rhs.attributeArray)
     }
     
     static func !=(lhs: Card, rhs: Card) -> Bool {
-        return lhs.Attribute1 != rhs.Attribute1 ||
-               lhs.Attribute2 != rhs.Attribute2 ||
-               lhs.Attribute3 != rhs.Attribute3 ||
-               lhs.Attribute4 != rhs.Attribute4
+        return !lhs.attributeArray.elementsEqual(rhs.attributeArray)
     }
     
     /**
