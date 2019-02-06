@@ -14,6 +14,7 @@
 		223C9BE822094E5C00D5A755 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9BE722094E5C00D5A755 /* ViewController.swift */; };
 		223C9BEC22094E6A00D5A755 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9BEA22094E6A00D5A755 /* Card.swift */; };
 		223C9BED22094E6A00D5A755 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9BEB22094E6A00D5A755 /* SetGame.swift */; };
+		223C9BEF220A984900D5A755 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C9BEE220A984900D5A755 /* Map.swift */; };
 		2241BA8C2171946E0031E9C7 /* ClaimTurnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */; };
 		2248067A214F488500DF45A7 /* SquiggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480679214F488500DF45A7 /* SquiggleView.swift */; };
 		2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067B214F48B600DF45A7 /* SetSymbolView.swift */; };
@@ -38,6 +39,7 @@
 		223C9BE722094E5C00D5A755 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		223C9BEA22094E6A00D5A755 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		223C9BEB22094E6A00D5A755 /* SetGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		223C9BEE220A984900D5A755 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimTurnButton.swift; sourceTree = "<group>"; };
 		22480679214F488500DF45A7 /* SquiggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquiggleView.swift; sourceTree = "<group>"; };
 		2248067B214F48B600DF45A7 /* SetSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymbolView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				223C9BE722094E5C00D5A755 /* ViewController.swift */,
+				223C9BEE220A984900D5A755 /* Map.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				2224EB7F214622E10039489F /* Grid.swift in Sources */,
 				22480680214F495500DF45A7 /* DiamondView.swift in Sources */,
 				2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */,
+				223C9BEF220A984900D5A755 /* Map.swift in Sources */,
 				22ABFCE1215B16CD0014E96F /* CardAreaView.swift in Sources */,
 				223B8990216727370064405F /* UIView+addSubViews.swift in Sources */,
 				22ABFCDF2155F9420014E96F /* CardView.swift in Sources */,

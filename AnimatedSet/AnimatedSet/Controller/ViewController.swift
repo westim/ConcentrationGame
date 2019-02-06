@@ -12,27 +12,6 @@ class ViewController: UIViewController {
     
     private lazy var game = SetGame()
     
-    private var symbols = [
-        Card.Variant.one: SquiggleView.self,
-        Card.Variant.two: DiamondView.self,
-        Card.Variant.three: OvalView.self
-    ]
-    private var counts = [
-        Card.Variant.one: 1,
-        Card.Variant.two: 2,
-        Card.Variant.three: 3
-    ]
-    private var fills = [
-        Card.Variant.one: SetSymbolView.FillType.none,
-        Card.Variant.two: SetSymbolView.FillType.solid,
-        Card.Variant.three: SetSymbolView.FillType.stripe
-    ]
-    private var colors = [
-        Card.Variant.one: UIColor.cyan,
-        Card.Variant.two: UIColor.magenta,
-        Card.Variant.three: UIColor.yellow
-    ]
-    
     private var updateCardsOnNextTouch: Bool = false
 
     override func viewDidLoad() {
@@ -81,12 +60,12 @@ class ViewController: UIViewController {
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var claimSetButton: ClaimTurnButton!
     
-    @IBAction func deal3Cards(_ sender: UIButton?) {
+    @IBAction private func deal3Cards(_ sender: UIButton?) {
         game.dealCards()
         updateViewFromModel()
     }
     
-    @IBAction func touchClaimSetButton(_ sender: UIButton) {
+    @IBAction private func touchClaimSetButton(_ sender: UIButton) {
         claimSetButton.highlightBorder()
     }
     
@@ -106,10 +85,10 @@ class ViewController: UIViewController {
     private func createCardViews(from cards: [Card]) -> [CardView] {
         var cardViews = [CardView]()
         for card in cards {
-            let symbol = symbols[card.Attribute1] ?? SquiggleView.self
-            let count = counts[card.Attribute2] ?? 0
-            let color = colors[card.Attribute3] ?? UIColor.white
-            let fill = fills[card.Attribute4] ?? SetSymbolView.FillType.none
+            let symbol = Map.symbols[card.Attribute1] ?? SquiggleView.self
+            let count = Map.counts[card.Attribute2] ?? 0
+            let color = Map.colors[card.Attribute3] ?? UIColor.white
+            let fill = Map.fills[card.Attribute4] ?? SetSymbolView.FillType.none
             let cardView = CardView(count: count, color: color, fill: fill, symbol: symbol)
             cardView.addTarget(self, action: #selector(touchCard(_:)), for: .touchUpInside)
             cardViews.append(cardView)
