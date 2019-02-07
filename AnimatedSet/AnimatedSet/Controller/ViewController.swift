@@ -59,6 +59,7 @@ class ViewController: UIViewController {
     @IBOutlet private var cardAreaView: CardAreaView!
     @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var claimSetButton: ClaimTurnButton!
+    @IBOutlet var DeckView: UIView!
     
     @IBAction private func deal3Cards(_ sender: UIButton?) {
         game.dealCards()
