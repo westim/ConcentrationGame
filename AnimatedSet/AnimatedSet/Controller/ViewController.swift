@@ -21,6 +21,12 @@ class ViewController: UIViewController {
         setupDynamicFonts()
     }
     
+    private var cardDeck: [CardView] {
+        get {
+            return createCardViews(from: game.deck)
+        }
+    }
+    
     private func setupDynamicFonts() {
         guard let customFont = UIFont(name: "SFProText-Semibold", size: 24) else {
             fatalError(
@@ -57,9 +63,8 @@ class ViewController: UIViewController {
     
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardAreaView: CardAreaView!
-    @IBOutlet private var deal3CardsButton: UIButton!
     @IBOutlet private var claimSetButton: ClaimTurnButton!
-    @IBOutlet var DeckView: UIView!
+    @IBOutlet private var DeckButton: UIButton!
     
     @IBAction private func deal3Cards(_ sender: UIButton?) {
         game.dealCards()

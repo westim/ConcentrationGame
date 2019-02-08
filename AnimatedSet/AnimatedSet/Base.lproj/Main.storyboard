@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-jD-dL7">
-                                <rect key="frame" x="20" y="581" width="235" height="66"/>
+                                <rect key="frame" x="20" y="581" width="73" height="66"/>
                                 <subviews>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enk-nP-vn8" userLabel="Claim Set Button" customClass="ClaimTurnButton" customModule="AnimatedSet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="73" height="33"/>
@@ -43,35 +43,36 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-g6-U1t" userLabel="Deck View">
-                                <rect key="frame" x="255" y="575.5" width="100" height="71.5"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKR-57-6cf" userLabel="Deck Button">
+                                <rect key="frame" x="283.5" y="547" width="71.5" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="IVb-g6-U1t" secondAttribute="height" multiplier="3.5:2.5" id="5og-OK-7Ru"/>
-                                    <constraint firstAttribute="width" constant="100" id="tBa-dN-b8z"/>
+                                    <constraint firstAttribute="height" constant="100" id="P94-o8-Ted"/>
+                                    <constraint firstAttribute="width" secondItem="DKR-57-6cf" secondAttribute="height" multiplier="2.5:3.5" id="eHX-Q8-Vuk"/>
                                 </constraints>
-                            </view>
+                                <state key="normal" image="playing-card-back"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DKR-57-6cf" secondAttribute="trailing" constant="20" id="2IW-hL-cJ2"/>
+                            <constraint firstAttribute="bottom" secondItem="DKR-57-6cf" secondAttribute="bottom" constant="20" id="68S-I4-xxv"/>
                             <constraint firstItem="sbH-jD-dL7" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="13" id="GlA-J6-bee"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IVb-g6-U1t" secondAttribute="bottom" constant="20" id="K7k-fD-UEm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CYd-bc-zSF" secondAttribute="trailing" constant="16" id="M7D-AG-JKp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sbH-jD-dL7" secondAttribute="bottom" constant="20" id="PBi-MF-bRw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IVb-g6-U1t" secondAttribute="trailing" constant="20" id="VNp-1g-Lcs"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yeb-43-NCH"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eYb-z6-Sst"/>
                             <constraint firstItem="sbH-jD-dL7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gBE-e4-2rt"/>
-                            <constraint firstItem="IVb-g6-U1t" firstAttribute="leading" secondItem="sbH-jD-dL7" secondAttribute="trailing" id="ghb-XP-t2I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="CardAreaView" destination="CYd-bc-zSF" id="VaG-Og-Ogo"/>
-                        <outlet property="DeckView" destination="IVb-g6-U1t" id="vsf-on-Tbw"/>
+                        <outlet property="DeckButton" destination="DKR-57-6cf" id="JAH-MX-CEU"/>
                         <outlet property="baseView" destination="8bC-Xf-vdC" id="8Vr-Us-1HZ"/>
-                        <outlet property="player1ClaimSetButton" destination="enk-nP-vn8" id="skR-an-96L"/>
+                        <outlet property="cardAreaView" destination="CYd-bc-zSF" id="DAY-iF-o8z"/>
+                        <outlet property="claimSetButton" destination="enk-nP-vn8" id="yb5-5e-XoP"/>
                         <outlet property="player1ScoreLabel" destination="50M-gg-ZYS" id="Vhc-yf-nSU"/>
+                        <outlet property="scoreLabel" destination="50M-gg-ZYS" id="xw9-N5-Fvx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -79,4 +80,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playing-card-back" width="427" height="600"/>
+    </resources>
 </document>
