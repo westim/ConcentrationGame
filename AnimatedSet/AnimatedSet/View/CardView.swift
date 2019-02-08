@@ -15,8 +15,12 @@ class CardView: UIButton {
     var fill = SetSymbolView.FillType.none
     var symbol = SetSymbolView.self
     
+    private var cardBackImage = UIImage(named: "playing-card-back")
+    private lazy var cardBackView = UIImageView(image: cardBackImage)
+    
     override var isSelected: Bool { didSet { changeBorder() } }
     var isMatching: Bool? = nil { didSet { changeBackgroundColor() } }
+    var isFaceUp: Bool = false { didSet { changeSubViews() } }
     
     func setup() {
         self.layer.cornerRadius = cornerRadius
@@ -24,7 +28,17 @@ class CardView: UIButton {
         self.layer.borderColor = Colors.selectedBorder
         clipsToBounds = true
         changeBackgroundColor()
-        createSymbols()
+        changeSubViews()
+    }
+    
+    private func changeSubViews() {
+        self.removeAllSubViews()
+        if (isFaceUp) {
+            createSymbols()
+        }
+        else {
+            addSubview(cardBackView)
+        }
     }
     
     private func createSymbols() {
