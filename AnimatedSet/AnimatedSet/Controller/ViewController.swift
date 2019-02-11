@@ -51,12 +51,8 @@ class ViewController: UIViewController {
     
     @IBOutlet private var baseView: UIView! {
         didSet {
-            let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipe(recognizer:)))
-            swipeGestureRecognizer.direction = .down
-            
             let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate(recognizer:)))
             
-            baseView.addGestureRecognizer(swipeGestureRecognizer)
             baseView.addGestureRecognizer(rotationGestureRecognizer)
         }
     }
