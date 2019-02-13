@@ -24,6 +24,7 @@
 		2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */; };
 		22ABFCDF2155F9420014E96F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABFCDE2155F9420014E96F /* CardView.swift */; };
 		22ABFCE1215B16CD0014E96F /* CardAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABFCE0215B16CD0014E96F /* CardAreaView.swift */; };
+		22C34CDE2213C0D400F12B71 /* DiscardAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34CDD2213C0D400F12B71 /* DiscardAreaView.swift */; };
 		22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F1C6213388C300151A24 /* AppDelegate.swift */; };
 		22C7F1CC213388C300151A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CA213388C300151A24 /* Main.storyboard */; };
 		22C7F1CE213388C600151A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F1CD213388C600151A24 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BoolAndEquatable.swift"; sourceTree = "<group>"; };
 		22ABFCDE2155F9420014E96F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		22ABFCE0215B16CD0014E96F /* CardAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAreaView.swift; sourceTree = "<group>"; };
+		22C34CDD2213C0D400F12B71 /* DiscardAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardAreaView.swift; sourceTree = "<group>"; };
 		22C7F1C3213388C300151A24 /* AnimatedSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C7F1C6213388C300151A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22C7F1CB213388C300151A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				22ABFCDE2155F9420014E96F /* CardView.swift */,
 				22ABFCE0215B16CD0014E96F /* CardAreaView.swift */,
 				2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */,
+				22C34CDD2213C0D400F12B71 /* DiscardAreaView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				22C7F1C7213388C300151A24 /* AppDelegate.swift in Sources */,
 				2224EB7F214622E10039489F /* Grid.swift in Sources */,
 				22480680214F495500DF45A7 /* DiamondView.swift in Sources */,
+				22C34CDE2213C0D400F12B71 /* DiscardAreaView.swift in Sources */,
 				2248067C214F48B600DF45A7 /* SetSymbolView.swift in Sources */,
 				223C9BEF220A984900D5A755 /* Map.swift in Sources */,
 				22ABFCE1215B16CD0014E96F /* CardAreaView.swift in Sources */,

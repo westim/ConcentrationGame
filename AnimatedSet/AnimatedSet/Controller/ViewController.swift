@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardAreaView: CardAreaView!
     @IBOutlet private var deckButton: UIButton!
+    @IBOutlet private var discardPile: DiscardAreaView!
     
     @IBAction private func deal3Cards(_ sender: UIButton?) {
         game.dealCards()

@@ -22,6 +22,12 @@
                                 <rect key="frame" x="16" y="36" width="343" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS" userLabel="Score Label">
+                                <rect key="frame" x="16" y="615" width="94" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKR-57-6cf" userLabel="Deck Button">
                                 <rect key="frame" x="283.5" y="547" width="71.5" height="100"/>
                                 <constraints>
@@ -33,24 +39,38 @@
                                     <action selector="deal3Cards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NGc-Ji-NuB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS" userLabel="Score Label">
-                                <rect key="frame" x="16" y="615" width="94" height="32"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xe5-va-k1p" userLabel="Discard" customClass="DiscardAreaView" customModule="AnimatedSet" customModuleProvider="target">
+                                <rect key="frame" x="192" y="547" width="71.5" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYb-nq-mZN">
+                                        <rect key="frame" x="7" y="40" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HYb-nq-mZN" firstAttribute="centerX" secondItem="Xe5-va-k1p" secondAttribute="centerX" id="6SW-W5-oMu"/>
+                                    <constraint firstItem="HYb-nq-mZN" firstAttribute="centerY" secondItem="Xe5-va-k1p" secondAttribute="centerY" id="Fra-dU-Idy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DKR-57-6cf" secondAttribute="trailing" constant="20" id="2IW-hL-cJ2"/>
                             <constraint firstAttribute="bottom" secondItem="DKR-57-6cf" secondAttribute="bottom" constant="20" id="68S-I4-xxv"/>
                             <constraint firstItem="50M-gg-ZYS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9h9-LX-ltE"/>
+                            <constraint firstItem="Xe5-va-k1p" firstAttribute="width" secondItem="DKR-57-6cf" secondAttribute="width" id="Dl0-G2-LCK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CYd-bc-zSF" secondAttribute="trailing" constant="16" id="M7D-AG-JKp"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yeb-43-NCH"/>
                             <constraint firstItem="DKR-57-6cf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="50M-gg-ZYS" secondAttribute="trailing" constant="8" symbolic="YES" id="aYb-W1-TAE"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eYb-z6-Sst"/>
+                            <constraint firstItem="Xe5-va-k1p" firstAttribute="height" secondItem="DKR-57-6cf" secondAttribute="height" id="mDt-JR-N5m"/>
+                            <constraint firstItem="DKR-57-6cf" firstAttribute="leading" secondItem="Xe5-va-k1p" secondAttribute="trailing" constant="20" id="og2-qr-NZl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="20" id="s15-Gw-rE7"/>
                             <constraint firstItem="DKR-57-6cf" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="20" id="uFv-iH-9Ia"/>
+                            <constraint firstItem="Xe5-va-k1p" firstAttribute="centerY" secondItem="DKR-57-6cf" secondAttribute="centerY" id="ygA-Cn-BXb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -58,6 +78,7 @@
                         <outlet property="baseView" destination="8bC-Xf-vdC" id="8Vr-Us-1HZ"/>
                         <outlet property="cardAreaView" destination="CYd-bc-zSF" id="DAY-iF-o8z"/>
                         <outlet property="deckButton" destination="DKR-57-6cf" id="8Nc-Vt-8AK"/>
+                        <outlet property="discardPile" destination="Xe5-va-k1p" id="V5u-27-afB"/>
                         <outlet property="scoreLabel" destination="50M-gg-ZYS" id="xw9-N5-Fvx"/>
                     </connections>
                 </viewController>
