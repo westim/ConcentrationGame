@@ -18,29 +18,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         game.startGame()
         updateViewFromModel()
-        setupDynamicFonts()
-    }
-    
-    private var cardDeck: [CardView] {
-        get {
-            return createCardViews(from: game.deck)
-        }
-    }
-    
-    private func setupDynamicFonts() {
-        guard let customFont = UIFont(name: "SFProText-Semibold", size: 24) else {
-            fatalError(
-            """
-            Failed to load the "SF-Pro-Text-Semibold" font.
-            Make sure the font file is included in the project and the font name is spelled correctly.
-            """
-            )
-        }
-        
-        let scaledFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
-        scoreLabel.font = scaledFont
-        deal3CardsButton?.titleLabel?.font = scaledFont
-        claimSetButton?.titleLabel?.font = scaledFont
     }
 
     @objc private func touchCard(_ sender: CardView) {
@@ -52,23 +29,29 @@ class ViewController: UIViewController {
     @IBOutlet private var baseView: UIView! {
         didSet {
             let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate(recognizer:)))
-            
             baseView.addGestureRecognizer(rotationGestureRecognizer)
         }
     }
     
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var cardAreaView: CardAreaView!
-    @IBOutlet private var claimSetButton: ClaimTurnButton!
-    @IBOutlet private var DeckButton: UIButton!
+    @IBOutlet private var deckButton: UIButton!
     
     @IBAction private func deal3Cards(_ sender: UIButton?) {
         game.dealCards()
+        animatedDeal(createCardViews(from: game.recentlyDealtCards))
         updateViewFromModel()
     }
     
-    @IBAction private func touchClaimSetButton(_ sender: UIButton) {
-        claimSetButton.highlightBorder()
+    private func animatedDeal(_ cards: [CardView]) {
+        for card in cards {
+            UIView.transition(with: card,
+                              duration: 0.6,
+                              options: [.transitionFlipFromLeft],
+                              animations: {
+                                card.isFaceUp = !card.isFaceUp
+                              })
+        }
     }
     
     private func ShuffleCards() {
@@ -78,11 +61,11 @@ class ViewController: UIViewController {
     }
     
     /**
-     Create a `CardView` from a `Card`.
+     Create a `[CardView]` from a `[Card]`.
      
-     - Parameter card: The `Card` to convert.
+     - Parameter cards: The `[Card]` to convert.
      
-     - Returns: `CardView`.
+     - Returns: `[CardView]`.
      */
     private func createCardViews(from cards: [Card]) -> [CardView] {
         var cardViews = [CardView]()
@@ -97,12 +80,6 @@ class ViewController: UIViewController {
         }
 
         return cardViews
-    }
-
-    @objc private func swipe(recognizer: UISwipeGestureRecognizer) {
-        if recognizer.state == .ended {
-            deal3Cards(nil)
-        }
     }
     
     @objc private func rotate(recognizer: UIRotationGestureRecognizer) {
@@ -150,6 +127,5 @@ class ViewController: UIViewController {
                 cardAreaView.cards[index].isSelected = false
             }
         }
-        claimSetButton.removeHighlight()
     }
 }

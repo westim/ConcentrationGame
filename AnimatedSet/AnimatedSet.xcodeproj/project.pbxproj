@@ -21,7 +21,6 @@
 		2248067E214F48E800DF45A7 /* CGRect+points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067D214F48E800DF45A7 /* CGRect+points.swift */; };
 		22480680214F495500DF45A7 /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248067F214F495500DF45A7 /* DiamondView.swift */; };
 		22480682214F498E00DF45A7 /* OvalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22480681214F498E00DF45A7 /* OvalView.swift */; };
-		2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */; };
 		2288BCD021379EDD00153FB7 /* Array+BoolAndEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */; };
 		22ABFCDF2155F9420014E96F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABFCDE2155F9420014E96F /* CardView.swift */; };
 		22ABFCE1215B16CD0014E96F /* CardAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABFCE0215B16CD0014E96F /* CardAreaView.swift */; };
@@ -46,7 +45,6 @@
 		2248067D214F48E800DF45A7 /* CGRect+points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+points.swift"; sourceTree = "<group>"; };
 		2248067F214F495500DF45A7 /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
 		22480681214F498E00DF45A7 /* OvalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalView.swift; sourceTree = "<group>"; };
-		2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		2288BCCF21379EDD00153FB7 /* Array+BoolAndEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BoolAndEquatable.swift"; sourceTree = "<group>"; };
 		22ABFCDE2155F9420014E96F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		22ABFCE0215B16CD0014E96F /* CardAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAreaView.swift; sourceTree = "<group>"; };
@@ -90,6 +88,7 @@
 		22480678214F485D00DF45A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2224EB7E214622E10039489F /* Grid.swift */,
 				22480679214F488500DF45A7 /* SquiggleView.swift */,
 				2248067B214F48B600DF45A7 /* SetSymbolView.swift */,
 				2248067F214F495500DF45A7 /* DiamondView.swift */,
@@ -99,14 +98,6 @@
 				2241BA8B2171946E0031E9C7 /* ClaimTurnButton.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		2288BCC6213645AF00153FB7 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				2288BCC4213645A800153FB7 /* SF-Pro-Text-Semibold.otf */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		2288BCD121379EF000153FB7 /* Extensions */ = {
@@ -153,8 +144,6 @@
 				223C9BE922094E6A00D5A755 /* Model */,
 				223C9BE622094E5C00D5A755 /* Controller */,
 				22480678214F485D00DF45A7 /* View */,
-				2224EB7E214622E10039489F /* Grid.swift */,
-				2288BCC6213645AF00153FB7 /* Font */,
 				22A93ABC21338A95003B69BE /* Supporting File */,
 				22C7F1CA213388C300151A24 /* Main.storyboard */,
 				22C7F1D2213388C600151A24 /* Info.plist */,
@@ -222,7 +211,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2288BCC5213645A800153FB7 /* SF-Pro-Text-Semibold.otf in Resources */,
 				22C7F1D1213388C600151A24 /* LaunchScreen.storyboard in Resources */,
 				22C7F1CE213388C600151A24 /* Assets.xcassets in Resources */,
 				22C7F1CC213388C300151A24 /* Main.storyboard in Resources */,

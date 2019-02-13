@@ -13,8 +13,8 @@ class SetGame {
     var deck = [Card]()
     private(set) var selectedCards = [Card]()
     private(set) var dealtCards = [Card]()
+    private(set) var recentlyDealtCards = [Card]()
     private(set) var score = 0
-
     
     /// End game state is when there are no dealt cards & the deck is empty.
     var gameOver: Bool {
@@ -71,6 +71,8 @@ class SetGame {
      Deals 3 cards from the deck. If the selected set
      matches, replace the selected set. Otherwise, add the
      cards to the collection of dealt cards.
+     
+     - Returns: Cards that are dealt.
      */
     func dealCards() {
         let numberOfCardsToDeal = deck.count < 3 ? deck.count : 3
@@ -82,6 +84,7 @@ class SetGame {
             dealtCards.append(contentsOf: dealCards)
         }
         deck.removeSubArray(subarray: dealCards)
+        recentlyDealtCards = dealCards
     }
     
     /**

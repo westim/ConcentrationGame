@@ -19,30 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="redraw" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="CYd-bc-zSF" userLabel="CardAreaView" customClass="CardAreaView" customModule="AnimatedSet" customModuleProvider="target">
-                                <rect key="frame" x="16" y="36" width="343" height="532"/>
+                                <rect key="frame" x="16" y="36" width="343" height="491"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-jD-dL7">
-                                <rect key="frame" x="20" y="581" width="73" height="66"/>
-                                <subviews>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enk-nP-vn8" userLabel="Claim Set Button" customClass="ClaimTurnButton" customModule="AnimatedSet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="73" height="33"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <state key="normal" title="Claim Set">
-                                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchClaimSetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mYT-5p-jKF"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS" userLabel="Score Label">
-                                        <rect key="frame" x="0.0" y="33" width="64" height="33"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKR-57-6cf" userLabel="Deck Button">
                                 <rect key="frame" x="283.5" y="547" width="71.5" height="100"/>
                                 <constraints>
@@ -54,27 +33,31 @@
                                     <action selector="deal3Cards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NGc-Ji-NuB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-gg-ZYS" userLabel="Score Label">
+                                <rect key="frame" x="16" y="615" width="94" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DKR-57-6cf" secondAttribute="trailing" constant="20" id="2IW-hL-cJ2"/>
                             <constraint firstAttribute="bottom" secondItem="DKR-57-6cf" secondAttribute="bottom" constant="20" id="68S-I4-xxv"/>
-                            <constraint firstItem="sbH-jD-dL7" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="13" id="GlA-J6-bee"/>
+                            <constraint firstItem="50M-gg-ZYS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9h9-LX-ltE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CYd-bc-zSF" secondAttribute="trailing" constant="16" id="M7D-AG-JKp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sbH-jD-dL7" secondAttribute="bottom" constant="20" id="PBi-MF-bRw"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Yeb-43-NCH"/>
+                            <constraint firstItem="DKR-57-6cf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="50M-gg-ZYS" secondAttribute="trailing" constant="8" symbolic="YES" id="aYb-W1-TAE"/>
                             <constraint firstItem="CYd-bc-zSF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eYb-z6-Sst"/>
-                            <constraint firstItem="sbH-jD-dL7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gBE-e4-2rt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="50M-gg-ZYS" secondAttribute="bottom" constant="20" id="s15-Gw-rE7"/>
+                            <constraint firstItem="DKR-57-6cf" firstAttribute="top" secondItem="CYd-bc-zSF" secondAttribute="bottom" constant="20" id="uFv-iH-9Ia"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="CardAreaView" destination="CYd-bc-zSF" id="VaG-Og-Ogo"/>
-                        <outlet property="DeckButton" destination="DKR-57-6cf" id="JAH-MX-CEU"/>
                         <outlet property="baseView" destination="8bC-Xf-vdC" id="8Vr-Us-1HZ"/>
                         <outlet property="cardAreaView" destination="CYd-bc-zSF" id="DAY-iF-o8z"/>
-                        <outlet property="claimSetButton" destination="enk-nP-vn8" id="yb5-5e-XoP"/>
-                        <outlet property="player1ScoreLabel" destination="50M-gg-ZYS" id="Vhc-yf-nSU"/>
+                        <outlet property="deckButton" destination="DKR-57-6cf" id="8Nc-Vt-8AK"/>
                         <outlet property="scoreLabel" destination="50M-gg-ZYS" id="xw9-N5-Fvx"/>
                     </connections>
                 </viewController>
